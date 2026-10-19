@@ -1,0 +1,1948 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muthoot Portal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#E5E7EB;color:#111827}
+.app{display:flex;min-height:100vh}
+.side{width:300px;flex-shrink:0;background:#fff;border-right:1px solid #D1D5DB;padding:20px 16px;box-sizing:border-box;overflow:auto;position:sticky;top:0;height:100vh}
+.side h1{font-size:16px;margin:0 0 4px}
+.side p{font-size:12px;color:#4B5563;margin:0 0 16px;line-height:1.4}
+.side a{display:block;padding:8px 10px;border-radius:8px;font-size:13px;color:#111827;text-decoration:none;margin-bottom:2px}
+.side a:hover{background:#F3F4F6}
+.side a.on{background:#DBEAFE;color:#1E40AF;font-weight:600}
+.stage{flex-grow:1;display:flex;flex-direction:column;align-items:center;padding:24px;gap:12px;min-width:0}
+.phone{width:100%;max-width:1400px;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;border:1px solid #9CA3AF}
+.scr{display:none} .scr.on{display:block}
+.cap{font-size:13px;color:#4B5563}
+.row-nav{display:flex;gap:8px}
+.row-nav button{height:36px;padding:0 14px;border-radius:8px;border:1px solid #9CA3AF;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+@media (max-width:760px){.app{flex-direction:column}.side{width:auto;height:auto;position:static}.phone{width:100%;border-radius:0;border:0}}
+#Portal-Login{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#111827}
+#Portal-Login a{color:#1D4ED8}
+#Portal-Login a:hover{color:#1E40AF}
+#Portal-Login .card{background:#fff;border-radius:16px;padding:32px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;width:100%;max-width:440px}
+#Portal-Login .h1{font-size:22px;font-weight:600;margin:0}
+#Portal-Login .p{font-size:14px;color:#4B5563;margin:0;line-height:1.45}
+#Portal-Login .f{display:flex;flex-direction:column;gap:6px}
+#Portal-Login .f label{font-size:13px;font-weight:500}
+#Portal-Login .input{height:44px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:15px;font-family:inherit;color:#111827;width:100%;box-sizing:border-box}
+#Portal-Login .btn{display:flex;align-items:center;justify-content:center;height:48px;border-radius:10px;font-size:15px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Portal-Login .btn.sec{background:#fff;color:#1D4ED8}
+#Portal-Login .tab{height:36px;padding:0 14px;border-radius:999px;border:1px solid #D1D5DB;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+#Portal-Login .tab.on{background:#111827;color:#fff;border-color:#111827}
+#Portal-Login .note{font-size:13px;padding:10px 12px;border-radius:8px;background:#FFFBEB;border:1px solid #FDE68A;color:#92400E}
+#Main{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Main a{color:#1D4ED8}
+#Main a:hover{color:#1E40AF}
+#Main .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Main .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Main .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Main .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Main .nav a:hover{background:#1F2937;color:#fff}
+#Main .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Main .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Main .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Main .badge.red{background:#B91C1C}
+#Main .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Main .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Main .h1{font-size:22px;font-weight:600;margin:0}
+#Main .sub{font-size:13px;color:#4B5563}
+#Main .who{font-size:13px;color:#4B5563;text-align:right}
+#Main .live{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#065F46;background:#D1FAE5;border-radius:999px;padding:3px 10px}
+#Main .dot{width:8px;height:8px;border-radius:4px;background:#059669}
+#Main .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Main .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Main .kpi{font-size:32px;font-weight:600;line-height:1}
+#Main .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Main .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Main .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:top}
+#Main .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Main .p-blue{background:#DBEAFE;color:#1E40AF}
+#Main .p-green{background:#D1FAE5;color:#065F46}
+#Main .p-amber{background:#FEF3C7;color:#92400E}
+#Main .p-red{background:#FEE2E2;color:#991B1B}
+#Main .p-gray{background:#F3F4F6;color:#374151}
+#Main .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Main .btn.sec{background:#fff;color:#1D4ED8}
+#Main .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Pickups{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Pickups a{color:#1D4ED8}
+#Pickups a:hover{color:#1E40AF}
+#Pickups .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Pickups .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Pickups .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Pickups .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Pickups .nav a:hover{background:#1F2937;color:#fff}
+#Pickups .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Pickups .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Pickups .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Pickups .badge.red{background:#B91C1C}
+#Pickups .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Pickups .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Pickups .h1{font-size:22px;font-weight:600;margin:0}
+#Pickups .sub{font-size:13px;color:#4B5563}
+#Pickups .who{font-size:13px;color:#4B5563;text-align:right}
+#Pickups .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Pickups .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Pickups .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Pickups .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Pickups .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:top}
+#Pickups .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Pickups .p-blue{background:#DBEAFE;color:#1E40AF}
+#Pickups .p-green{background:#D1FAE5;color:#065F46}
+#Pickups .p-amber{background:#FEF3C7;color:#92400E}
+#Pickups .p-red{background:#FEE2E2;color:#991B1B}
+#Pickups .p-gray{background:#F3F4F6;color:#374151}
+#Pickups .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Pickups .btn.sec{background:#fff;color:#1D4ED8}
+#Pickups .tab{height:36px;padding:0 14px;border-radius:999px;border:1px solid #D1D5DB;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+#Pickups .tab.on{background:#111827;color:#fff;border-color:#111827}
+#Pickups .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff}
+#Create-Pickup{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Create-Pickup a{color:#1D4ED8}
+#Create-Pickup a:hover{color:#1E40AF}
+#Create-Pickup .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Create-Pickup .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Create-Pickup .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Create-Pickup .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Create-Pickup .nav a:hover{background:#1F2937;color:#fff}
+#Create-Pickup .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Create-Pickup .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Create-Pickup .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Create-Pickup .badge.red{background:#B91C1C}
+#Create-Pickup .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Create-Pickup .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Create-Pickup .h1{font-size:22px;font-weight:600;margin:0}
+#Create-Pickup .sub{font-size:13px;color:#4B5563}
+#Create-Pickup .who{font-size:13px;color:#4B5563;text-align:right}
+#Create-Pickup .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:20px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px}
+#Create-Pickup .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Create-Pickup .f{display:flex;flex-direction:column;gap:6px}
+#Create-Pickup .f label{font-size:13px;font-weight:500}
+#Create-Pickup .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Create-Pickup .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Create-Pickup .btn.sec{background:#fff;color:#1D4ED8}
+#Create-Pickup .opt{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border:1px solid #D1D5DB;border-radius:8px;font-size:13px}
+#Create-Pickup .opt.on{border-color:#1D4ED8;background:#EFF6FF}
+#Create-Pickup .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Pickup-Detail{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Pickup-Detail a{color:#1D4ED8}
+#Pickup-Detail a:hover{color:#1E40AF}
+#Pickup-Detail .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Pickup-Detail .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Pickup-Detail .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Pickup-Detail .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Pickup-Detail .nav a:hover{background:#1F2937;color:#fff}
+#Pickup-Detail .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Pickup-Detail .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Pickup-Detail .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Pickup-Detail .badge.red{background:#B91C1C}
+#Pickup-Detail .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Pickup-Detail .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Pickup-Detail .h1{font-size:22px;font-weight:600;margin:0}
+#Pickup-Detail .sub{font-size:13px;color:#4B5563}
+#Pickup-Detail .who{font-size:13px;color:#4B5563;text-align:right}
+#Pickup-Detail .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Pickup-Detail .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Pickup-Detail .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Pickup-Detail .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Pickup-Detail .p-blue{background:#DBEAFE;color:#1E40AF}
+#Pickup-Detail .p-green{background:#D1FAE5;color:#065F46}
+#Pickup-Detail .p-amber{background:#FEF3C7;color:#92400E}
+#Pickup-Detail .p-red{background:#FEE2E2;color:#991B1B}
+#Pickup-Detail .p-gray{background:#F3F4F6;color:#374151}
+#Pickup-Detail .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Pickup-Detail .btn.sec{background:#fff;color:#1D4ED8}
+#Pickup-Detail .btn.danger{background:#fff;color:#B91C1C;border-color:#B91C1C}
+#Pickup-Detail .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Pickup-Detail .ev{display:flex;gap:10px;font-size:13px;align-items:flex-start}
+#Pickup-Detail .dot{width:10px;height:10px;border-radius:5px;background:#1D4ED8;margin-top:4px;flex-shrink:0}
+#Pickup-Detail .step{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;flex:1;text-align:center}
+#Pickup-Detail .step .n{width:28px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px}
+#Pending-Requests{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Pending-Requests a{color:#1D4ED8}
+#Pending-Requests a:hover{color:#1E40AF}
+#Pending-Requests .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Pending-Requests .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Pending-Requests .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Pending-Requests .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Pending-Requests .nav a:hover{background:#1F2937;color:#fff}
+#Pending-Requests .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Pending-Requests .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Pending-Requests .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Pending-Requests .badge.red{background:#B91C1C}
+#Pending-Requests .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Pending-Requests .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Pending-Requests .h1{font-size:22px;font-weight:600;margin:0}
+#Pending-Requests .sub{font-size:13px;color:#4B5563}
+#Pending-Requests .who{font-size:13px;color:#4B5563;text-align:right}
+#Pending-Requests .live{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#065F46;background:#D1FAE5;border-radius:999px;padding:3px 10px}
+#Pending-Requests .dot{width:8px;height:8px;border-radius:4px;background:#059669}
+#Pending-Requests .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Pending-Requests .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Pending-Requests .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Pending-Requests .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Pending-Requests .p-amber{background:#FEF3C7;color:#92400E}
+#Pending-Requests .p-green{background:#D1FAE5;color:#065F46}
+#Pending-Requests .p-red{background:#FEE2E2;color:#991B1B}
+#Pending-Requests .p-gray{background:#F3F4F6;color:#374151}
+#Pending-Requests .btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Pending-Requests .btn.danger{background:#fff;color:#B91C1C;border-color:#B91C1C}
+#Pending-Requests .req{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid #D1D5DB;border-radius:10px;font-size:13px;text-decoration:none;color:#111827}
+#Pending-Requests .req.on{border-color:#1D4ED8;background:#EFF6FF}
+#Pending-Requests .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Pending-Requests .input{min-height:60px;border:1px solid #9CA3AF;border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;color:#111827;width:100%;box-sizing:border-box}
+#Boxes{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Boxes a{color:#1D4ED8}
+#Boxes a:hover{color:#1E40AF}
+#Boxes .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Boxes .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Boxes .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Boxes .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Boxes .nav a:hover{background:#1F2937;color:#fff}
+#Boxes .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Boxes .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Boxes .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Boxes .badge.red{background:#B91C1C}
+#Boxes .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Boxes .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Boxes .h1{font-size:22px;font-weight:600;margin:0}
+#Boxes .sub{font-size:13px;color:#4B5563}
+#Boxes .who{font-size:13px;color:#4B5563;text-align:right}
+#Boxes .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Boxes .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Boxes .kpi{font-size:28px;font-weight:600;line-height:1}
+#Boxes .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Boxes .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Boxes .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:top}
+#Boxes .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Boxes .p-blue{background:#DBEAFE;color:#1E40AF}
+#Boxes .p-green{background:#D1FAE5;color:#065F46}
+#Boxes .p-amber{background:#FEF3C7;color:#92400E}
+#Boxes .p-red{background:#FEE2E2;color:#991B1B}
+#Boxes .p-gray{background:#F3F4F6;color:#374151}
+#Boxes .tab{height:36px;padding:0 14px;border-radius:999px;border:1px solid #D1D5DB;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+#Boxes .tab.on{background:#111827;color:#fff;border-color:#111827}
+#Boxes .bat{display:inline-block;width:60px;height:8px;border-radius:4px;background:#E5E7EB;position:relative;vertical-align:middle;margin-right:6px}
+#Boxes .bat span{display:block;height:8px;border-radius:4px;background:#059669}
+#Boxes .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Box-Detail{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Box-Detail a{color:#1D4ED8}
+#Box-Detail a:hover{color:#1E40AF}
+#Box-Detail .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Box-Detail .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Box-Detail .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Box-Detail .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Box-Detail .nav a:hover{background:#1F2937;color:#fff}
+#Box-Detail .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Box-Detail .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Box-Detail .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Box-Detail .badge.red{background:#B91C1C}
+#Box-Detail .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Box-Detail .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Box-Detail .h1{font-size:22px;font-weight:600;margin:0}
+#Box-Detail .sub{font-size:13px;color:#4B5563}
+#Box-Detail .who{font-size:13px;color:#4B5563;text-align:right}
+#Box-Detail .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Box-Detail .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Box-Detail .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Box-Detail .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Box-Detail .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Box-Detail .tbl td{padding:8px 10px;border-bottom:1px solid #F3F4F6}
+#Box-Detail .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Box-Detail .p-blue{background:#DBEAFE;color:#1E40AF}
+#Box-Detail .p-green{background:#D1FAE5;color:#065F46}
+#Box-Detail .p-amber{background:#FEF3C7;color:#92400E}
+#Box-Detail .p-red{background:#FEE2E2;color:#991B1B}
+#Box-Detail .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#fff;color:#1D4ED8;text-decoration:none;cursor:pointer;font-family:inherit}
+#Box-Detail .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Branch-Receive{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Branch-Receive a{color:#1D4ED8}
+#Branch-Receive a:hover{color:#1E40AF}
+#Branch-Receive .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Branch-Receive .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Branch-Receive .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Branch-Receive .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Branch-Receive .nav a:hover{background:#1F2937;color:#fff}
+#Branch-Receive .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Branch-Receive .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Branch-Receive .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Branch-Receive .badge.red{background:#B91C1C}
+#Branch-Receive .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Branch-Receive .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Branch-Receive .h1{font-size:22px;font-weight:600;margin:0}
+#Branch-Receive .sub{font-size:13px;color:#4B5563}
+#Branch-Receive .who{font-size:13px;color:#4B5563;text-align:right}
+#Branch-Receive .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Branch-Receive .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Branch-Receive .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Branch-Receive .item{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid #D1D5DB;border-radius:10px;font-size:14px}
+#Branch-Receive .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Branch-Receive .p-green{background:#D1FAE5;color:#065F46}
+#Branch-Receive .p-amber{background:#FEF3C7;color:#92400E}
+#Branch-Receive .p-red{background:#FEE2E2;color:#991B1B}
+#Branch-Receive .p-gray{background:#F3F4F6;color:#374151}
+#Branch-Receive .btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Branch-Receive .btn.dis{background:#F3F4F6;color:#6B7280;border-color:#E5E7EB;pointer-events:none}
+#Branch-Receive .btn.danger{background:#fff;color:#B91C1C;border-color:#B91C1C}
+#Branch-Receive .input{height:48px;border:2px solid #1D4ED8;border-radius:8px;padding:0 12px;font-size:18px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Branch-Receive .ta{min-height:60px;border:1px solid #9CA3AF;border-radius:8px;padding:10px 12px;font-size:13px;font-family:inherit;color:#111827;width:100%;box-sizing:border-box}
+#Collectors{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Collectors a{color:#1D4ED8}
+#Collectors a:hover{color:#1E40AF}
+#Collectors .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Collectors .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Collectors .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Collectors .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Collectors .nav a:hover{background:#1F2937;color:#fff}
+#Collectors .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Collectors .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Collectors .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Collectors .badge.red{background:#B91C1C}
+#Collectors .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Collectors .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Collectors .h1{font-size:22px;font-weight:600;margin:0}
+#Collectors .sub{font-size:13px;color:#4B5563}
+#Collectors .who{font-size:13px;color:#4B5563;text-align:right}
+#Collectors .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Collectors .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Collectors .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Collectors .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Collectors .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:middle}
+#Collectors .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Collectors .p-blue{background:#DBEAFE;color:#1E40AF}
+#Collectors .p-green{background:#D1FAE5;color:#065F46}
+#Collectors .p-amber{background:#FEF3C7;color:#92400E}
+#Collectors .p-red{background:#FEE2E2;color:#991B1B}
+#Collectors .p-gray{background:#F3F4F6;color:#374151}
+#Collectors .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Collectors .btn.sec{background:#fff;color:#1D4ED8}
+#Collectors .f{display:flex;flex-direction:column;gap:6px}
+#Collectors .f label{font-size:13px;font-weight:500}
+#Collectors .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Collectors .av{width:32px;height:32px;border-radius:16px;background:#D1D5DB;display:inline-block;vertical-align:middle;margin-right:8px}
+#Collectors .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Approvers{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Approvers a{color:#1D4ED8}
+#Approvers a:hover{color:#1E40AF}
+#Approvers .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Approvers .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Approvers .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Approvers .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Approvers .nav a:hover{background:#1F2937;color:#fff}
+#Approvers .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Approvers .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Approvers .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Approvers .badge.red{background:#B91C1C}
+#Approvers .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Approvers .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Approvers .h1{font-size:22px;font-weight:600;margin:0}
+#Approvers .sub{font-size:13px;color:#4B5563}
+#Approvers .who{font-size:13px;color:#4B5563;text-align:right}
+#Approvers .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Approvers .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Approvers .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Approvers .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Approvers .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Approvers .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:middle}
+#Approvers .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Approvers .p-blue{background:#DBEAFE;color:#1E40AF}
+#Approvers .p-green{background:#D1FAE5;color:#065F46}
+#Approvers .p-amber{background:#FEF3C7;color:#92400E}
+#Approvers .p-gray{background:#F3F4F6;color:#374151}
+#Approvers .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Approvers .btn.sec{background:#fff;color:#1D4ED8}
+#Approvers .f{display:flex;flex-direction:column;gap:6px}
+#Approvers .f label{font-size:13px;font-weight:500}
+#Approvers .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Approvers .chk{display:flex;align-items:center;gap:10px;font-size:13px}
+#Branches{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Branches a{color:#1D4ED8}
+#Branches a:hover{color:#1E40AF}
+#Branches .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Branches .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Branches .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Branches .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Branches .nav a:hover{background:#1F2937;color:#fff}
+#Branches .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Branches .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Branches .nav select{margin:0 10px 12px;height:34px;border-radius:8px;border:1px solid #4B5563;background:#1F2937;color:#fff;font-family:inherit;font-size:13px;padding:0 8px}
+#Branches .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Branches .badge.red{background:#B91C1C}
+#Branches .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Branches .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Branches .h1{font-size:22px;font-weight:600;margin:0}
+#Branches .sub{font-size:13px;color:#4B5563}
+#Branches .who{font-size:13px;color:#4B5563;text-align:right}
+#Branches .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Branches .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Branches .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Branches .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Branches .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:middle}
+#Branches .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Branches .p-green{background:#D1FAE5;color:#065F46}
+#Branches .p-amber{background:#FEF3C7;color:#92400E}
+#Branches .p-gray{background:#F3F4F6;color:#374151}
+#Branches .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Branches .btn.sec{background:#fff;color:#1D4ED8}
+#Branches .f{display:flex;flex-direction:column;gap:6px}
+#Branches .f label{font-size:13px;font-weight:500}
+#Branches .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Branches .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Settings{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Settings a{color:#1D4ED8}
+#Settings a:hover{color:#1E40AF}
+#Settings .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Settings .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Settings .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Settings .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Settings .nav a:hover{background:#1F2937;color:#fff}
+#Settings .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Settings .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Settings .nav select{margin:0 10px 12px;height:34px;border-radius:8px;border:1px solid #4B5563;background:#1F2937;color:#fff;font-family:inherit;font-size:13px;padding:0 8px}
+#Settings .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Settings .badge.red{background:#B91C1C}
+#Settings .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Settings .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Settings .h1{font-size:22px;font-weight:600;margin:0}
+#Settings .sub{font-size:13px;color:#4B5563}
+#Settings .who{font-size:13px;color:#4B5563;text-align:right}
+#Settings .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Settings .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Settings .set{display:grid;grid-template-columns:minmax(0,1fr) 140px;gap:12px;align-items:center;font-size:13px;padding:8px 0;border-bottom:1px solid #F3F4F6}
+#Settings .set .d{color:#4B5563;font-size:12px}
+#Settings .input{height:36px;border:1px solid #9CA3AF;border-radius:8px;padding:0 10px;font-size:13px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Settings .tog{width:44px;height:24px;border-radius:12px;background:#1D4ED8;position:relative;display:inline-block}
+#Settings .tog.off{background:#D1D5DB}
+#Settings .tog span{position:absolute;top:3px;left:23px;width:18px;height:18px;border-radius:9px;background:#fff}
+#Settings .tog.off span{left:3px}
+#Settings .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Users-Roles{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Users-Roles a{color:#1D4ED8}
+#Users-Roles a:hover{color:#1E40AF}
+#Users-Roles .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Users-Roles .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Users-Roles .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Users-Roles .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Users-Roles .nav a:hover{background:#1F2937;color:#fff}
+#Users-Roles .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Users-Roles .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Users-Roles .nav select{margin:0 10px 12px;height:34px;border-radius:8px;border:1px solid #4B5563;background:#1F2937;color:#fff;font-family:inherit;font-size:13px;padding:0 8px}
+#Users-Roles .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Users-Roles .badge.red{background:#B91C1C}
+#Users-Roles .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Users-Roles .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Users-Roles .h1{font-size:22px;font-weight:600;margin:0}
+#Users-Roles .sub{font-size:13px;color:#4B5563}
+#Users-Roles .who{font-size:13px;color:#4B5563;text-align:right}
+#Users-Roles .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Users-Roles .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Users-Roles .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Users-Roles .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Users-Roles .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:middle}
+#Users-Roles .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Users-Roles .p-blue{background:#DBEAFE;color:#1E40AF}
+#Users-Roles .p-green{background:#D1FAE5;color:#065F46}
+#Users-Roles .p-amber{background:#FEF3C7;color:#92400E}
+#Users-Roles .p-gray{background:#F3F4F6;color:#374151}
+#Users-Roles .p-purple{background:#EDE9FE;color:#5B21B6}
+#Users-Roles .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Users-Roles .f{display:flex;flex-direction:column;gap:6px}
+#Users-Roles .f label{font-size:13px;font-weight:500}
+#Users-Roles .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Users-Roles .chk{display:flex;align-items:center;gap:8px;font-size:13px}
+#Onboarding{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Onboarding a{color:#1D4ED8}
+#Onboarding a:hover{color:#1E40AF}
+#Onboarding .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Onboarding .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Onboarding .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Onboarding .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Onboarding .nav a:hover{background:#1F2937;color:#fff}
+#Onboarding .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Onboarding .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Onboarding .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Onboarding .badge.red{background:#B91C1C}
+#Onboarding .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Onboarding .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Onboarding .h1{font-size:22px;font-weight:600;margin:0}
+#Onboarding .sub{font-size:13px;color:#4B5563}
+#Onboarding .who{font-size:13px;color:#4B5563;text-align:right}
+#Onboarding .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Onboarding .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Onboarding .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Onboarding .q{display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid #D1D5DB;border-radius:10px;font-size:13px;text-decoration:none;color:#111827}
+#Onboarding .q.on{border-color:#1D4ED8;background:#EFF6FF}
+#Onboarding .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Onboarding .p-blue{background:#DBEAFE;color:#1E40AF}
+#Onboarding .p-green{background:#D1FAE5;color:#065F46}
+#Onboarding .p-amber{background:#FEF3C7;color:#92400E}
+#Onboarding .p-gray{background:#F3F4F6;color:#374151}
+#Onboarding .p-purple{background:#EDE9FE;color:#5B21B6}
+#Onboarding .step{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #F3F4F6;font-size:13px}
+#Onboarding .n{width:26px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;flex-shrink:0}
+#Onboarding .done{background:#059669;color:#fff}
+#Onboarding .now{background:#1D4ED8;color:#fff}
+#Onboarding .todo{background:#E5E7EB;color:#4B5563}
+#Onboarding .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Onboarding .btn.sec{background:#fff;color:#1D4ED8}
+#Onboarding .btn.dis{background:#F3F4F6;color:#6B7280;border-color:#E5E7EB;pointer-events:none}
+#Onboarding .tab{height:36px;padding:0 14px;border-radius:999px;border:1px solid #D1D5DB;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+#Onboarding .tab.on{background:#111827;color:#fff;border-color:#111827}
+#Onboarding .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Alerts{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Alerts a{color:#1D4ED8}
+#Alerts a:hover{color:#1E40AF}
+#Alerts .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Alerts .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Alerts .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Alerts .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Alerts .nav a:hover{background:#1F2937;color:#fff}
+#Alerts .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Alerts .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Alerts .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Alerts .badge.red{background:#B91C1C}
+#Alerts .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Alerts .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Alerts .h1{font-size:22px;font-weight:600;margin:0}
+#Alerts .sub{font-size:13px;color:#4B5563}
+#Alerts .who{font-size:13px;color:#4B5563;text-align:right}
+#Alerts .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Alerts .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Alerts .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Alerts .al{display:flex;gap:12px;padding:12px;border:1px solid #D1D5DB;border-radius:10px;font-size:13px;align-items:flex-start;text-decoration:none;color:#111827}
+#Alerts .al.red{border-color:#FECACA;background:#FEF2F2}
+#Alerts .al.amber{border-color:#FDE68A;background:#FFFBEB}
+#Alerts .al.on{outline:2px solid #1D4ED8}
+#Alerts .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Alerts .p-red{background:#FEE2E2;color:#991B1B}
+#Alerts .p-amber{background:#FEF3C7;color:#92400E}
+#Alerts .p-gray{background:#F3F4F6;color:#374151}
+#Alerts .p-green{background:#D1FAE5;color:#065F46}
+#Alerts .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Alerts .btn.sec{background:#fff;color:#1D4ED8}
+#Alerts .tab{height:36px;padding:0 14px;border-radius:999px;border:1px solid #D1D5DB;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+#Alerts .tab.on{background:#111827;color:#fff;border-color:#111827}
+#Alerts .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Alerts .input{min-height:60px;border:1px solid #9CA3AF;border-radius:8px;padding:10px 12px;font-size:13px;font-family:inherit;color:#111827;width:100%;box-sizing:border-box}
+#Override{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Override a{color:#1D4ED8}
+#Override a:hover{color:#1E40AF}
+#Override .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Override .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Override .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Override .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Override .nav a:hover{background:#1F2937;color:#fff}
+#Override .nav a.on{background:#B91C1C;color:#fff;font-weight:600}
+#Override .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Override .nav select{margin:0 10px 12px;height:34px;border-radius:8px;border:1px solid #4B5563;background:#1F2937;color:#fff;font-family:inherit;font-size:13px;padding:0 8px}
+#Override .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Override .badge.red{background:#B91C1C}
+#Override .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Override .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Override .h1{font-size:22px;font-weight:600;margin:0}
+#Override .sub{font-size:13px;color:#4B5563}
+#Override .who{font-size:13px;color:#4B5563;text-align:right}
+#Override .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Override .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Override .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Override .f{display:flex;flex-direction:column;gap:6px}
+#Override .f label{font-size:13px;font-weight:500}
+#Override .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;width:100%;box-sizing:border-box}
+#Override .ta{min-height:90px;border:1px solid #9CA3AF;border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;color:#111827;width:100%;box-sizing:border-box}
+#Override .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #D1D5DB;border-radius:8px;font-size:13px}
+#Override .btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #B91C1C;background:#B91C1C;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Override .btn.sec{background:#fff;color:#1D4ED8;border-color:#1D4ED8}
+#Override .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Override .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Override .tbl td{padding:8px 10px;border-bottom:1px solid #F3F4F6}
+#Pouch-Records{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Pouch-Records a{color:#1D4ED8}
+#Pouch-Records a:hover{color:#1E40AF}
+#Pouch-Records .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Pouch-Records .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Pouch-Records .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Pouch-Records .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Pouch-Records .nav a:hover{background:#1F2937;color:#fff}
+#Pouch-Records .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Pouch-Records .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Pouch-Records .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Pouch-Records .badge.red{background:#B91C1C}
+#Pouch-Records .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Pouch-Records .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Pouch-Records .h1{font-size:22px;font-weight:600;margin:0}
+#Pouch-Records .sub{font-size:13px;color:#4B5563}
+#Pouch-Records .who{font-size:13px;color:#4B5563;text-align:right}
+#Pouch-Records .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
+#Pouch-Records .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Pouch-Records .row{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#Pouch-Records .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Pouch-Records .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Pouch-Records .tbl td{padding:10px;border-bottom:1px solid #F3F4F6;vertical-align:top}
+#Pouch-Records .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Pouch-Records .p-green{background:#D1FAE5;color:#065F46}
+#Pouch-Records .p-red{background:#FEE2E2;color:#991B1B}
+#Pouch-Records .p-amber{background:#FEF3C7;color:#92400E}
+#Pouch-Records .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Pouch-Records .btn.sec{background:#fff;color:#1D4ED8}
+#Pouch-Records .input{height:40px;border:1px solid #9CA3AF;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff}
+#Pouch-Records .ev{display:flex;gap:10px;font-size:13px;align-items:flex-start}
+#Pouch-Records .dot{width:10px;height:10px;border-radius:5px;background:#1D4ED8;margin-top:4px;flex-shrink:0}
+#Pouch-Records .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Reports{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Reports a{color:#1D4ED8}
+#Reports a:hover{color:#1E40AF}
+#Reports .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Reports .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Reports .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Reports .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Reports .nav a:hover{background:#1F2937;color:#fff}
+#Reports .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Reports .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Reports .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Reports .badge.red{background:#B91C1C}
+#Reports .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Reports .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Reports .h1{font-size:22px;font-weight:600;margin:0}
+#Reports .sub{font-size:13px;color:#4B5563}
+#Reports .who{font-size:13px;color:#4B5563;text-align:right}
+#Reports .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Reports .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Reports .kpi{font-size:26px;font-weight:600;line-height:1}
+#Reports .tbl{width:100%;border-collapse:collapse;font-size:13px}
+#Reports .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Reports .tbl td{padding:8px 10px;border-bottom:1px solid #F3F4F6}
+#Reports .tab{height:36px;padding:0 14px;border-radius:999px;border:1px solid #D1D5DB;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+#Reports .tab.on{background:#111827;color:#fff;border-color:#111827}
+#Reports .input{height:36px;border:1px solid #9CA3AF;border-radius:8px;padding:0 10px;font-size:13px;font-family:inherit;color:#111827;background:#fff}
+#Reports .btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid #1D4ED8;background:#fff;color:#1D4ED8;text-decoration:none;cursor:pointer;font-family:inherit}
+#Reports .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Audit-Log{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
+#Audit-Log a{color:#1D4ED8}
+#Audit-Log a:hover{color:#1E40AF}
+#Audit-Log .nav{width:220px;flex-shrink:0;background:#111827;color:#E5E7EB;padding:20px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px}
+#Audit-Log .nav .brand{font-weight:600;font-size:14px;padding:0 10px 2px}
+#Audit-Log .nav .br{font-size:12px;color:#9CA3AF;padding:0 10px 14px}
+#Audit-Log .nav a{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;color:#E5E7EB;text-decoration:none;font-size:14px}
+#Audit-Log .nav a:hover{background:#1F2937;color:#fff}
+#Audit-Log .nav a.on{background:#1D4ED8;color:#fff;font-weight:600}
+#Audit-Log .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
+#Audit-Log .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
+#Audit-Log .badge.red{background:#B91C1C}
+#Audit-Log .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Audit-Log .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+#Audit-Log .h1{font-size:22px;font-weight:600;margin:0}
+#Audit-Log .sub{font-size:13px;color:#4B5563}
+#Audit-Log .who{font-size:13px;color:#4B5563;text-align:right}
+#Audit-Log .card{background:#fff;border:1px solid #D1D5DB;border-radius:12px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px}
+#Audit-Log .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+#Audit-Log .tbl th{text-align:left;font-weight:600;color:#4B5563;padding:8px 10px;border-bottom:1px solid #E5E7EB}
+#Audit-Log .tbl td{padding:8px 10px;border-bottom:1px solid #F3F4F6;vertical-align:top;font-family:'IBM Plex Sans',monospace}
+#Audit-Log .pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+#Audit-Log .p-blue{background:#DBEAFE;color:#1E40AF}
+#Audit-Log .p-green{background:#D1FAE5;color:#065F46}
+#Audit-Log .p-amber{background:#FEF3C7;color:#92400E}
+#Audit-Log .p-red{background:#FEE2E2;color:#991B1B}
+#Audit-Log .p-gray{background:#F3F4F6;color:#374151}
+#Audit-Log .input{height:36px;border:1px solid #9CA3AF;border-radius:8px;padding:0 10px;font-size:13px;font-family:inherit;color:#111827;background:#fff}
+#Audit-Log .btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid #1D4ED8;background:#fff;color:#1D4ED8;text-decoration:none;cursor:pointer;font-family:inherit}
+</style></head><body>
+<div class="app">
+  <nav class="side"><h1>Muthoot Portal</h1><p>Clickable wireframe · 19 Oct 2026. Use the links inside the screen to walk the flow, or jump here.</p><a href="#Portal-Login" data-s="Portal-Login">A0 Portal login</a>
+<a href="#Main" data-s="Main">A1 Dashboard (live) · HO switcher on All branches shows region totals + a row per branch</a>
+<a href="#Pickups" data-s="Pickups">A2 Pickups list</a>
+<a href="#Create-Pickup" data-s="Create-Pickup">A3 Create pickup work order (Ops)</a>
+<a href="#Pickup-Detail" data-s="Pickup-Detail">A4 Pickup detail</a>
+<a href="#Pending-Requests" data-s="Pending-Requests">B1 Pending unlock requests (approver)</a>
+<a href="#Boxes" data-s="Boxes">B2 Box pool</a>
+<a href="#Box-Detail" data-s="Box-Detail">B3 Box detail</a>
+<a href="#Branch-Receive" data-s="Branch-Receive">B4 Receive at vault (custodian)</a>
+<a href="#Collectors" data-s="Collectors">C1 Collectors</a>
+<a href="#Approvers" data-s="Approvers">C2 Approvers per branch</a>
+<a href="#Branches" data-s="Branches">C3 Branches &amp; geofence (HO admin)</a>
+<a href="#Settings" data-s="Settings">C4 Settings (HO admin)</a>
+<a href="#Users-Roles" data-s="Users-Roles">C5 Users &amp; roles (HO admin)</a>
+<a href="#Onboarding" data-s="Onboarding">C6 Onboarding (collectors, approvers, portal users)</a>
+<a href="#Alerts" data-s="Alerts">D1 Alerts inbox</a>
+<a href="#Override" data-s="Override">D2 Emergency override (HO admin)</a>
+<a href="#Pouch-Records" data-s="Pouch-Records">D3 Pouch records</a>
+<a href="#Reports" data-s="Reports">D4 Reports</a>
+<a href="#Audit-Log" data-s="Audit-Log">D5 Audit log</a></nav>
+  <main class="stage">
+    <div class="row-nav"><button id="prev">← Previous</button><button id="next">Next →</button></div>
+    <div class="phone"><section id="Portal-Login" class="scr" data-title="A0 Portal login"><div style="min-height: 800px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 16px; box-sizing: border-box; gap: 20px">
+  <div style="color: #E5E7EB; text-align: center"><div style="font-size: 20px; font-weight: 600">Track0tic · Muthoot</div><div style="font-size: 13px; color: #9CA3AF">Gold pickup portal</div></div>
+  <div class="card">
+    <h1 class="h1">Sign in</h1>
+    <p class="p">Branch admin, Ops, approvers and HO admin. Collectors do not sign in here; they scan the box.</p>
+    <div style="display: flex; gap: 8px"><button class="tab on">Password</button><button class="tab">One-time code</button></div>
+    <div class="f"><label for="e">Work email</label><input id="e" class="input" value="priya.n@muthoot.example"></div>
+    <div class="f"><label for="pw">Password</label><input id="pw" class="input" type="password" value="••••••••••"></div>
+    <a href="#Main" class="btn">Sign in</a>
+    <a href="#forgot" style="font-size: 13px; text-align: center">Forgot password · get a one-time code by SMS</a>
+    <div class="note">Branch and HO roles can sign in only from registered office networks. Approvers can sign in from anywhere, including a phone. If you see "network not allowed", ask HO admin to add your office IP.</div>
+    <p class="p" style="font-size: 12px">Sessions end after 8 hours or 30 minutes idle. Every sign-in is logged with IP and device.</p>
+  </div>
+  <div style="color: #9CA3AF; font-size: 12px">Approvers on iPhone: add this page to the Home Screen to receive unlock notifications.</div>
+</div></section>
+<section id="Main" class="scr" data-title="A1 Dashboard (live) · HO switcher on All branches shows region totals + a row per branch"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main" class="on">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Today · Monday 19 Oct 2026</h1><span class="sub">Pitampura branch · all figures update on their own</span></div>
+      <div style="display: flex; gap: 12px; align-items: center"><span class="live"><span class="dot"></span>Live · 8 s ago</span><span class="who">Priya N · Branch admin</span><a href="#Create-Pickup" class="btn">+ New pickup</a></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+      <div class="card"><span class="lbl">Pickups today</span><span class="kpi">14</span><span class="sub">11 planned + 3 added</span></div>
+      <div class="card"><span class="lbl">Delivered</span><span class="kpi" style="color: #065F46">6</span><span class="sub">avg 52 min door to vault</span></div>
+      <div class="card"><span class="lbl">On the way</span><span class="kpi" style="color: #92400E">3</span><span class="sub">sealed, in transit</span></div>
+      <div class="card"><span class="lbl">At customer</span><span class="kpi" style="color: #1E40AF">2</span><span class="sub">1 waiting for approval</span></div>
+      <div class="card"><span class="lbl">Not started</span><span class="kpi">2</span><span class="sub">1 no pickup today</span></div>
+      <div class="card" style="border-color: #FECACA"><span class="lbl">Flagged</span><span class="kpi" style="color: #991B1B">1</span><span class="sub">tamper · MT-0038</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="card" style="grid-column: span 2">
+        <div style="display: flex; justify-content: space-between"><span class="lbl">Where the boxes are now</span><a href="#Boxes" style="font-size: 13px">All boxes</a></div>
+        <div class="ph" style="height: 260px">Live map · 5 boxes on trips (3 on the way, 2 at customer) · branch geofence ring · tap a marker for the pickup</div>
+      </div>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between"><span class="lbl">Needs a person</span><a href="#Pending-Requests" style="font-size: 13px">Open queue</a></div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+          <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 8px"><span><strong>Approve unlock</strong> · Ramesh K · MT-0041</span><span style="color: #92400E">9:12 left</span></div>
+          <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 8px"><span><strong>Approve unlock</strong> · Sunil V · MT-0043</span><span style="color: #92400E">4:40 left</span></div>
+          <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #FECACA; background: #FEF2F2; border-radius: 8px"><span><strong>Tamper</strong> · Box 118 · MT-0038</span><a href="#Alerts">View</a></div>
+          <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #E5E7EB; border-radius: 8px"><span><strong>Battery 18%</strong> · Box 121</span><span class="sub">on the way</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="card" style="grid-column: span 2">
+        <div style="display: flex; justify-content: space-between"><span class="lbl">Active pickups</span><a href="#Pickups" style="font-size: 13px">All pickups</a></div>
+        <div style="overflow-x: auto"><table class="tbl">
+          <tr><th>Pickup</th><th>Customer</th><th>Collector</th><th>Box</th><th>State</th><th>Since</th><th>Pouches</th></tr>
+          <tr><td><a href="#Pickup-Detail">MT-0041</a></td><td>Sunita Devi · Rohini</td><td>Ramesh K</td><td>123</td><td><span class="pill p-blue">At customer</span></td><td>14:50</td><td>–</td></tr>
+          <tr><td>MT-0043</td><td>Harish Gupta · Shalimar Bagh</td><td>Sunil V</td><td>119</td><td><span class="pill p-blue">Waiting approval</span></td><td>15:02</td><td>–</td></tr>
+          <tr><td>MT-0039</td><td>Kamla Rani · Prashant Vihar</td><td>Deepak M</td><td>121</td><td><span class="pill p-amber">On the way</span></td><td>14:21</td><td>2</td></tr>
+          <tr><td>MT-0040</td><td>Rajesh Jain · Rani Bagh</td><td>Amit S</td><td>117</td><td><span class="pill p-amber">On the way</span></td><td>14:35</td><td>4</td></tr>
+          <tr><td>MT-0038</td><td>Pooja Mehta · Pitampura</td><td>Vikas T</td><td>118</td><td><span class="pill p-red">Flagged · tamper</span></td><td>13:58</td><td>1</td></tr>
+        </table></div>
+      </div>
+      <div class="card">
+        <span class="lbl">Box pool</span>
+        <div style="display: flex; gap: 16px; font-size: 13px">
+          <div><span class="kpi" style="font-size: 24px">7</span><br><span class="sub">available</span></div>
+          <div><span class="kpi" style="font-size: 24px">5</span><br><span class="sub">on trips</span></div>
+          <div><span class="kpi" style="font-size: 24px">1</span><br><span class="sub">charging</span></div>
+          <div><span class="kpi" style="font-size: 24px; color: #991B1B">1</span><br><span class="sub">offline</span></div>
+        </div>
+        <span class="lbl" style="margin-top: 6px">This week</span>
+        <div class="ph" style="height: 90px">Pickups per day, Mon–Sun · delivered vs flagged</div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Pickups" class="scr" data-title="A2 Pickups list"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups" class="on">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Pickups</h1><span class="sub">Every work order for Pitampura · updates live</span></div>
+      <div style="display: flex; gap: 12px; align-items: center"><span class="who">Priya N · Branch admin</span><a href="#Create-Pickup" class="btn">+ New pickup</a></div>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center">
+      <button class="tab on">Today · 14</button><button class="tab">Active · 7</button><button class="tab">Flagged · 1</button><button class="tab">Delivered · 6</button><button class="tab">No pickup · 1</button><button class="tab">All</button>
+      <span style="flex-grow: 1"></span>
+      <input class="input" type="search" placeholder="Search customer, pickup, collector, box" style="width: 300px" aria-label="Search pickups">
+      <input class="input" type="date" value="2026-10-19" aria-label="Date">
+      <button class="tab">Export CSV</button>
+    </div>
+    <div class="card" style="padding: 0; overflow-x: auto">
+      <table class="tbl">
+        <tr><th>Pickup</th><th>Customer</th><th>Area</th><th>Collector</th><th>Box</th><th>State</th><th>Created by</th><th>Unlocked @ customer</th><th>Sealed</th><th>Unlocked @ branch</th><th>Pouches</th><th>Seal</th></tr>
+        <tr><td><a href="#Pickup-Detail">MT-0041</a></td><td>Sunita Devi</td><td>Rohini Sec 9</td><td>Ramesh K</td><td>123</td><td><span class="pill p-blue">At customer</span></td><td>Ops · Neha R</td><td>14:52</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td>MT-0043</td><td>Harish Gupta</td><td>Shalimar Bagh</td><td>Sunil V</td><td>119</td><td><span class="pill p-blue">Waiting approval</span></td><td>Ops · Neha R</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td>MT-0039</td><td>Kamla Rani</td><td>Prashant Vihar</td><td>Deepak M</td><td>121</td><td><span class="pill p-amber">On the way</span></td><td>Ops · Neha R</td><td>13:40</td><td>14:21</td><td>–</td><td>2</td><td>Intact</td></tr>
+        <tr><td>MT-0040</td><td>Rajesh Jain</td><td>Rani Bagh</td><td>Amit S</td><td>117</td><td><span class="pill p-amber">On the way</span></td><td>Ops · Vivek A</td><td>13:58</td><td>14:35</td><td>–</td><td>4</td><td>Intact</td></tr>
+        <tr><td>MT-0038</td><td>Pooja Mehta</td><td>Pitampura</td><td>Vikas T</td><td>118</td><td><span class="pill p-red">Flagged · tamper</span></td><td>Ops · Neha R</td><td>13:12</td><td>13:58</td><td>–</td><td>1</td><td style="color: #991B1B">Breached</td></tr>
+        <tr><td>MT-0037</td><td>Anil Kumar</td><td>Saraswati Vihar</td><td>Ramesh K</td><td>120</td><td><span class="pill p-green">Delivered</span></td><td>Ops · Neha R</td><td>11:05</td><td>11:31</td><td>12:14</td><td>3</td><td>Intact</td></tr>
+        <tr><td>MT-0036</td><td>Meera Sharma</td><td>Rohini Sec 7</td><td>Deepak M</td><td>121</td><td><span class="pill p-green">Delivered</span></td><td>Ops · Vivek A</td><td>10:20</td><td>10:48</td><td>11:30</td><td>2</td><td>Intact</td></tr>
+        <tr><td>MT-0035</td><td>Suresh Yadav</td><td>Kohat Enclave</td><td>Amit S</td><td>117</td><td><span class="pill p-gray">No pickup</span></td><td>Ops · Neha R</td><td>09:48</td><td>–</td><td>–</td><td>0</td><td>–</td></tr>
+        <tr><td>MT-0044</td><td>Geeta Verma</td><td>Rohini Sec 11</td><td>Vikas T</td><td>–</td><td><span class="pill p-gray">Not started</span></td><td>Ops · Neha R</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+      </table>
+    </div>
+    <span class="sub">Showing 9 of 14 · page 1 of 2. Rows change colour as the state changes; no refresh needed.</span>
+  </main>
+</div></section>
+<section id="Create-Pickup" class="scr" data-title="A3 Create pickup work order (Ops)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups" class="on">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">New pickup work order</h1><span class="sub">Ops creates the order; the box and collector can be assigned now or later by the branch admin</span></div>
+      <span class="who">Neha R · Ops</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="card" style="grid-column: span 2">
+        <span class="lbl">1 · Customer (from sales team)</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div class="f"><label for="cn">Customer name</label><input id="cn" class="input" value="Sunita Devi"></div>
+          <div class="f"><label for="cm">Customer mobile</label><input id="cm" class="input" value="+91 98XXX XX204"></div>
+          <div class="f" style="grid-column: span 2"><label for="ca">Pickup address</label><input id="ca" class="input" value="H-12, Sector 9, Rohini, Delhi 110085"></div>
+          <div class="f"><label for="ref">Sales / lead reference</label><input id="ref" class="input" placeholder="Muthoot lead ID (optional)"></div>
+          <div class="f"><label for="dt">Planned date and time</label><input id="dt" class="input" type="datetime-local" value="2026-10-19T14:30"></div>
+        </div>
+        <div class="ph" style="height: 110px">Map: address pinned at 28.7196 N, 77.1124 E · geocode confidence HIGH · drag pin to correct</div>
+        <span class="lbl">2 · Destination branch</span>
+        <div class="f"><label for="br">Branch (fixed to your branch for branch-level Ops)</label><input id="br" class="input" value="Pitampura · PIT-001" readonly></div>
+        <span class="lbl">3 · Assign (optional now)</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div class="f"><label>Collector</label>
+            <div class="opt on"><span>Ramesh K · MF-DL-00871</span><span style="color: #065F46">Free today</span></div>
+            <div class="opt"><span>Sunil V · MF-DL-00902</span><span style="color: #92400E">On MT-0043</span></div>
+            <div class="opt"><span>Vikas T · MF-DL-00915</span><span style="color: #065F46">Free today</span></div>
+          </div>
+          <div class="f"><label>Box</label>
+            <div class="opt on"><span>Box 123</span><span style="color: #065F46">Available · 92% · online</span></div>
+            <div class="opt"><span>Box 124</span><span style="color: #065F46">Available · 88% · online</span></div>
+            <div class="opt"><span>Box 116</span><span style="color: #92400E">Charging · 31%</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">What happens on Save</span>
+          <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.6; color: #374151">
+            <li>Pickup MT-0045 is created as Not started</li>
+            <li>If a box and collector are chosen, the box is reserved and the pickup becomes Ready to go</li>
+            <li>Customer SMS: box number, collector ID and photo link</li>
+            <li>Collector sees it on the box page at the next scan</li>
+            <li>Customer address and mobile are stored encrypted; Track0tic cannot read them</li>
+          </ul>
+        </div>
+        <div class="card" style="background: #F9FAFB">
+          <span class="lbl">Rules</span>
+          <span class="sub">One customer per pickup. A collector can hold one active pickup at a time. A box must be online and above 40% to be assigned.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <a href="#Pickup-Detail" class="btn">Save and assign</a>
+          <a href="#Pickups" class="btn sec">Save without assigning</a>
+          <a href="#Pickups" style="font-size: 13px; text-align: center">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Pickup-Detail" class="scr" data-title="A4 Pickup detail"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups" class="on">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><a href="#Pickups" style="font-size: 13px; text-decoration: none">← Pickups</a><h1 class="h1">MT-2026-10-19-0041 <span class="pill p-blue" style="vertical-align: middle">At customer</span></h1><span class="sub">Sunita Devi · H-12, Sector 9, Rohini · created 09:15 by Neha R (Ops)</span></div>
+      <div style="display: flex; gap: 8px; align-items: center"><span class="who">Priya N · Branch admin</span><a href="#Pouch-Records" class="btn sec">Compliance PDF</a><a href="#Override" class="btn danger">Exception…</a></div>
+    </div>
+    <div class="card">
+      <div style="display: flex; gap: 8px">
+        <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Created<br><span class="sub">09:15</span></div>
+        <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Ready to go<br><span class="sub">09:20 · Box 123 · Ramesh K</span></div>
+        <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Unlocked at customer<br><span class="sub">14:52 · approved Meena S</span></div>
+        <div class="step"><span class="n" style="background: #1D4ED8; color: #fff">4</span>Pouches added<br><span class="sub">in progress · 0 so far</span></div>
+        <div class="step"><span class="n" style="background: #E5E7EB; color: #4B5563">5</span>Sealed<br><span class="sub">–</span></div>
+        <div class="step"><span class="n" style="background: #E5E7EB; color: #4B5563">6</span>Unlocked at branch<br><span class="sub">–</span></div>
+        <div class="step"><span class="n" style="background: #E5E7EB; color: #4B5563">7</span>Handed over<br><span class="sub">–</span></div>
+        <div class="step"><span class="n" style="background: #E5E7EB; color: #4B5563">8</span>Received at vault · Delivered<br><span class="sub">–</span></div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="card" style="grid-column: span 2">
+        <div style="display: flex; justify-content: space-between"><span class="lbl">Box 123 · live</span><span class="sub">Unlocked · lid open · online · 91% · last report 12 s ago</span></div>
+        <div class="ph" style="height: 220px">Map: box marker at customer (28.7195 N, 77.1126 E), customer pin 14 m away, branch 4.2 km, trail from branch</div>
+        <span class="lbl">Timeline</span>
+        <div class="ev"><span class="dot"></span><span><strong>14:52:10</strong> Box acknowledged unlock · GPS 28.7195, 77.1126</span></div>
+        <div class="ev"><span class="dot"></span><span><strong>14:51:04</strong> Approved by Meena S (portal) · phone-to-address 320 m, box-to-phone 14 m</span></div>
+        <div class="ev"><span class="dot"></span><span><strong>14:50:12</strong> Unlock requested by Ramesh K · details confirmed</span></div>
+        <div class="ev"><span class="dot" style="background: #9CA3AF"></span><span><strong>14:31</strong> Box arrived near customer address (within 500 m)</span></div>
+        <div class="ev"><span class="dot" style="background: #9CA3AF"></span><span><strong>13:58</strong> Left branch geofence</span></div>
+        <div class="ev"><span class="dot" style="background: #9CA3AF"></span><span><strong>09:20</strong> Box 123 and Ramesh K assigned by Priya N · customer SMS sent</span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">People</span>
+          <div class="row"><span>Collector</span><strong>Ramesh K · MF-DL-00871</strong></div>
+          <div class="row"><span>Approver</span><strong>Meena S (backup: Arun P)</strong></div>
+          <div class="row"><span>Created by</span><strong>Neha R · Ops</strong></div>
+          <div class="row"><span>Customer mobile</span><strong>+91 98XXX XX204 <a href="#reveal" style="font-size: 12px">reveal</a></strong></div>
+          <span class="sub">Reveal is logged; HO can turn it off for branch admins.</span>
+        </div>
+        <div class="card">
+          <span class="lbl">Pouches · 0</span>
+          <span class="sub">Appear here as the collector scans them.</span>
+        </div>
+        <div class="card">
+          <span class="lbl">Notifications</span>
+          <div class="row"><span>Customer SMS · assignment</span><span style="color: #065F46">Delivered 09:20</span></div>
+          <div class="row"><span>Customer SMS · sealed</span><span class="sub">Pending</span></div>
+        </div>
+        <div class="card" style="background: #F9FAFB">
+          <span class="lbl">Branch admin actions</span>
+          <a href="#Collectors" style="font-size: 13px">Change collector mobile (reason required)</a>
+          <a href="#Pickups" style="font-size: 13px">Reschedule pickup</a>
+          <span class="sub">Re-route to another branch: not in this phase.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Pending-Requests" class="scr" data-title="B1 Pending unlock requests (approver)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests" class="on">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Unlock requests</h1><span class="sub">You are the primary approver for Pitampura. A request waits at most 10 minutes; after 2 minutes the collector may send it to Arun P (backup).</span></div>
+      <div style="display: flex; gap: 12px; align-items: center"><span class="live"><span class="dot"></span>Live</span><span class="who">Meena S · Branch approver</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span class="lbl">Pending · 2</span>
+        <a href="#r1" class="req on"><div style="display: flex; justify-content: space-between"><strong>Unlock at Customer</strong><span class="pill p-amber">9:12 left</span></div><span>Ramesh K · Box 123 · MT-0041</span><span class="sub">Sunita Devi, Rohini · location OK</span></a>
+        <a href="#r2" class="req"><div style="display: flex; justify-content: space-between"><strong>Unlock at Customer</strong><span class="pill p-amber">4:40 left</span></div><span>Sunil V · Box 119 · MT-0043</span><span class="sub" style="color: #991B1B">Harish Gupta, Shalimar Bagh · phone 1.6 km from address</span></a>
+        <span class="lbl" style="margin-top: 8px">Decided today · 11</span>
+        <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Branch · MT-0037</span><span class="pill p-green">Approved 12:14</span></div></div>
+        <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Customer · MT-0037</span><span class="pill p-green">Approved 11:05</span></div></div>
+        <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Customer · MT-0034</span><span class="pill p-red">Declined 10:02</span></div><span class="sub">Collector 3 km from address, no explanation</span></div>
+        <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Branch · MT-0036</span><span class="pill p-gray">Expired 11:52</span></div><span class="sub">Re-requested and approved 11:55</span></div>
+      </div>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Request · MT-0041 · Unlock at Customer</span><span class="pill p-amber">Requested 14:50:12 · 9:12 left</span></div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <div style="display: flex; gap: 12px; align-items: center"><span style="width: 56px; height: 56px; border-radius: 28px; background: #D1D5DB; flex-shrink: 0"></span><div><strong style="font-size: 15px">Ramesh K</strong><br><span class="sub">Collector · MF-DL-00871 · logged in 08:40</span></div></div>
+            <div class="row"><span>Box</span><strong>123 · online · 92% · locked</strong></div>
+            <div class="row"><span>Customer</span><strong>Sunita Devi</strong></div>
+            <div class="row"><span>Address</span><strong>H-12, Sector 9, Rohini</strong></div>
+            <div class="row"><span>Planned</span><strong>Today 14:30</strong></div>
+            <div class="row"><span>Collector's note</span><strong>2nd floor, customer's son present</strong></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="ph" style="height: 130px">Map: customer pin, collector phone (320 m), box (14 m from phone)</div>
+            <div class="row"><span>Phone vs customer address</span><strong style="color: #065F46">320 m · OK (limit 500 m)</strong></div>
+            <div class="row"><span>Box vs phone</span><strong style="color: #065F46">14 m · together</strong></div>
+            <div class="row"><span>Previous requests this trip</span><strong>None · 1 of 3 allowed per 15 min</strong></div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; margin-top: 6px">
+          <a href="#confirm" class="btn" style="flex: 1">Approve unlock…</a>
+          <a href="#decline" class="btn danger" style="flex: 1">Decline</a>
+        </div>
+        <div style="border: 2px solid #1D4ED8; border-radius: 10px; padding: 14px; background: #EFF6FF; display: flex; flex-direction: column; gap: 10px">
+          <strong>Confirm: unlock Box 123 for Ramesh K at Sunita Devi's address?</strong>
+          <span class="sub">The box opens the moment you confirm. Approval is possible only here in the portal; the SMS you receive is a link to this page, not an approve button.</span>
+          <div style="display: flex; gap: 8px"><a href="#Pickup-Detail" class="btn">Yes, unlock</a><a href="#cancel" class="btn danger" style="border-color: #9CA3AF; color: #374151">No, go back</a></div>
+        </div>
+        <label for="why" class="sub">Decline reason (required when declining)</label>
+        <textarea id="why" class="input" placeholder="e.g. collector not at the address; call before re-requesting"></textarea>
+        <span class="sub">Approving sends the unlock command immediately. Your decision is recorded with your login, the time and everything on this screen.</span>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Boxes" class="scr" data-title="B2 Box pool"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes" class="on">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Boxes · Pitampura</h1><span class="sub">14 boxes allocated to this branch by Track0tic. Branch cannot add or remove boxes; ask Track0tic ops.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+      <div class="card"><span class="lbl">Available</span><span class="kpi" style="color: #065F46">7</span></div>
+      <div class="card"><span class="lbl">On trips</span><span class="kpi" style="color: #92400E">5</span></div>
+      <div class="card"><span class="lbl">Charging</span><span class="kpi">1</span></div>
+      <div class="card" style="border-color: #FECACA"><span class="lbl">Offline</span><span class="kpi" style="color: #991B1B">1</span></div>
+      <div class="card"><span class="lbl">Needs service</span><span class="kpi">0</span></div>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center">
+      <button class="tab on">All · 14</button><button class="tab">Available</button><button class="tab">On trips</button><button class="tab">Problems</button>
+      <span style="flex-grow: 1"></span><span class="sub">Live · 6 s ago</span>
+    </div>
+    <div class="card" style="padding: 0; overflow-x: auto">
+      <table class="tbl">
+        <tr><th>Box</th><th>Track0tic ID</th><th>State</th><th>Lock</th><th>Lid</th><th>Battery</th><th>Signal</th><th>Last report</th><th>Where</th><th>Current pickup</th><th>Trips (30 d)</th></tr>
+        <tr><td><a href="#Box-Detail">123</a></td><td>TRK-LB-000123</td><td><span class="pill p-blue">On trip</span></td><td>Unlocked</td><td>Open</td><td><span class="bat"><span style="width: 91%"></span></span>91%</td><td>Good</td><td>12 s</td><td>Rohini Sec 9 · customer</td><td>MT-0041 · Ramesh K</td><td>22</td></tr>
+        <tr><td>119</td><td>TRK-LB-000119</td><td><span class="pill p-blue">On trip</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 84%"></span></span>84%</td><td>Good</td><td>40 s</td><td>Shalimar Bagh · customer</td><td>MT-0043 · Sunil V</td><td>19</td></tr>
+        <tr><td>121</td><td>TRK-LB-000121</td><td><span class="pill p-amber">Sealed · on the way</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 18%; background: #B45309"></span></span>18%</td><td>Fair</td><td>1 min</td><td>Outer Ring Rd · 2.1 km to branch</td><td>MT-0039 · Deepak M</td><td>25</td></tr>
+        <tr><td>117</td><td>TRK-LB-000117</td><td><span class="pill p-amber">Sealed · on the way</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 77%"></span></span>77%</td><td>Good</td><td>30 s</td><td>Rani Bagh · 3.4 km to branch</td><td>MT-0040 · Amit S</td><td>18</td></tr>
+        <tr style="background: #FEF2F2"><td>118</td><td>TRK-LB-000118</td><td><span class="pill p-red">Flagged · tamper</span></td><td>Locked</td><td style="color: #991B1B">Opened 14:07</td><td><span class="bat"><span style="width: 69%"></span></span>69%</td><td>Good</td><td>25 s</td><td>Pitampura · 600 m to branch</td><td>MT-0038 · Vikas T</td><td>21</td></tr>
+        <tr><td>124</td><td>TRK-LB-000124</td><td><span class="pill p-green">Available</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 88%"></span></span>88%</td><td>Good</td><td>1 min</td><td>Branch</td><td>–</td><td>20</td></tr>
+        <tr><td>120</td><td>TRK-LB-000120</td><td><span class="pill p-green">Available</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 95%"></span></span>95%</td><td>Good</td><td>1 min</td><td>Branch</td><td>–</td><td>24</td></tr>
+        <tr><td>116</td><td>TRK-LB-000116</td><td><span class="pill p-gray">Charging</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 31%; background: #B45309"></span></span>31%</td><td>Good</td><td>2 min</td><td>Branch</td><td>–</td><td>17</td></tr>
+        <tr style="background: #FEF2F2"><td>115</td><td>TRK-LB-000115</td><td><span class="pill p-red">Offline</span></td><td>Locked</td><td>Shut</td><td><span class="bat"><span style="width: 52%"></span></span>52% (last)</td><td>–</td><td style="color: #991B1B">3 h 12 min</td><td>Branch (last)</td><td>–</td><td>23</td></tr>
+      </table>
+    </div>
+    <span class="sub">Showing 9 of 14. A box is assignable only when Available, online and above 40%.</span>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+      <div class="card"><span class="lbl">Pouch labels in stock</span><span class="kpi">312</span><span class="sub">1.2 rolls · low-stock alert at 50</span></div>
+      <div class="card"><span class="lbl">Labels used this month</span><span class="kpi">188</span><span class="sub">avg 2.8 per pickup</span></div>
+      <div class="card" style="justify-content: center"><span class="lbl">Need more</span><a href="#labels" style="font-size: 14px; font-weight: 600">Request 2 rolls from Track0tic (250 each)</a><span class="sub">Last delivery 06 Oct · 500 labels · batch PP-MT-004</span></div>
+    </div>
+  </main>
+</div></section>
+<section id="Box-Detail" class="scr" data-title="B3 Box detail"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes" class="on">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><a href="#Boxes" style="font-size: 13px; text-decoration: none">← Boxes</a><h1 class="h1">Box 123 <span class="pill p-blue" style="vertical-align: middle">On trip · MT-0041</span></h1><span class="sub">TRK-LB-000123 · firmware 2.3.1 · SIM Airtel M2M · allocated to Pitampura 02 Sep 2026</span></div>
+      <div style="display: flex; gap: 8px; align-items: center"><span class="who">Priya N · Branch admin</span><a href="#Alerts" class="btn">Report a problem</a></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+      <div class="card"><span class="lbl">Lock</span><strong style="font-size: 18px">Unlocked</strong><span class="sub">since 14:52 · approved Meena S</span></div>
+      <div class="card"><span class="lbl">Lid</span><strong style="font-size: 18px">Open</strong><span class="sub">opened 14:52:14</span></div>
+      <div class="card"><span class="lbl">Battery</span><strong style="font-size: 18px">91%</strong><span class="sub">~2 days at this use</span></div>
+      <div class="card"><span class="lbl">Connection</span><strong style="font-size: 18px; color: #065F46">Online</strong><span class="sub">signal good · reports every 90 s · last 12 s ago</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div class="card" style="grid-column: span 2">
+        <span class="lbl">Today's path</span>
+        <div class="ph" style="height: 200px">Map: branch → Rohini Sec 9, trail with timestamps, current position, branch geofence ring</div>
+        <span class="lbl">Events today</span>
+        <div style="overflow-x: auto"><table class="tbl">
+          <tr><th>Time</th><th>Event</th><th>Detail</th></tr>
+          <tr><td>14:52:14</td><td>Lid opened</td><td>at customer · expected</td></tr>
+          <tr><td>14:52:10</td><td>Unlock acknowledged</td><td>command 7f3a · GPS 28.7195, 77.1126</td></tr>
+          <tr><td>14:51:05</td><td>Unlock command received</td><td>from server · valid 3 min</td></tr>
+          <tr><td>14:31:00</td><td>Arrived near customer</td><td>within 500 m of address</td></tr>
+          <tr><td>13:58:20</td><td>Left branch geofence</td><td>Pitampura</td></tr>
+          <tr><td>09:20:00</td><td>Assigned</td><td>MT-0041 · Ramesh K · by Priya N</td></tr>
+          <tr><td>08:02:11</td><td>Online</td><td>after overnight charge · 100%</td></tr>
+        </table></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">Health · last 30 days</span>
+          <div class="row"><span>Trips</span><strong>22</strong></div>
+          <div class="row"><span>Unlock success</span><strong>44 / 44</strong></div>
+          <div class="row"><span>Offline episodes</span><strong>2 · longest 6 min</strong></div>
+          <div class="row"><span>Tamper events</span><strong>0</strong></div>
+          <div class="row"><span>Lowest battery</span><strong>24% · 11 Oct</strong></div>
+          <div class="ph" style="height: 70px">Battery over 7 days</div>
+        </div>
+        <div class="card">
+          <span class="lbl">Recent trips</span>
+          <div class="row"><span>MT-0037 · 19 Oct</span><span class="pill p-green">Delivered</span></div>
+          <div class="row"><span>MT-0031 · 18 Oct</span><span class="pill p-green">Delivered</span></div>
+          <div class="row"><span>MT-0027 · 18 Oct</span><span class="pill p-green">Delivered</span></div>
+          <div class="row"><span>MT-0022 · 17 Oct</span><span class="pill p-green">Delivered</span></div>
+        </div>
+        <div class="card" style="background: #F9FAFB">
+          <span class="lbl">Branch cannot</span>
+          <span class="sub">Unlock the box from here, move it to another branch, or change its firmware. Those are Track0tic ops or HO override.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Branch-Receive" class="scr" data-title="B4 Receive at vault (custodian)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Branch-Receive" class="on">Receive at vault <span class="badge">1</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Receive at vault</h1><span class="sub">After the branch unlock, the custodian scans every pouch out of the box. The pickup becomes Delivered only when the count matches what the collector bound.</span></div>
+      <span class="who">Arun P · Custodian (approver role)</span>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 16px">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">MT-0041 · Box 123 · unlocked 15:47 · Ramesh K</span><span class="pill p-amber">Handed over · awaiting receipt</span></div>
+        <label for="scan" class="sub">Scan each pouch label (desk scanner or camera)</label>
+        <input id="scan" class="input" placeholder="Cursor stays here · scan now" autofocus>
+        <div class="row"><span>Expected (bound by collector at customer)</span><strong>3 pouches</strong></div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div class="item"><span>PP-MT-00419</span><span class="pill p-green">Received 15:51:02</span></div>
+          <div class="item"><span>PP-MT-00420</span><span class="pill p-green">Received 15:51:09</span></div>
+          <div class="item" style="border-style: dashed"><span>PP-MT-00421</span><span class="pill p-gray">Not yet scanned</span></div>
+        </div>
+        <div class="row"><span>Received so far</span><strong>2 of 3</strong></div>
+        <div style="display: flex; gap: 8px; margin-top: 4px">
+          <span class="btn dis">Confirm receipt (enabled at 3 of 3)</span>
+          <a href="#Alerts" class="btn danger">Pouch missing or damaged…</a>
+        </div>
+        <span class="sub">A label not belonging to this pickup is refused and logged. A torn seal strip is recorded as "damaged" with a photo.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">Waiting to be received</span>
+          <div class="item" style="border-color: #1D4ED8; background: #EFF6FF"><span>MT-0041 · Box 123 · 3 pouches</span><span class="sub">unlocked 15:47</span></div>
+          <span class="sub">Boxes unlocked at this branch and not yet scanned in appear here. More than 15 minutes raises an alert.</span>
+        </div>
+        <div class="card">
+          <span class="lbl">If a pouch is missing</span>
+          <textarea class="ta" placeholder="What happened (required). The pickup is flagged, the collector's and approver's names are attached, HO and Track0tic are notified."></textarea>
+        </div>
+        <div class="card" style="background: #F9FAFB">
+          <span class="lbl">On confirm</span>
+          <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: #374151">
+            <li>Pickup MT-0041 → Delivered</li>
+            <li>Each pouch record ends with "Received by Arun P"</li>
+            <li>Box 123 → Available (if inside the branch ring)</li>
+            <li>Collector Ramesh K is free for the next pickup</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Collectors" class="scr" data-title="C1 Collectors"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors" class="on">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Collectors · Pitampura</h1><span class="sub">Only registered, active collectors can be assigned a box. Registration is done here, after Muthoot's own HR/KYC.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px">
+      <div class="card" style="padding: 0; overflow-x: auto">
+        <table class="tbl">
+          <tr><th>Collector</th><th>Muthoot ID</th><th>Mobile</th><th>Status</th><th>Today</th><th>Trips (30 d)</th><th>Declines (30 d)</th><th>Last login</th><th></th></tr>
+          <tr><td><span class="av"></span>Ramesh K</td><td>MF-DL-00871</td><td>+91 98XXX XX412</td><td><span class="pill p-green">Active</span></td><td><span class="pill p-blue">On MT-0041</span></td><td>22</td><td>0</td><td>08:40</td><td><a href="#edit">Edit</a></td></tr>
+          <tr><td><span class="av"></span>Sunil V</td><td>MF-DL-00902</td><td>+91 99XXX XX130</td><td><span class="pill p-green">Active</span></td><td><span class="pill p-blue">On MT-0043</span></td><td>19</td><td>1</td><td>09:05</td><td><a href="#edit">Edit</a></td></tr>
+          <tr><td><span class="av"></span>Deepak M</td><td>MF-DL-00877</td><td>+91 98XXX XX550</td><td><span class="pill p-green">Active</span></td><td><span class="pill p-amber">On MT-0039</span></td><td>25</td><td>0</td><td>08:12</td><td><a href="#edit">Edit</a></td></tr>
+          <tr><td><span class="av"></span>Amit S</td><td>MF-DL-00888</td><td>+91 97XXX XX918</td><td><span class="pill p-green">Active</span></td><td><span class="pill p-amber">On MT-0040</span></td><td>18</td><td>0</td><td>08:55</td><td><a href="#edit">Edit</a></td></tr>
+          <tr><td><span class="av"></span>Vikas T</td><td>MF-DL-00915</td><td>+91 98XXX XX731</td><td><span class="pill p-green">Active</span></td><td><span class="pill p-red">On MT-0038 · flagged</span></td><td>21</td><td>0</td><td>08:30</td><td><a href="#edit">Edit</a></td></tr>
+          <tr><td><span class="av"></span>Mohit R</td><td>MF-DL-00930</td><td>+91 96XXX XX204</td><td><span class="pill p-gray">Suspended</span></td><td>–</td><td>9</td><td>3</td><td>14 Oct</td><td><a href="#edit">Edit</a></td></tr>
+          <tr><td><span class="av"></span>Pawan G</td><td>MF-DL-00941</td><td>+91 98XXX XX066</td><td><span class="pill p-amber">Pending photo</span></td><td>–</td><td>0</td><td>0</td><td>never</td><td><a href="#edit">Edit</a></td></tr>
+        </table>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">Register a collector</span>
+          <div class="f"><label for="n">Full name</label><input id="n" class="input" placeholder="As on Muthoot ID card"></div>
+          <div class="f"><label for="id">Muthoot employee ID</label><input id="id" class="input" placeholder="MF-DL-00000"></div>
+          <div class="f"><label for="m">Mobile (login number)</label><input id="m" class="input" placeholder="+91"></div>
+          <div class="f"><label>Photo (shown to customer and approver)</label><div class="ph" style="height: 80px">Upload or take photo</div></div>
+          <a href="#Collectors" class="btn">Register and send login SMS</a>
+          <span class="sub">The collector logs in once on their phone with this number. No app to install.</span>
+        </div>
+        <div class="card" style="background: #F9FAFB">
+          <span class="lbl">Change mobile number</span>
+          <span class="sub">Allowed before a pickup is sealed. Needs a written reason; the old login is cancelled at once and the change is logged.</span>
+          <a href="#Pickup-Detail" class="btn sec">Change number…</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Approvers" class="scr" data-title="C2 Approvers per branch"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers" class="on">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Approvers · Pitampura</h1><span class="sub">Who may approve an unlock for this branch. One primary and at least one backup; a request goes to the backup after 2 minutes without answer.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card" style="padding: 0; overflow-x: auto">
+          <table class="tbl">
+            <tr><th>Approver</th><th>Role</th><th>Mobile (SMS fallback)</th><th>Portal login</th><th>Order</th><th>Availability</th><th>Approved / declined (30 d)</th><th>Avg response</th><th></th></tr>
+            <tr><td>Meena S</td><td>Branch manager</td><td>+91 98XXX XX201</td><td>meena.s@…</td><td><span class="pill p-blue">Primary</span></td><td><span class="pill p-green">Online now</span></td><td>184 / 3</td><td>38 s</td><td><a href="#edit">Edit</a></td></tr>
+            <tr><td>Arun P</td><td>Assistant manager</td><td>+91 97XXX XX644</td><td>arun.p@…</td><td><span class="pill p-gray">Backup 1</span></td><td><span class="pill p-green">Online now</span></td><td>21 / 0</td><td>1 min 10 s</td><td><a href="#edit">Edit</a></td></tr>
+            <tr><td>Regional control room</td><td>Shared desk · Delhi North</td><td>+91 11 4XXX XXXX</td><td>crr.delhinorth@…</td><td><span class="pill p-gray">Backup 2</span></td><td><span class="pill p-green">24 × 7</span></td><td>6 / 1</td><td>2 min 05 s</td><td><a href="#edit">Edit</a></td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <span class="lbl">Approver hours and cover</span>
+          <div class="row"><span>Meena S</span><span>Mon–Sat 09:30–18:30 · on leave 24–26 Oct (Arun P becomes primary)</span></div>
+          <div class="row"><span>Arun P</span><span>Mon–Sat 09:00–19:00</span></div>
+          <div class="row"><span>Regional control room</span><span>Always · used after both branch approvers time out</span></div>
+          <span class="sub">If no approver is available, the collector's screen says so before a request is raised, and the pickup can be rescheduled instead of waiting.</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">Add an approver</span>
+          <div class="f"><label for="n">Name</label><input id="n" class="input"></div>
+          <div class="f"><label for="r">Role at branch</label><input id="r" class="input" placeholder="Branch manager, AM, control room"></div>
+          <div class="f"><label for="m">Mobile (for SMS fallback)</label><input id="m" class="input" placeholder="+91"></div>
+          <div class="f"><label for="e">Portal login email</label><input id="e" class="input"></div>
+          <div class="f"><label>Order</label><label class="chk"><input type="radio" name="o"> Primary</label><label class="chk"><input type="radio" name="o" checked> Backup</label></div>
+          <a href="#Approvers" class="btn">Add and send portal invite</a>
+        </div>
+        <div class="card" style="background: #F9FAFB">
+          <span class="lbl">Rules</span>
+          <span class="sub">An approver cannot approve a pickup they created or collect themselves. HO can require two approvals above a configurable pouch count (off by default).</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Branches" class="scr" data-title="C3 Branches &amp; geofence (HO admin)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">HO admin · all branches</div>
+    <select aria-label="Branch"><option>All branches (Delhi North)</option><option>Pitampura</option><option>Rohini</option><option>Shalimar Bagh</option><option>Model Town</option></select>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals</a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">3</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches" class="on">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Branches · Delhi North</h1><span class="sub">The branch point and radius decide where a sealed box may be unlocked. Only HO admin edits them; every change is logged.</span></div>
+      <div style="display: flex; gap: 8px; align-items: center"><span class="who">Sanjay M · HO admin</span><a href="#add" class="btn">+ Add branch</a></div>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 16px">
+      <div class="card" style="padding: 0; overflow-x: auto">
+        <table class="tbl">
+          <tr><th>Branch</th><th>Code</th><th>Branch point (lat, long)</th><th>Unlock radius</th><th>Boxes</th><th>Collectors</th><th>Approvers</th><th>Pickups (30 d)</th><th>Status</th></tr>
+          <tr style="background: #EFF6FF"><td><strong>Pitampura</strong></td><td>PIT-001</td><td>28.6987, 77.1312</td><td>100 m</td><td>14</td><td>7</td><td>3</td><td>412</td><td><span class="pill p-green">Live</span></td></tr>
+          <tr><td>Rohini</td><td>ROH-002</td><td>28.7156, 77.1143</td><td>100 m</td><td>10</td><td>5</td><td>2</td><td>298</td><td><span class="pill p-green">Live</span></td></tr>
+          <tr><td>Shalimar Bagh</td><td>SHB-003</td><td>28.7169, 77.1612</td><td>150 m</td><td>8</td><td>4</td><td>2</td><td>221</td><td><span class="pill p-green">Live</span></td></tr>
+          <tr><td>Model Town</td><td>MDT-004</td><td>28.7196, 77.1910</td><td>100 m</td><td>6</td><td>3</td><td>1</td><td>–</td><td><span class="pill p-amber">Setup · needs backup approver</span></td></tr>
+          <tr><td>Ashok Vihar</td><td>ASV-005</td><td>–</td><td>–</td><td>0</td><td>0</td><td>0</td><td>–</td><td><span class="pill p-gray">Planned</span></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <span class="lbl">Pitampura · branch point and unlock radius</span>
+        <div class="ph" style="height: 220px">Map: drag the branch point onto the vault entrance; radius ring 100 m; GPS samples from last 50 branch unlocks shown as dots</div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div class="f"><label for="lat">Latitude</label><input id="lat" class="input" value="28.6987"></div>
+          <div class="f"><label for="lng">Longitude</label><input id="lng" class="input" value="77.1312"></div>
+          <div class="f"><label for="rad">Unlock radius (m)</label><input id="rad" class="input" value="100"></div>
+          <div class="f"><label for="addr">Address</label><input id="addr" class="input" value="NP-12, Pitampura, Delhi 110034"></div>
+        </div>
+        <span class="sub">Last 50 branch unlocks: 94% inside 60 m, worst 88 m. Radius 100 m is fine; a dense building may need 150 m.</span>
+        <div style="display: flex; gap: 8px"><a href="#Branches" class="btn">Save (logged)</a><a href="#Branches" class="btn sec">Cancel</a></div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Settings" class="scr" data-title="C4 Settings (HO admin)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">HO admin · all branches</div>
+    <select aria-label="Branch"><option>All branches (Delhi North)</option><option>Pitampura</option><option>Rohini</option></select>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals</a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">3</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings" class="on">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Settings · Muthoot (all branches)</h1><span class="sub">Defaults from the project spec. A branch can be given its own value where the row says so. Every change is logged with who and why.</span></div>
+      <div style="display: flex; gap: 8px; align-items: center"><span class="who">Sanjay M · HO admin</span><a href="#Settings" class="btn">Save changes (reason required)</a></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+      <div class="card">
+        <span class="lbl">Unlock and approval</span>
+        <div class="set"><div>Approval request validity<div class="d">How long the collector's request waits for the approver</div></div><input class="input" value="10 min"></div>
+        <div class="set"><div>Send to backup approver after<div class="d">Collector may escalate after this</div></div><input class="input" value="2 min"></div>
+        <div class="set"><div>Unlock command validity<div class="d">Box must act on it within this time; single use</div></div><input class="input" value="3 min"></div>
+        <div class="set"><div>Every re-open at customer needs approval<div class="d">Off = one approval covers the visit (not recommended)</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Code fallback allowed<div class="d">4 + 4 digits when the approver has no portal</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Two approvals above<div class="d">Pouch count that needs a second approver (0 = off)</div></div><input class="input" value="0"></div>
+        <div class="set"><div>Pickup active window<div class="d">Planned date ± this many days; outside it the portal must reschedule</div></div><input class="input" value="1 day"></div>
+        <div class="set"><div>Request limit per trip<div class="d">One pending at a time; this many per 15 min, then the trip locks 15 min and the branch admin is alerted</div></div><input class="input" value="3"></div>
+        <div class="set"><div>Lid open at customer alert after<div class="d">Alert to branch admin and approver; collector's screen shows a nudge</div></div><input class="input" value="20 min"></div>
+        <div class="set"><div>Approval confirm step<div class="d">Always on; approval only through the portal</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Receive at vault required<div class="d">Delivered only after every pouch is scanned in</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Vault receipt alert after<div class="d">Box unlocked at branch but pouches not scanned in</div></div><input class="input" value="15 min"></div>
+      </div>
+      <div class="card">
+        <span class="lbl">Location checks</span>
+        <div class="set"><div>Phone vs customer address<div class="d">Warning radius shown to the approver (per branch allowed)</div></div><input class="input" value="500 m"></div>
+        <div class="set"><div>Show in red above<div class="d">Approver sees a red warning past this distance</div></div><input class="input" value="1 km"></div>
+        <div class="set"><div>Treat as hard block<div class="d">Off = warning only (decided 19 Oct 2026)</div></div><span class="tog off"><span></span></span></div>
+        <div class="set"><div>Branch unlock radius default<div class="d">Each branch may override on the Branches page</div></div><input class="input" value="100 m"></div>
+        <div class="set"><div>Box must be inside radius to request<div class="d">Hard block at the branch</div></div><span class="tog"><span></span></span></div>
+      </div>
+      <div class="card">
+        <span class="lbl">Customer messages</span>
+        <div class="set"><div>SMS on collector confirmation<div class="d">Box number, collector ID, photo link</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>SMS on seal<div class="d">Pouch count, box, time</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Sender ID<div class="d">Track0tic DLT-registered; templates pre-approved</div></div><input class="input" value="TRKOTC" readonly></div>
+        <div class="set"><div>Language<div class="d">English / Hindi / both</div></div><input class="input" value="English + Hindi"></div>
+        <div class="set"><div>Collector photo link expires<div class="d">Opaque link, no name in it; after the pickup closes</div></div><input class="input" value="24 h"></div>
+        <div class="set"><div>Map and geocoding provider<div class="d">Customer address leaves the pod for this only · Muthoot's own key</div></div><input class="input" value="[TO DECIDE]"></div>
+      </div>
+      <div class="card">
+        <span class="lbl">Boxes, alerts and records</span>
+        <div class="set"><div>Box assignable above battery<div class="d"></div></div><input class="input" value="40 %"></div>
+        <div class="set"><div>Battery alert at<div class="d">Second alert at half this value</div></div><input class="input" value="20 %"></div>
+        <div class="set"><div>Box offline alert after<div class="d">Expected report every 90 s</div></div><input class="input" value="5 min"></div>
+        <div class="set"><div>Collector session length<div class="d">Mobile + OTP login stays valid</div></div><input class="input" value="12 h"></div>
+        <div class="set"><div>Branch admin may reveal customer mobile<div class="d">Reveal is always logged</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Records and audit log retention<div class="d">Whole records kept, customer fields encrypted; cannot be set below 5 years</div></div><input class="input" value="5 years" readonly></div>
+        <div class="set"><div>Portal login IP allowlist<div class="d">Branch/HO office IPs; collectors are never IP-limited</div></div><a href="#ips" style="font-size: 13px">Manage (4 ranges)</a></div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Users-Roles" class="scr" data-title="C5 Users &amp; roles (HO admin)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">HO admin · all branches</div>
+    <select aria-label="Branch"><option>All branches (Delhi North)</option><option>Pitampura</option></select>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals</a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">3</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Users-Roles" class="on">Users &amp; roles</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Portal users &amp; roles</h1><span class="sub">Who may sign in to the portal, and for which branch. Collectors are managed on the Collectors page, not here. Role changes need a second HO admin to approve.</span></div>
+      <span class="who">Sanjay M · HO admin</span>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card" style="padding: 0; overflow-x: auto">
+          <table class="tbl">
+            <tr><th>User</th><th>Email</th><th>Role</th><th>Branch</th><th>Status</th><th>Last sign-in</th><th></th></tr>
+            <tr><td>Sanjay M</td><td>sanjay.m@…</td><td><span class="pill p-purple">HO admin</span></td><td>All · Delhi North</td><td><span class="pill p-green">Active</span></td><td>Today 08:30</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Rekha D</td><td>rekha.d@…</td><td><span class="pill p-purple">HO admin</span></td><td>All · Delhi North</td><td><span class="pill p-green">Active</span></td><td>Yesterday</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Priya N</td><td>priya.n@…</td><td><span class="pill p-blue">Branch admin</span></td><td>Pitampura</td><td><span class="pill p-green">Active</span></td><td>Today 09:02</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Neha R</td><td>neha.r@…</td><td><span class="pill p-blue">Ops</span></td><td>Pitampura</td><td><span class="pill p-green">Active</span></td><td>Today 09:10</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Vivek A</td><td>vivek.a@…</td><td><span class="pill p-blue">Ops</span></td><td>Pitampura</td><td><span class="pill p-green">Active</span></td><td>Today 09:40</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Meena S</td><td>meena.s@…</td><td><span class="pill p-amber">Approver</span></td><td>Pitampura</td><td><span class="pill p-green">Active</span></td><td>Today 08:55</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Arun P</td><td>arun.p@…</td><td><span class="pill p-amber">Approver</span></td><td>Pitampura</td><td><span class="pill p-green">Active</span></td><td>Today 09:00</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Internal audit · K. Rao</td><td>k.rao@…</td><td><span class="pill p-gray">Read-only</span></td><td>All · Delhi North</td><td><span class="pill p-green">Active</span></td><td>15 Oct</td><td><a href="#e">Edit</a></td></tr>
+            <tr><td>Suman T</td><td>suman.t@…</td><td><span class="pill p-blue">Branch admin</span></td><td>Model Town</td><td><span class="pill p-amber">Invite pending</span></td><td>never</td><td><a href="#e">Resend</a></td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <span class="lbl">What each role can do</span>
+          <table class="tbl">
+            <tr><th>Role</th><th>Sees</th><th>Can</th><th>Cannot</th></tr>
+            <tr><td>HO admin</td><td>All branches, with switcher</td><td>Branches, settings, users, override, everything a branch admin can</td><td>Approve an unlock, edit the audit log</td></tr>
+            <tr><td>Branch admin</td><td>Own branch only</td><td>Assign boxes and collectors, register collectors and approvers, close alerts, reports</td><td>Create users, change settings, override</td></tr>
+            <tr><td>Ops</td><td>Own branch only</td><td>Create and edit pickup work orders, assign if allowed</td><td>Register people, close alerts</td></tr>
+            <tr><td>Approver</td><td>Approvals queue and Receive at vault, own branch</td><td>Approve or decline unlock requests (with confirm); scan pouches into the vault as custodian</td><td>Anything else; cannot approve own pickups</td></tr>
+            <tr><td>Read-only</td><td>Chosen branches</td><td>View pickups, records, reports, audit log; export</td><td>Any change</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <span class="lbl">Invite a user</span>
+        <div class="f"><label for="n">Name</label><input id="n" class="input"></div>
+        <div class="f"><label for="e">Work email</label><input id="e" class="input" placeholder="name@muthoot…"></div>
+        <div class="f"><label for="m">Mobile (one-time code)</label><input id="m" class="input" placeholder="+91"></div>
+        <div class="f"><label for="r">Role</label><select id="r" class="input"><option>Branch admin</option><option>Ops</option><option>Approver</option><option>Read-only</option><option>HO admin</option></select></div>
+        <div class="f"><label>Branches</label><label class="chk"><input type="checkbox" checked> Pitampura</label><label class="chk"><input type="checkbox"> Rohini</label><label class="chk"><input type="checkbox"> Shalimar Bagh</label><label class="chk"><input type="checkbox"> Model Town</label></div>
+        <a href="#Users-Roles" class="btn">Send invite (needs second HO admin approval)</a>
+        <span class="sub">Invites expire in 48 hours. Removing a user keeps their name on every record they touched.</span>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Onboarding" class="scr" data-title="C6 Onboarding (collectors, approvers, portal users)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Branch-Receive">Receive at vault <span class="badge">1</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding" class="on">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Users-Roles">Users &amp; roles</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Onboarding · Pitampura</h1><span class="sub">Everyone who is not yet live, with the steps left. Nobody can be assigned a box, approve, or sign in until their checklist is complete.</span></div>
+      <div style="display: flex; gap: 8px; align-items: center"><span class="who">Priya N · Branch admin</span><a href="#start" class="btn">+ Start onboarding</a></div>
+    </div>
+    <div style="display: flex; gap: 8px"><button class="tab on">In progress · 3</button><button class="tab">Completed (30 d) · 4</button><button class="tab">Stalled &gt; 7 days · 1</button></div>
+    <div style="display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <a href="#p1" class="q on"><div style="display: flex; justify-content: space-between"><strong>Pawan G</strong><span class="pill p-blue">Collector</span></div><span>Step 4 of 6 · Photo pending · started 14 Oct</span></a>
+        <a href="#p2" class="q"><div style="display: flex; justify-content: space-between"><strong>Suman T</strong><span class="pill p-purple">Branch admin · Model Town</span></div><span>Step 2 of 4 · Invite sent, not accepted · 2 days</span></a>
+        <a href="#p3" class="q"><div style="display: flex; justify-content: space-between"><strong>Rohit B</strong><span class="pill p-amber">Approver (backup)</span></div><span>Step 3 of 5 · Portal login done · test approval pending</span></a>
+        <a href="#p4" class="q" style="border-color: #FDE68A; background: #FFFBEB"><div style="display: flex; justify-content: space-between"><strong>Kiran L</strong><span class="pill p-blue">Collector</span></div><span style="color: #92400E">Stalled 9 days · KYC document not uploaded · reminder sent twice</span></a>
+        <div class="card" style="background: #F9FAFB; gap: 6px">
+          <span class="lbl">Checklists by type</span>
+          <span class="sub"><strong>Collector</strong> · details → Muthoot ID &amp; KYC doc → photo → mobile verified → training → dry run with training box → live</span>
+          <span class="sub"><strong>Approver</strong> · details → portal invite → first login → add to phone home screen → test approval → live</span>
+          <span class="sub"><strong>Portal user</strong> · invite → first login → role confirmed by HO → live</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Pawan G · Collector · MF-DL-00941</span><span class="pill p-amber">Step 4 of 6</span></div>
+        <div style="display: flex; flex-direction: column">
+          <div class="step"><span class="n done">✓</span><div><strong>Details</strong><br><span class="sub">Name, Muthoot employee ID, branch · 14 Oct by Priya N</span></div></div>
+          <div class="step"><span class="n done">✓</span><div><strong>Muthoot ID &amp; KYC document</strong><br><span class="sub">ID card scan uploaded · verified against HR list · 14 Oct</span></div></div>
+          <div class="step"><span class="n done">✓</span><div><strong>Mobile verified</strong><br><span class="sub">+91 98XXX XX066 · OTP confirmed on his phone · 15 Oct</span></div></div>
+          <div class="step"><span class="n now">4</span><div style="flex-grow: 1"><strong>Photo</strong><br><span class="sub">Shown to the customer and the approver on every pickup. Plain background, face only, taken at the branch.</span><div class="ph" style="height: 70px; margin-top: 8px">Take photo with webcam or upload</div></div></div>
+          <div class="step"><span class="n todo">5</span><div><strong>Training</strong><br><span class="sub">15-minute walkthrough on his own phone (scan, unlock, pouches, seal, branch). Trainer signs off; date and trainer are recorded.</span></div></div>
+          <div class="step"><span class="n todo">6</span><div><strong>Dry run with the training box</strong><br><span class="sub">Box 099 is a training box: a full practice pickup at the branch, approved by Meena S, nothing real inside. Must complete without help before going live.</span></div></div>
+        </div>
+        <div class="row"><span>Goes live when</span><strong>All 6 done · then appears in Collectors as Active and can be assigned</strong></div>
+        <div style="display: flex; gap: 8px"><a href="#save" class="btn">Save photo and continue</a><a href="#remind" class="btn sec">Send reminder to Pawan</a><span class="btn dis">Mark live (locked until step 6)</span></div>
+        <span class="sub">Every step is logged with who completed it. HO sees onboarding time per branch on Reports.</span>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Alerts" class="scr" data-title="D1 Alerts inbox"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts" class="on">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Alerts · Pitampura</h1><span class="sub">Raised by the boxes and the system. Red needs a person now; amber needs attention today. Each alert is closed with a note.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: flex; gap: 8px"><button class="tab on">Open · 4</button><button class="tab">Closed today · 3</button><button class="tab">All (30 d)</button></div>
+    <div style="display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <a href="#a1" class="al red on"><span class="pill p-red">Tamper</span><div><strong>Box 118 · lid opened in transit</strong><br><span class="sub">14:07 · MT-0038 · Vikas T · 600 m from branch</span></div></a>
+        <a href="#a2" class="al amber"><span class="pill p-amber">Battery</span><div><strong>Box 121 at 18%</strong><br><span class="sub">14:40 · MT-0039 · sealed, 2.1 km to branch</span></div></a>
+        <a href="#a3" class="al amber"><span class="pill p-amber">Offline</span><div><strong>Box 115 silent for 3 h 12 min</strong><br><span class="sub">11:28 · at branch · last battery 52%</span></div></a>
+        <a href="#a4" class="al"><span class="pill p-gray">Declined</span><div><strong>Unlock declined · MT-0043 request 1</strong><br><span class="sub">15:04 · Meena S: collector 1.6 km from address</span></div></a>
+        <a href="#a5" class="al amber"><span class="pill p-amber">Lid open</span><div><strong>Box 123 lid open 21 min at customer</strong><br><span class="sub">15:13 · MT-0041 · Ramesh K · collector nudged</span></div></a>
+        <span class="lbl" style="margin-top: 8px">Closed today</span>
+        <div class="al" style="opacity: .75"><span class="pill p-green">Closed</span><div>Request expired · MT-0036 · re-requested OK<br><span class="sub">11:52 · closed by system</span></div></div>
+        <div class="al" style="opacity: .75"><span class="pill p-green">Closed</span><div>Box 116 battery 9% · now charging<br><span class="sub">10:10 · closed by Priya N</span></div></div>
+      </div>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Tamper · Box 118 · MT-0038</span><span class="pill p-red">Open · 1 h 08 min</span></div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="row"><span>What the box reported</span><strong>Lid opened 14:07:22, closed 14:07:41</strong></div>
+            <div class="row"><span>Where</span><strong>28.7021, 77.1298 · Pitampura main road</strong></div>
+            <div class="row"><span>Trip state at the time</span><strong>Sealed, on the way (since 13:58)</strong></div>
+            <div class="row"><span>Collector</span><strong>Vikas T · phone 8 m from box</strong></div>
+            <div class="row"><span>Pouches in box</span><strong>1 · PP-MT-00402</strong></div>
+            <div class="row"><span>Notified</span><strong>Meena S, Arun P, Track0tic ops · 14:07</strong></div>
+          </div>
+          <div class="ph" style="height: 150px">Map: box trail with the lid-open point marked, 600 m from branch</div>
+        </div>
+        <span class="lbl">Effect</span>
+        <span class="sub">Pickup MT-0038 is flagged. The box still opens only at the branch with normal approval. The pouch record for PP-MT-00402 shows Breached permanently; the approver sees this before releasing the branch unlock.</span>
+        <span class="lbl">Close this alert</span>
+        <textarea class="input" placeholder="What was found at the branch (e.g. pouch seal intact, lid sensor false trigger confirmed by Track0tic ticket #…)"></textarea>
+        <div style="display: flex; gap: 8px"><a href="#Pickup-Detail" class="btn sec">Open pickup</a><a href="#Alerts" class="btn">Close with note</a></div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Override" class="scr" data-title="D2 Emergency override (HO admin)"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">HO admin · all branches</div>
+    <select aria-label="Branch"><option>Pitampura</option><option>All branches (Delhi North)</option></select>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals</a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">3</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override" class="on">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1" style="color: #991B1B">Emergency override</h1><span class="sub">Opens a box outside the normal rules. Use only for a jammed box, a lost collector phone after sealing, a medical or police situation. The pickup is marked Override forever and Track0tic is notified at once.</span></div>
+      <span class="who">Sanjay M · HO admin</span>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 16px">
+      <div class="card" style="border-color: #FECACA">
+        <span class="lbl">1 · Which pickup</span>
+        <div class="f"><label for="pk">Pickup or box</label><input id="pk" class="input" value="MT-2026-10-19-0040 · Box 117 · Amit S"></div>
+        <div class="row"><span>State now</span><strong>Sealed, on the way · 4 pouches · 3.4 km from Pitampura</strong></div>
+        <div class="row"><span>Why normal unlock is not possible</span><strong>Collector phone lost after sealing (reported 15:20)</strong></div>
+        <span class="lbl">2 · Reason (required, shown in the audit log and the compliance PDF)</span>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label class="opt"><input type="radio" name="r"> Box jammed, will not unlock on approval</label>
+          <label class="opt"><input type="radio" name="r" checked> Collector phone lost after sealing</label>
+          <label class="opt"><input type="radio" name="r"> Medical or police situation</label>
+          <label class="opt"><input type="radio" name="r"> Other (explain below)</label>
+        </div>
+        <textarea class="ta">Collector Amit S reported phone lost at 15:20 near Rani Bagh. Box 117 is sealed with 4 pouches and is being brought to Pitampura by Amit S accompanied by Arun P. Box to be opened at the vault under Arun P and Meena S.</textarea>
+        <span class="lbl">3 · Where it will open</span>
+        <div class="f"><label for="wh">Allowed location</label><input id="wh" class="input" value="Pitampura branch only (inside 100 m ring)" readonly></div>
+        <span class="sub">Override never opens a box outside a Muthoot branch. It removes the approval and lost-phone dependency only.</span>
+        <span class="lbl">4 · Confirm</span>
+        <div class="f"><label for="otp">Your login OTP (sent now to +91 98XXX XX009)</label><input id="otp" class="input" placeholder="6 digits"></div>
+        <div style="display: flex; gap: 8px"><a href="#Audit-Log" class="btn">Issue override unlock</a><a href="#Main" class="btn sec">Cancel</a></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <div class="card">
+          <span class="lbl">What happens</span>
+          <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: #374151">
+            <li>Track0tic ops are notified immediately</li>
+            <li>Branch approvers Meena S and Arun P are notified</li>
+            <li>A one-time unlock becomes available at the branch for 60 minutes; any branch approver can release it from the Approvals queue</li>
+            <li>Pickup MT-0040 is marked <strong>Override</strong> permanently; the compliance PDF carries this reason and your name</li>
+            <li>Audit log entry with your login, IP, time and this text</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="lbl">Overrides · last 90 days</span>
+          <table class="tbl">
+            <tr><th>Date</th><th>Pickup</th><th>Reason</th><th>By</th></tr>
+            <tr><td>03 Oct</td><td>MT-0211</td><td>Box jammed</td><td>Sanjay M</td></tr>
+            <tr><td>19 Sep</td><td>MT-0164</td><td>Phone lost</td><td>Sanjay M</td></tr>
+          </table>
+          <span class="sub">More than 2 a month per branch is reported to Muthoot audit automatically.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Pouch-Records" class="scr" data-title="D3 Pouch records"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records" class="on">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Pouch records</h1><span class="sub">Scan a pouch label with the desk scanner, or search. Same record the branch staff see on a phone.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center">
+      <input class="input" type="search" placeholder="Pouch ID, pickup, customer name, box, date" style="width: 420px" value="PP-MT-00420" aria-label="Search pouch records">
+      <button class="btn">Search</button>
+      <span class="sub">Cursor stays here so a desk QR scanner types straight in.</span>
+    </div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 16px">
+      <div class="card" style="padding: 0; overflow-x: auto">
+        <table class="tbl">
+          <tr><th>Pouch</th><th>Pickup</th><th>Customer</th><th>Box</th><th>Sealed</th><th>Delivered</th><th>Seal</th><th></th></tr>
+          <tr style="background: #EFF6FF"><td><strong>PP-MT-00420</strong></td><td>MT-0041</td><td>Sunita Devi</td><td>123</td><td>15:01</td><td>15:47</td><td><span class="pill p-green">Intact</span></td><td><a href="#pdf">PDF</a></td></tr>
+          <tr><td>PP-MT-00419</td><td>MT-0041</td><td>Sunita Devi</td><td>123</td><td>15:01</td><td>15:47</td><td><span class="pill p-green">Intact</span></td><td><a href="#pdf">PDF</a></td></tr>
+          <tr><td>PP-MT-00421</td><td>MT-0041</td><td>Sunita Devi</td><td>123</td><td>15:01</td><td>15:47</td><td><span class="pill p-green">Intact</span></td><td><a href="#pdf">PDF</a></td></tr>
+          <tr><td>PP-MT-00402</td><td>MT-0038</td><td>Pooja Mehta</td><td>118</td><td>13:58</td><td>–</td><td><span class="pill p-red">Breached</span></td><td><a href="#pdf">PDF</a></td></tr>
+          <tr><td>PP-MT-00398</td><td>MT-0037</td><td>Anil Kumar</td><td>120</td><td>11:31</td><td>12:14</td><td><span class="pill p-green">Intact</span></td><td><a href="#pdf">PDF</a></td></tr>
+          <tr><td>PP-MT-00397</td><td>MT-0037</td><td>Anil Kumar</td><td>120</td><td>11:31</td><td>12:14</td><td><span class="pill p-green">Intact</span></td><td><a href="#pdf">PDF</a></td></tr>
+          <tr><td>PP-MT-00371</td><td>MT-0211</td><td>R. Sood</td><td>117</td><td>03 Oct</td><td>03 Oct</td><td><span class="pill p-amber">Override</span></td><td><a href="#pdf">PDF</a></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Pouch PP-MT-00420</span><span class="pill p-green">Seal intact</span></div>
+        <div class="row"><span>Pickup</span><strong>MT-2026-10-19-0041 · 2 of 3 pouches</strong></div>
+        <div class="row"><span>Box</span><strong>123 · TRK-LB-000123</strong></div>
+        <div class="row"><span>Customer</span><strong>Sunita Devi</strong></div>
+        <div class="row"><span>Collector</span><strong>Ramesh K · MF-DL-00871</strong></div>
+        <div class="row"><span>Branch approver</span><strong>Meena S (both unlocks)</strong></div>
+        <span class="lbl">Chain of custody</span>
+        <div class="ev"><span class="dot"></span><span><strong>14:52</strong> Unlocked at customer, Rohini Sec 9 · approved Meena S · phone 320 m, box 14 m</span></div>
+        <div class="ev"><span class="dot"></span><span><strong>14:58</strong> Pouch added to box by Ramesh K</span></div>
+        <div class="ev"><span class="dot"></span><span><strong>15:01</strong> Lid closed · trip sealed · customer SMS sent</span></div>
+        <div class="ev"><span class="dot" style="background: #059669"></span><span><strong>15:01–15:47</strong> On the way · 4.2 km · no lid events · battery 91→88%</span></div>
+        <div class="ev"><span class="dot"></span><span><strong>15:47</strong> Unlocked at Pitampura, 36 m from branch point · approved Meena S</span></div>
+        <div class="ph" style="height: 90px">Map: customer → branch trail</div>
+        <div style="display: flex; gap: 8px"><a href="#pdf" class="btn">Compliance PDF (pickup)</a><a href="#Pickup-Detail" class="btn sec">Open pickup</a></div>
+        <span class="sub">Customer address and mobile are not shown on records. Overrides and breaches stay on the record permanently.</span>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Reports" class="scr" data-title="D4 Reports"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports" class="on">Reports</a>
+    <a href="#Audit-Log">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Reports · Pitampura</h1><span class="sub">Every number comes from the event log; click any figure to see the pickups behind it.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+      <button class="tab on">Operations</button><button class="tab">Collectors</button><button class="tab">Approvals</button><button class="tab">Boxes</button><button class="tab">Exceptions</button>
+      <span style="flex-grow: 1"></span>
+      <input class="input" type="date" value="2026-09-19" aria-label="From"><span class="sub">to</span><input class="input" type="date" value="2026-10-19" aria-label="To">
+      <a href="#csv" class="btn">Export CSV</a><a href="#pdf" class="btn">Monthly PDF</a><a href="#sched" class="btn">Schedule email</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+      <div class="card"><span class="lbl">Pickups</span><span class="kpi">412</span><span class="sub">last 30 days</span></div>
+      <div class="card"><span class="lbl">Delivered</span><span class="kpi" style="color: #065F46">386</span><span class="sub">93.7%</span></div>
+      <div class="card"><span class="lbl">No pickup</span><span class="kpi">24</span><span class="sub">5.8%</span></div>
+      <div class="card"><span class="lbl">Flagged</span><span class="kpi" style="color: #991B1B">2</span><span class="sub">1 tamper, 1 override</span></div>
+      <div class="card"><span class="lbl">Door to vault</span><span class="kpi">51 min</span><span class="sub">median · P90 84 min</span></div>
+      <div class="card"><span class="lbl">Approval wait</span><span class="kpi">42 s</span><span class="sub">median · 8 expired</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+      <div class="card">
+        <span class="lbl">Pickups per day · last 30 days</span>
+        <div class="ph" style="height: 180px">Bar per day: delivered (dark) + no pickup (light) + flagged (red mark)</div>
+      </div>
+      <div class="card">
+        <span class="lbl">Time from unlock at customer to seal</span>
+        <div class="ph" style="height: 180px">Distribution: most pickups 8–20 min · long tail above 40 min listed below</div>
+      </div>
+      <div class="card">
+        <span class="lbl">By collector · last 30 days</span>
+        <table class="tbl">
+          <tr><th>Collector</th><th>Pickups</th><th>Delivered</th><th>No pickup</th><th>Avg door-to-vault</th><th>Declines</th></tr>
+          <tr><td>Deepak M</td><td>25</td><td>24</td><td>1</td><td>47 min</td><td>0</td></tr>
+          <tr><td>Ramesh K</td><td>22</td><td>21</td><td>1</td><td>49 min</td><td>0</td></tr>
+          <tr><td>Vikas T</td><td>21</td><td>19</td><td>1</td><td>58 min</td><td>0</td></tr>
+          <tr><td>Sunil V</td><td>19</td><td>17</td><td>2</td><td>55 min</td><td>1</td></tr>
+          <tr><td>Amit S</td><td>18</td><td>18</td><td>0</td><td>44 min</td><td>0</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <span class="lbl">Exceptions · last 30 days</span>
+        <table class="tbl">
+          <tr><th>Type</th><th>Count</th><th>Last</th><th></th></tr>
+          <tr><td>Tamper (lid open in transit)</td><td>1</td><td>19 Oct · MT-0038</td><td><a href="#Alerts">View</a></td></tr>
+          <tr><td>Emergency override</td><td>1</td><td>03 Oct · MT-0211</td><td><a href="#Override">View</a></td></tr>
+          <tr><td>Approval declined</td><td>4</td><td>19 Oct · MT-0043</td><td><a href="#Pending-Requests">View</a></td></tr>
+          <tr><td>Approval expired</td><td>8</td><td>19 Oct · MT-0036</td><td></td></tr>
+          <tr><td>Box offline during pickup</td><td>3</td><td>14 Oct · MT-0298</td><td></td></tr>
+          <tr><td>Rescheduled (box offline)</td><td>2</td><td>14 Oct</td><td></td></tr>
+          <tr><td>Code fallback used</td><td>5</td><td>17 Oct</td><td></td></tr>
+          <tr><td>Collector mobile changed</td><td>1</td><td>08 Oct</td><td></td></tr>
+        </table>
+      </div>
+    </div>
+  </main>
+</div></section>
+<section id="Audit-Log" class="scr" data-title="D5 Audit log"><div style="display: flex; flex-wrap: wrap; min-height: 800px; width: 100%">
+  <aside class="nav">
+    <div class="brand">Track0tic · Muthoot</div>
+    <div class="br">Pitampura branch</div>
+    <a href="#Main">Dashboard</a>
+    <a href="#Pickups">Pickups</a>
+    <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Boxes">Boxes</a>
+    <a href="#Collectors">Collectors</a>
+    <a href="#Approvers">Approvers</a>
+    <a href="#Onboarding">Onboarding <span class="badge">3</span></a>
+    <a href="#Alerts">Alerts <span class="badge red">1</span></a>
+    <a href="#Pouch-Records">Pouch records</a>
+    <a href="#Reports">Reports</a>
+    <a href="#Audit-Log" class="on">Audit log</a>
+    <div class="sec">HO admin only</div>
+    <a href="#Branches">Branches</a>
+    <a href="#Settings">Settings</a>
+    <a href="#Override">Emergency override</a>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Audit log · Pitampura</h1><span class="sub">Append-only. Every action by a person or a box, kept 5 years. Read-only for everyone, including HO admin and Track0tic.</span></div>
+      <span class="who">Priya N · Branch admin</span>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+      <input class="input" type="search" placeholder="Pickup, box, person, pouch…" style="width: 280px" aria-label="Search">
+      <select class="input" aria-label="Type"><option>All types</option><option>Approvals</option><option>Unlocks</option><option>Box events</option><option>Admin changes</option><option>Logins</option><option>Overrides</option></select>
+      <select class="input" aria-label="Actor"><option>Anyone</option><option>People</option><option>Boxes</option><option>System</option></select>
+      <input class="input" type="date" value="2026-10-19" aria-label="Date">
+      <span style="flex-grow: 1"></span>
+      <a href="#csv" class="btn">Export (signed CSV)</a>
+    </div>
+    <div class="card" style="padding: 0; overflow-x: auto">
+      <table class="tbl">
+        <tr><th>Time</th><th>Type</th><th>Actor</th><th>Subject</th><th>What</th><th>Where / from</th><th>Ref</th></tr>
+        <tr><td>15:47:02</td><td><span class="pill p-green">Unlock</span></td><td>Box 123</td><td>MT-0041</td><td>Acknowledged branch unlock · cmd 9c2e</td><td>28.6987, 77.1312 · 36 m from branch</td><td>ev-88214</td></tr>
+        <tr><td>15:46:48</td><td><span class="pill p-blue">Approval</span></td><td>Meena S</td><td>MT-0041</td><td>Approved Unlock at Branch</td><td>portal · 103.XX.XX.4 (branch IP)</td><td>ev-88213</td></tr>
+        <tr><td>15:45:30</td><td><span class="pill p-blue">Request</span></td><td>Ramesh K</td><td>MT-0041</td><td>Requested Unlock at Branch</td><td>phone · GPS 28.6988, 77.1310</td><td>ev-88211</td></tr>
+        <tr><td>15:20:10</td><td><span class="pill p-amber">Admin</span></td><td>Priya N</td><td>Amit S</td><td>Reported lost phone · session revoked</td><td>portal · branch IP</td><td>ev-88190</td></tr>
+        <tr><td>15:04:12</td><td><span class="pill p-red">Decline</span></td><td>Meena S</td><td>MT-0043</td><td>Declined Unlock at Customer: "collector 1.6 km from address"</td><td>portal · branch IP</td><td>ev-88171</td></tr>
+        <tr><td>15:01:40</td><td><span class="pill p-gray">System</span></td><td>System</td><td>MT-0041</td><td>Customer SMS sent (sealed, 3 pouches) · delivered</td><td>SMS gateway</td><td>ev-88165</td></tr>
+        <tr><td>15:01:08</td><td><span class="pill p-green">Box</span></td><td>Box 123</td><td>MT-0041</td><td>Lid closed · trip sealed</td><td>28.7195, 77.1126</td><td>ev-88163</td></tr>
+        <tr><td>14:58:30</td><td><span class="pill p-blue">Bind</span></td><td>Ramesh K</td><td>PP-MT-00421</td><td>Pouch added to Box 123</td><td>phone · GPS 28.7195, 77.1127</td><td>ev-88160</td></tr>
+        <tr><td>14:58:02</td><td><span class="pill p-red">Reject</span></td><td>Ramesh K</td><td>PP-MT-00388</td><td>Pouch refused: already used on MT-0032</td><td>phone</td><td>ev-88159</td></tr>
+        <tr><td>14:52:10</td><td><span class="pill p-green">Unlock</span></td><td>Box 123</td><td>MT-0041</td><td>Acknowledged customer unlock · cmd 7f3a</td><td>28.7195, 77.1126</td><td>ev-88151</td></tr>
+        <tr><td>14:51:04</td><td><span class="pill p-blue">Approval</span></td><td>Meena S</td><td>MT-0041</td><td>Approved Unlock at Customer · phone 320 m, box 14 m</td><td>portal · branch IP</td><td>ev-88150</td></tr>
+        <tr><td>14:50:12</td><td><span class="pill p-blue">Request</span></td><td>Ramesh K</td><td>MT-0041</td><td>Requested Unlock at Customer · details confirmed · note recorded</td><td>phone · GPS 28.7196, 77.1124</td><td>ev-88148</td></tr>
+        <tr><td>14:07:22</td><td><span class="pill p-red">Tamper</span></td><td>Box 118</td><td>MT-0038</td><td>Lid opened in Sealed state · alert raised</td><td>28.7021, 77.1298</td><td>ev-88102</td></tr>
+        <tr><td>12:30:00</td><td><span class="pill p-amber">Admin</span></td><td>Sanjay M (HO)</td><td>Settings</td><td>Changed "Show in red above" 800 m → 1 km · reason: pilot data</td><td>portal · HO IP</td><td>ev-88040</td></tr>
+        <tr><td>09:20:00</td><td><span class="pill p-amber">Admin</span></td><td>Priya N</td><td>MT-0041</td><td>Assigned Box 123 and Ramesh K · customer SMS sent</td><td>portal · branch IP</td><td>ev-87911</td></tr>
+        <tr><td>09:15:12</td><td><span class="pill p-amber">Admin</span></td><td>Neha R (Ops)</td><td>MT-0041</td><td>Created pickup work order</td><td>portal · branch IP</td><td>ev-87908</td></tr>
+        <tr><td>08:40:05</td><td><span class="pill p-gray">Login</span></td><td>Ramesh K</td><td>–</td><td>Collector login (mobile + OTP)</td><td>phone</td><td>ev-87880</td></tr>
+      </table>
+    </div>
+    <span class="sub">Showing 17 of 1,284 today. Each row carries a hash chained to the previous row; the export is signed so an auditor can verify nothing was removed.</span>
+  </main>
+</div></section></div>
+    <div class="cap" id="cap"></div>
+  </main>
+</div>
+<script>
+(function(){
+  var order = ["Portal-Login", "Main", "Pickups", "Create-Pickup", "Pickup-Detail", "Pending-Requests", "Boxes", "Box-Detail", "Branch-Receive", "Collectors", "Approvers", "Branches", "Settings", "Users-Roles", "Onboarding", "Alerts", "Override", "Pouch-Records", "Reports", "Audit-Log"];
+  function cur(){ var id=(location.hash||"#"+order[0]).slice(1); return order.indexOf(id)<0?order[0]:id; }
+  function show(){
+    var id = cur();
+    document.querySelectorAll(".scr").forEach(function(s){ s.classList.toggle("on", s.id===id); });
+    document.querySelectorAll(".side a").forEach(function(a){ a.classList.toggle("on", a.dataset.s===id); });
+    document.getElementById("cap").textContent = document.getElementById(id).dataset.title;
+    window.scrollTo(0,0);
+  }
+  function step(d){ var i=order.indexOf(cur()); i=Math.min(order.length-1,Math.max(0,i+d)); location.hash="#"+order[i]; }
+  document.getElementById("prev").onclick=function(){step(-1);};
+  document.getElementById("next").onclick=function(){step(1);};
+  window.addEventListener("hashchange", show);
+  if(!location.hash) location.hash="#"+order[0];
+  show();
+})();
+</script></body></html>
