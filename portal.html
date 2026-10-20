@@ -602,7 +602,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
 #Reports .nav .sec{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9CA3AF;padding:14px 10px 4px}
 #Reports .badge{font-size:11px;font-weight:600;background:#374151;color:#fff;border-radius:999px;padding:1px 7px}
 #Reports .badge.red{background:#B91C1C}
-#Reports .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px}
+#Reports .main{flex:999 1 560px;min-width:0;padding:24px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:18px}
 #Reports .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
 #Reports .h1{font-size:22px;font-weight:600;margin:0}
 #Reports .sub{font-size:13px;color:#4B5563}
@@ -618,6 +618,10 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
 #Reports .input{height:36px;border:1px solid #9CA3AF;border-radius:8px;padding:0 10px;font-size:13px;font-family:inherit;color:#111827;background:#fff}
 #Reports .btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid #1D4ED8;background:#fff;color:#1D4ED8;text-decoration:none;cursor:pointer;font-family:inherit}
 #Reports .ph{background:repeating-linear-gradient(45deg,#F3F4F6,#F3F4F6 8px,#E5E7EB 8px,#E5E7EB 16px);border:1px dashed #9CA3AF;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#4B5563;font-size:13px;text-align:center}
+#Reports .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+#Reports .p-red{background:#FEE2E2;color:#991B1B}
+#Reports .p-amber{background:#FEF3C7;color:#92400E}
+#Reports .p-green{background:#D1FAE5;color:#065F46}
 #Audit-Log{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#F3F4F6}
 #Audit-Log a{color:#1D4ED8}
 #Audit-Log a:hover{color:#1E40AF}
@@ -1811,6 +1815,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
     <a href="#Main">Dashboard</a>
     <a href="#Pickups">Pickups</a>
     <a href="#Pending-Requests">Approvals <span class="badge">2</span></a>
+    <a href="#Branch-Receive">Receive at vault <span class="badge">1</span></a>
     <a href="#Boxes">Boxes</a>
     <a href="#Collectors">Collectors</a>
     <a href="#Approvers">Approvers</a>
@@ -1821,62 +1826,75 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
     <a href="#Audit-Log">Audit log</a>
     <div class="sec">HO admin only</div>
     <a href="#Branches">Branches</a>
+    <a href="#Users-Roles">Users &amp; roles</a>
     <a href="#Settings">Settings</a>
     <a href="#Override">Emergency override</a>
   </aside>
   <main class="main">
     <div class="top">
-      <div><h1 class="h1">Reports · Pitampura</h1><span class="sub">Every number comes from the event log; click any figure to see the pickups behind it.</span></div>
+      <div><h1 class="h1">Reports · Pitampura</h1><span class="sub">Every number comes from the box telemetry and the event log; click any figure to see the pickups behind it. HO sees the same tabs across branches.</span></div>
       <span class="who">Priya N · Branch admin</span>
     </div>
     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
-      <button class="tab on">Operations</button><button class="tab">Collectors</button><button class="tab">Approvals</button><button class="tab">Boxes</button><button class="tab">Exceptions</button>
+      <button class="tab">Operations</button><button class="tab on">Distance &amp; time</button><button class="tab">Collectors</button><button class="tab">Customers</button><button class="tab">Approvals</button><button class="tab">Boxes</button><button class="tab">Exceptions</button><button class="tab">Compliance</button>
       <span style="flex-grow: 1"></span>
-      <input class="input" type="date" value="2026-09-19" aria-label="From"><span class="sub">to</span><input class="input" type="date" value="2026-10-19" aria-label="To">
+      <input class="input" type="date" value="2026-09-20" aria-label="From"><span class="sub">to</span><input class="input" type="date" value="2026-10-20" aria-label="To">
       <a href="#csv" class="btn">Export CSV</a><a href="#pdf" class="btn">Monthly PDF</a><a href="#sched" class="btn">Schedule email</a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
-      <div class="card"><span class="lbl">Pickups</span><span class="kpi">412</span><span class="sub">last 30 days</span></div>
-      <div class="card"><span class="lbl">Delivered</span><span class="kpi" style="color: #065F46">386</span><span class="sub">93.7%</span></div>
-      <div class="card"><span class="lbl">No pickup</span><span class="kpi">24</span><span class="sub">5.8%</span></div>
-      <div class="card"><span class="lbl">Flagged</span><span class="kpi" style="color: #991B1B">2</span><span class="sub">1 tamper, 1 override</span></div>
+      <div class="card"><span class="lbl">Distance travelled</span><span class="kpi">3,412 km</span><span class="sub">412 pickups · box GPS</span></div>
+      <div class="card"><span class="lbl">Per pickup</span><span class="kpi">8.3 km</span><span class="sub">median · P90 14.6 km</span></div>
+      <div class="card"><span class="lbl">Branch to customer</span><span class="kpi">4.1 km</span><span class="sub">median one way</span></div>
       <div class="card"><span class="lbl">Door to vault</span><span class="kpi">51 min</span><span class="sub">median · P90 84 min</span></div>
-      <div class="card"><span class="lbl">Approval wait</span><span class="kpi">42 s</span><span class="sub">median · 8 expired</span></div>
+      <div class="card"><span class="lbl">Time at customer</span><span class="kpi">14 min</span><span class="sub">unlock to seal · median</span></div>
+      <div class="card"><span class="lbl">Sealed on the road</span><span class="kpi">22 min</span><span class="sub">median · longest 1 h 48</span></div>
     </div>
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
       <div class="card">
-        <span class="lbl">Pickups per day · last 30 days</span>
-        <div class="ph" style="height: 180px">Bar per day: delivered (dark) + no pickup (light) + flagged (red mark)</div>
+        <span class="lbl">Kilometres per day · last 30 days</span>
+        <div class="ph" style="height: 170px">Bar per day: km travelled by all boxes · line: pickups that day</div>
       </div>
       <div class="card">
-        <span class="lbl">Time from unlock at customer to seal</span>
-        <div class="ph" style="height: 180px">Distribution: most pickups 8–20 min · long tail above 40 min listed below</div>
+        <span class="lbl">Where the pickups are · heat map</span>
+        <div class="ph" style="height: 170px">Map of customer locations around Pitampura, branch ring, darker = more pickups · tap an area for the list</div>
       </div>
       <div class="card">
-        <span class="lbl">By collector · last 30 days</span>
+        <span class="lbl">By collector · distance and time</span>
         <table class="tbl">
-          <tr><th>Collector</th><th>Pickups</th><th>Delivered</th><th>No pickup</th><th>Avg door-to-vault</th><th>Declines</th></tr>
-          <tr><td>Deepak M</td><td>25</td><td>24</td><td>1</td><td>47 min</td><td>0</td></tr>
-          <tr><td>Ramesh K</td><td>22</td><td>21</td><td>1</td><td>49 min</td><td>0</td></tr>
-          <tr><td>Vikas T</td><td>21</td><td>19</td><td>1</td><td>58 min</td><td>0</td></tr>
-          <tr><td>Sunil V</td><td>19</td><td>17</td><td>2</td><td>55 min</td><td>1</td></tr>
-          <tr><td>Amit S</td><td>18</td><td>18</td><td>0</td><td>44 min</td><td>0</td></tr>
+          <tr><th>Collector</th><th>Pickups</th><th>km total</th><th>km / pickup</th><th>Door to vault</th><th>Time at customer</th><th>Longest sealed on road</th></tr>
+          <tr><td>Deepak M</td><td>25</td><td>228</td><td>9.1</td><td>47 min</td><td>12 min</td><td>41 min</td></tr>
+          <tr><td>Ramesh K</td><td>22</td><td>176</td><td>8.0</td><td>49 min</td><td>15 min</td><td>38 min</td></tr>
+          <tr><td>Vikas T</td><td>21</td><td>201</td><td>9.6</td><td>58 min</td><td>16 min</td><td style="color: #92400E">1 h 48 · MT-0038</td></tr>
+          <tr><td>Sunil V</td><td>19</td><td>142</td><td>7.5</td><td>55 min</td><td>18 min</td><td>52 min</td></tr>
+          <tr><td>Amit S</td><td>18</td><td>131</td><td>7.3</td><td>44 min</td><td>11 min</td><td>35 min</td></tr>
         </table>
+        <span class="sub">Distance is the box's GPS trail, branch to customer to branch. Detours above 1.5× the direct route are listed under Exceptions.</span>
       </div>
       <div class="card">
-        <span class="lbl">Exceptions · last 30 days</span>
+        <span class="lbl">Routes worth a look · last 30 days</span>
         <table class="tbl">
-          <tr><th>Type</th><th>Count</th><th>Last</th><th></th></tr>
-          <tr><td>Tamper (lid open in transit)</td><td>1</td><td>19 Oct · MT-0038</td><td><a href="#Alerts">View</a></td></tr>
-          <tr><td>Emergency override</td><td>1</td><td>03 Oct · MT-0211</td><td><a href="#Override">View</a></td></tr>
-          <tr><td>Approval declined</td><td>4</td><td>19 Oct · MT-0043</td><td><a href="#Pending-Requests">View</a></td></tr>
-          <tr><td>Approval expired</td><td>8</td><td>19 Oct · MT-0036</td><td></td></tr>
-          <tr><td>Box offline during pickup</td><td>3</td><td>14 Oct · MT-0298</td><td></td></tr>
-          <tr><td>Rescheduled (box offline)</td><td>2</td><td>14 Oct</td><td></td></tr>
-          <tr><td>Code fallback used</td><td>5</td><td>17 Oct</td><td></td></tr>
-          <tr><td>Collector mobile changed</td><td>1</td><td>08 Oct</td><td></td></tr>
+          <tr><th>Pickup</th><th>Direct</th><th>Travelled</th><th>Ratio</th><th>Sealed on road</th><th>Note</th></tr>
+          <tr><td><a href="#Pickup-Detail">MT-0038</a></td><td>3.2 km</td><td>9.8 km</td><td><span class="pill p-red">3.1×</span></td><td>1 h 48</td><td>Tamper flagged · stop of 52 min at Pitampura main road</td></tr>
+          <tr><td>MT-0291</td><td>5.1 km</td><td>9.4 km</td><td><span class="pill p-amber">1.8×</span></td><td>44 min</td><td>Unexplained stop 14 min</td></tr>
+          <tr><td>MT-0244</td><td>6.0 km</td><td>9.9 km</td><td><span class="pill p-amber">1.6×</span></td><td>39 min</td><td>Road closure · collector note</td></tr>
+          <tr><td>MT-0217</td><td>2.8 km</td><td>4.5 km</td><td><span class="pill p-amber">1.6×</span></td><td>21 min</td><td>No stop · traffic diversion</td></tr>
         </table>
+        <span class="sub">Ratio = travelled ÷ direct. Stops of more than 5 minutes while sealed are listed with their place.</span>
       </div>
+    </div>
+    <div class="card">
+      <span class="lbl">What each tab holds</span>
+      <table class="tbl">
+        <tr><th>Tab</th><th>Figures</th></tr>
+        <tr><td>Operations</td><td>Pickups, delivered, no pickup, flagged, by day and by week; appointment confirmed / unconfirmed / rescheduled / cancelled; pickups per box per day</td></tr>
+        <tr><td>Distance &amp; time</td><td>This tab: km total and per pickup, branch-to-customer distance, door-to-vault, time at customer, sealed-on-road, km per day, heat map, routes with detours or stops</td></tr>
+        <tr><td>Collectors</td><td>Pickups, delivered, km, times, declines, customer "stop" events, onboarding date, days active</td></tr>
+        <tr><td>Customers</td><td>Approved on own phone vs branch fallback, OTP completion time, "something is wrong" count and reasons, confirmation response time, language split, record-link opens</td></tr>
+        <tr><td>Approvals</td><td>Requests, approved, declined with reasons, expired, response time per approver, backup usage, code fallback usage</td></tr>
+        <tr><td>Boxes</td><td>Trips per box, km per box, battery lows, offline episodes and duration, unlock success, label stock</td></tr>
+        <tr><td>Exceptions</td><td>Tamper, override, declined, expired, offline at customer, rescheduled, lid-open-too-long, request-limit hits, vault count mismatch</td></tr>
+        <tr><td>Compliance</td><td>Pickups with full two-party record, with branch fallback, with override; seal intact / breached; audit-log integrity check result; export for Muthoot audit</td></tr>
+      </table>
     </div>
   </main>
 </div></section>
