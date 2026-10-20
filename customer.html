@@ -13,6 +13,21 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
 .scr{display:none} .scr.on{display:block} .cap{font-size:13px;color:#4B5563}
 .row-nav{display:flex;gap:8px} .row-nav button{height:36px;padding:0 14px;border-radius:8px;border:1px solid #9CA3AF;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
 @media (max-width:760px){.app{flex-direction:column}.side{width:auto;height:auto;position:static}.phone{width:100%;border-radius:0;border:0}}
+#Customer-Scan{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
+#Customer-Scan a{color:#92400E}
+#Customer-Scan a:hover{color:#78350F}
+#Customer-Scan .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Customer-Scan .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Customer-Scan .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Customer-Scan .card{border:1px solid #FDE68A;background:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+#Customer-Scan .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Customer-Scan .btn{display:flex;align-items:center;justify-content:center;height:56px;border-radius:10px;font-size:17px;font-weight:600;border:1px solid #B45309;background:#B45309;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Customer-Scan .view{position:relative;height:300px;border-radius:16px;background:repeating-linear-gradient(45deg,#1F2937,#1F2937 10px,#374151 10px,#374151 20px);display:flex;align-items:center;justify-content:center}
+#Customer-Scan .frame{width:200px;height:200px;border:3px solid #FBBF24;border-radius:16px;box-shadow:0 0 0 2000px rgba(17,24,39,.55)}
+#Customer-Scan .hint{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:13px;color:#F3F4F6}
+#Customer-Scan .lang{display:flex;gap:6px}
+#Customer-Scan .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
+#Customer-Scan .lang span.on{background:#111827;color:#fff;border-color:#111827}
 #Customer-Verify{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
 #Customer-Verify a{color:#92400E}
 #Customer-Verify a:hover{color:#78350F}
@@ -57,10 +72,28 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
 #Customer-Confirm .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
 #Customer-Confirm .lang span.on{background:#111827;color:#fff;border-color:#111827}
 </style></head><body>
-<div class="app"><nav class="side"><h1>Customer's phone</h1><p>What the Muthoot customer sees on their own phone after scanning the box. Three screens, no app, English or Hindi. Runs alongside the collector's screens S05 and S08.</p><a href="#Customer-Verify" data-s="Customer-Verify">K1 Customer phone · verify it&#x27;s you</a>
+<div class="app"><nav class="side"><h1>Customer's phone</h1><p>What the Muthoot customer sees on their own phone after scanning the box. Four screens, no app, English or Hindi. Runs alongside the collector's screens S05 and S08.</p><a href="#Customer-Scan" data-s="Customer-Scan">K0 Customer phone · scan the box QR (camera)</a>
+<a href="#Customer-Verify" data-s="Customer-Verify">K1 Customer phone · verify it&#x27;s you</a>
 <a href="#Customer-Approve" data-s="Customer-Approve">K2 Customer phone · approve the unlock</a>
 <a href="#Customer-Confirm" data-s="Customer-Confirm">K3 Customer phone · confirm pouches before seal</a><p style="margin-top:16px"><a href="collector.html" style="color:#1D4ED8">→ Collector app</a><br><a href="portal.html" style="color:#1D4ED8">→ Branch &amp; HO portal</a><br><a href="index.html" style="color:#1D4ED8">→ Start page</a></p></nav>
-<main class="stage"><div class="row-nav"><button id="prev">← Previous</button><button id="next">Next →</button></div><div class="phone"><section id="Customer-Verify" class="scr" data-title="K1 Customer phone · verify it&#x27;s you"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px">
+<main class="stage"><div class="row-nav"><button id="prev">← Previous</button><button id="next">Next →</button></div><div class="phone"><section id="Customer-Scan" class="scr" data-title="K0 Customer phone · scan the box QR (camera)"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px">
+  <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
+  <div class="lbl">Customer's phone · start</div>
+  <h1 class="h1">Scan the QR on the Muthoot box</h1>
+  <p class="p">The collector will show you a sticker on the box lid. Point your camera at it. No app needed; your normal camera works.</p>
+  <div class="view" role="img" aria-label="Camera viewfinder with a square guide">
+    <div class="frame"></div>
+    <div class="hint">Point at the sticker on the box lid</div>
+  </div>
+  <div class="card">
+    <div class="lbl">What happens next</div>
+    <p class="p" style="font-size: 14px">1. A code is sent to your mobile ending 204. 2. You check the collector's photo and ID. 3. You approve, and the box opens. Later you confirm your pouches before the box is sealed.</p>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <a href="#Customer-Verify" class="btn">Simulate scan → Box 123</a>
+  <p class="p" style="font-size: 12px; text-align: center">Camera not working? Open the link in the SMS Muthoot sent you; it leads to the same screen.</p>
+</div></section>
+<section id="Customer-Verify" class="scr" data-title="K1 Customer phone · verify it&#x27;s you"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px">
   <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
   <div class="lbl">Customer's phone · screen 1 of 3</div>
   <h1 class="h1">Verify it's you</h1>
@@ -123,7 +156,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
   <a href="#wrong" class="btn no" style="height: 48px; font-size: 15px">Something is wrong</a>
   <p class="p" style="font-size: 12px; text-align: center">"Something is wrong" pauses the pickup and alerts the branch; the collector can add or remove a pouch and ask you again.</p>
 </div></section></div><div class="cap" id="cap"></div></main></div>
-<script>(function(){var order=["Customer-Verify", "Customer-Approve", "Customer-Confirm"];
+<script>(function(){var order=["Customer-Scan", "Customer-Verify", "Customer-Approve", "Customer-Confirm"];
 function cur(){var id=(location.hash||"#"+order[0]).slice(1);return order.indexOf(id)<0?order[0]:id;}
 function show(){var id=cur();document.querySelectorAll(".scr").forEach(function(s){s.classList.toggle("on",s.id===id);});document.querySelectorAll(".side a").forEach(function(a){a.classList.toggle("on",a.dataset.s===id);});document.getElementById("cap").textContent=document.getElementById(id).dataset.title;window.scrollTo(0,0);}
 function step(d){var i=order.indexOf(cur());i=Math.min(order.length-1,Math.max(0,i+d));location.hash="#"+order[i];}

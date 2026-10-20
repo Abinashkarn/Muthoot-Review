@@ -1194,8 +1194,12 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
     <div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 16px">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">MT-0041 · Box 123 · unlocked 15:47 · Ramesh K</span><span class="pill p-amber">Handed over · awaiting receipt</span></div>
-        <label for="scan" class="sub">Scan each pouch label (desk scanner or camera)</label>
-        <input id="scan" class="input" placeholder="Cursor stays here · scan now" autofocus>
+        <label for="scan" class="sub">Scan each pouch label</label>
+        <div style="display: flex; gap: 8px; align-items: stretch">
+          <input id="scan" class="input" placeholder="Desk scanner: cursor stays here, scan now" autofocus style="flex: 1">
+          <a href="#camera" class="btn" style="height: 48px; white-space: nowrap">Use camera</a>
+        </div>
+        <span class="sub">On a phone or laptop without a desk scanner, Use camera opens the viewfinder; the same screen then works on the custodian's phone at the vault.</span>
         <div class="row"><span>Expected (bound by collector at customer)</span><strong>3 pouches</strong></div>
         <div style="display: flex; flex-direction: column; gap: 8px">
           <div class="item"><span>PP-MT-00419</span><span class="pill p-green">Received 15:51:02</span></div>
