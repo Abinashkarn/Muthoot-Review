@@ -843,6 +843,8 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
           <div class="f" style="grid-column: span 2"><label for="ca">Pickup address</label><input id="ca" class="input" value="H-12, Sector 9, Rohini, Delhi 110085"></div>
           <div class="f"><label for="ref">Sales / lead reference</label><input id="ref" class="input" placeholder="Muthoot lead ID (optional)"></div>
           <div class="f"><label for="dt">Planned date and time</label><input id="dt" class="input" type="datetime-local" value="2026-10-19T14:30"></div>
+          <div class="f"><label for="lang">Customer's language (for their phone screens)</label><select id="lang" class="input"><option>English</option><option selected>Hindi</option></select></div>
+          <div class="f"><label>Customer may need assistance</label><label style="display: flex; align-items: center; gap: 8px; font-size: 13px; height: 40px"><input type="checkbox" style="width: 18px; height: 18px"> No smartphone / elderly: branch approves instead of the customer</label></div>
         </div>
         <div class="ph" style="height: 110px">Map: address pinned at 28.7196 N, 77.1124 E · geocode confidence HIGH · drag pin to correct</div>
         <span class="lbl">2 · Destination branch</span>
@@ -914,7 +916,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
       <div style="display: flex; gap: 8px">
         <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Created<br><span class="sub">09:15</span></div>
         <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Ready to go<br><span class="sub">09:20 · Box 123 · Ramesh K</span></div>
-        <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Unlocked at customer<br><span class="sub">14:52 · approved Meena S</span></div>
+        <div class="step"><span class="n" style="background: #059669; color: #fff">✓</span>Unlocked at customer<br><span class="sub">14:52 · approved by customer</span></div>
         <div class="step"><span class="n" style="background: #1D4ED8; color: #fff">4</span>Pouches added<br><span class="sub">in progress · 0 so far</span></div>
         <div class="step"><span class="n" style="background: #E5E7EB; color: #4B5563">5</span>Sealed<br><span class="sub">–</span></div>
         <div class="step"><span class="n" style="background: #E5E7EB; color: #4B5563">6</span>Unlocked at branch<br><span class="sub">–</span></div>
@@ -928,7 +930,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
         <div class="ph" style="height: 220px">Map: box marker at customer (28.7195 N, 77.1126 E), customer pin 14 m away, branch 4.2 km, trail from branch</div>
         <span class="lbl">Timeline</span>
         <div class="ev"><span class="dot"></span><span><strong>14:52:10</strong> Box acknowledged unlock · GPS 28.7195, 77.1126</span></div>
-        <div class="ev"><span class="dot"></span><span><strong>14:51:04</strong> Approved by Meena S (portal) · phone-to-address 320 m, box-to-phone 14 m</span></div>
+        <div class="ev"><span class="dot" style="background: #B45309"></span><span><strong>14:51:04</strong> Approved by customer Sunita Devi on her phone (OTP to ••204) · branch Meena S watching · phone-to-address 320 m</span></div>
         <div class="ev"><span class="dot"></span><span><strong>14:50:12</strong> Unlock requested by Ramesh K · details confirmed</span></div>
         <div class="ev"><span class="dot" style="background: #9CA3AF"></span><span><strong>14:31</strong> Box arrived near customer address (within 500 m)</span></div>
         <div class="ev"><span class="dot" style="background: #9CA3AF"></span><span><strong>13:58</strong> Left branch geofence</span></div>
@@ -990,8 +992,8 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
     <div style="display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 16px">
       <div style="display: flex; flex-direction: column; gap: 10px">
         <span class="lbl">Pending · 2</span>
-        <a href="#r1" class="req on"><div style="display: flex; justify-content: space-between"><strong>Unlock at Customer</strong><span class="pill p-amber">9:12 left</span></div><span>Ramesh K · Box 123 · MT-0041</span><span class="sub">Sunita Devi, Rohini · location OK</span></a>
-        <a href="#r2" class="req"><div style="display: flex; justify-content: space-between"><strong>Unlock at Customer</strong><span class="pill p-amber">4:40 left</span></div><span>Sunil V · Box 119 · MT-0043</span><span class="sub" style="color: #991B1B">Harish Gupta, Shalimar Bagh · phone 1.6 km from address</span></a>
+        <a href="#r1" class="req on"><div style="display: flex; justify-content: space-between"><strong>Unlock at Customer · customer approving</strong><span class="pill p-amber">4:12 left</span></div><span>Ramesh K · Box 123 · MT-0041</span><span class="sub">Sunita Devi, Rohini · location OK · you can watch or stop, no action needed</span></a>
+        <a href="#r2" class="req"><div style="display: flex; justify-content: space-between"><strong>Unlock at Customer · branch fallback</strong><span class="pill p-amber">4:40 left</span></div><span>Sunil V · Box 119 · MT-0043</span><span class="sub" style="color: #991B1B">Harish Gupta · "customer has no smartphone" · phone 1.6 km from address · YOUR approval needed</span></a>
         <span class="lbl" style="margin-top: 8px">Decided today · 11</span>
         <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Branch · MT-0037</span><span class="pill p-green">Approved 12:14</span></div></div>
         <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Customer · MT-0037</span><span class="pill p-green">Approved 11:05</span></div></div>
@@ -999,7 +1001,8 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
         <div class="req" style="opacity: .8"><div style="display: flex; justify-content: space-between"><span>Unlock at Branch · MT-0036</span><span class="pill p-gray">Expired 11:52</span></div><span class="sub">Re-requested and approved 11:55</span></div>
       </div>
       <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Request · MT-0041 · Unlock at Customer</span><span class="pill p-amber">Requested 14:50:12 · 9:12 left</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: center"><span class="lbl">Request · MT-0041 · Unlock at Customer · customer is the approver</span><span class="pill p-amber">Requested 14:50:12 · 4:12 left</span></div>
+        <div style="padding: 10px 12px; border-radius: 8px; background: #FFFBEB; border: 1px solid #FDE68A; font-size: 13px">Sunita Devi is approving on her own phone (OTP sent to ••204, verified 14:50:40). You do not need to act. If anything looks wrong, Stop it below; your decline overrides the customer.</div>
         <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
           <div style="display: flex; flex-direction: column; gap: 8px">
             <div style="display: flex; gap: 12px; align-items: center"><span style="width: 56px; height: 56px; border-radius: 28px; background: #D1D5DB; flex-shrink: 0"></span><div><strong style="font-size: 15px">Ramesh K</strong><br><span class="sub">Collector · MF-DL-00871 · logged in 08:40</span></div></div>
@@ -1017,12 +1020,12 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
           </div>
         </div>
         <div style="display: flex; gap: 12px; align-items: center; margin-top: 6px">
-          <a href="#confirm" class="btn" style="flex: 1">Approve unlock…</a>
-          <a href="#decline" class="btn danger" style="flex: 1">Decline</a>
+          <span class="btn" style="flex: 1; background: #F3F4F6; color: #6B7280; border-color: #E5E7EB; pointer-events: none">Approve (customer is approving)</span>
+          <a href="#decline" class="btn danger" style="flex: 1">Stop this unlock</a>
         </div>
         <div style="border: 2px solid #1D4ED8; border-radius: 10px; padding: 14px; background: #EFF6FF; display: flex; flex-direction: column; gap: 10px">
-          <strong>Confirm: unlock Box 123 for Ramesh K at Sunita Devi's address?</strong>
-          <span class="sub">The box opens the moment you confirm. Approval is possible only here in the portal; the SMS you receive is a link to this page, not an approve button.</span>
+          <strong>Confirm step (shown when your approval is the one needed: branch fallback, or any Unlock at Branch)</strong>
+          <span class="sub">"Unlock Box 119 for Sunil V at Harish Gupta's address?" The box opens the moment you confirm. Approval is possible only here in the portal; the SMS you receive is a link to this page, not an approve button.</span>
           <div style="display: flex; gap: 8px"><a href="#Pickup-Detail" class="btn">Yes, unlock</a><a href="#cancel" class="btn danger" style="border-color: #9CA3AF; color: #374151">No, go back</a></div>
         </div>
         <label for="why" class="sub">Decline reason (required when declining)</label>
@@ -1223,6 +1226,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
             <li>Each pouch record ends with "Received by Arun P"</li>
             <li>Box 123 → Available (if inside the branch ring)</li>
             <li>Collector Ramesh K is free for the next pickup</li>
+            <li>Customer's phone session ends; she gets an SMS with a read-only link to her pouch record</li>
           </ul>
         </div>
       </div>
@@ -1438,6 +1442,10 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
         <div class="set"><div>Request limit per trip<div class="d">One pending at a time; this many per 15 min, then the trip locks 15 min and the branch admin is alerted</div></div><input class="input" value="3"></div>
         <div class="set"><div>Lid open at customer alert after<div class="d">Alert to branch admin and approver; collector's screen shows a nudge</div></div><input class="input" value="20 min"></div>
         <div class="set"><div>Approval confirm step<div class="d">Always on; approval only through the portal</div></div><span class="tog"><span></span></span></div>
+        <div class="set"><div>Second key at the customer<div class="d">Customer on their own phone (default) · branch approver as fallback · or both required</div></div><input class="input" value="Customer"></div>
+        <div class="set"><div>Customer OTP wait before fallback<div class="d">Collector may switch to branch approval after this</div></div><input class="input" value="5 min"></div>
+        <div class="set"><div>Customer session ends<div class="d">At vault receipt, or this long after sealing, whichever first</div></div><input class="input" value="2 h"></div>
+        <div class="set"><div>Customer record link valid<div class="d">Read-only link sent after delivery</div></div><input class="input" value="30 days"></div>
         <div class="set"><div>Receive at vault required<div class="d">Delivered only after every pouch is scanned in</div></div><span class="tog"><span></span></span></div>
         <div class="set"><div>Vault receipt alert after<div class="d">Box unlocked at branch but pouches not scanned in</div></div><input class="input" value="15 min"></div>
       </div>

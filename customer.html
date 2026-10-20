@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muthoot Customer Screens</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#E5E7EB;color:#111827}
+.app{display:flex;min-height:100vh}
+.side{width:300px;flex-shrink:0;background:#fff;border-right:1px solid #D1D5DB;padding:20px 16px;box-sizing:border-box;overflow:auto;position:sticky;top:0;height:100vh}
+.side h1{font-size:16px;margin:0 0 4px} .side p{font-size:12px;color:#4B5563;margin:0 0 16px;line-height:1.4}
+.side a{display:block;padding:8px 10px;border-radius:8px;font-size:13px;color:#111827;text-decoration:none;margin-bottom:2px}
+.side a:hover{background:#F3F4F6} .side a.on{background:#FEF3C7;color:#92400E;font-weight:600}
+.stage{flex-grow:1;display:flex;flex-direction:column;align-items:center;padding:24px;gap:12px;min-width:0}
+.phone{width:390px;border-radius:40px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;border:10px solid #111827}
+.scr{display:none} .scr.on{display:block} .cap{font-size:13px;color:#4B5563}
+.row-nav{display:flex;gap:8px} .row-nav button{height:36px;padding:0 14px;border-radius:8px;border:1px solid #9CA3AF;background:#fff;font-family:inherit;font-size:13px;cursor:pointer}
+@media (max-width:760px){.app{flex-direction:column}.side{width:auto;height:auto;position:static}.phone{width:100%;border-radius:0;border:0}}
+#Customer-Verify{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
+#Customer-Verify a{color:#92400E}
+#Customer-Verify a:hover{color:#78350F}
+#Customer-Verify .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Customer-Verify .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Customer-Verify .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Customer-Verify .card{border:1px solid #FDE68A;background:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+#Customer-Verify .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Customer-Verify .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+#Customer-Verify .btn{display:flex;align-items:center;justify-content:center;height:56px;border-radius:10px;font-size:17px;font-weight:600;border:1px solid #B45309;background:#B45309;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Customer-Verify .digit{width:48px;height:56px;border:1px solid #9CA3AF;border-radius:10px;font-size:24px;text-align:center;font-family:inherit;color:#111827;background:#fff}
+#Customer-Verify .lang{display:flex;gap:6px}
+#Customer-Verify .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
+#Customer-Verify .lang span.on{background:#111827;color:#fff;border-color:#111827}
+#Customer-Approve{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
+#Customer-Approve a{color:#92400E}
+#Customer-Approve a:hover{color:#78350F}
+#Customer-Approve .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Customer-Approve .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Customer-Approve .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Customer-Approve .card{border:1px solid #FDE68A;background:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+#Customer-Approve .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Customer-Approve .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+#Customer-Approve .btn{display:flex;align-items:center;justify-content:center;height:56px;border-radius:10px;font-size:17px;font-weight:600;border:1px solid #B45309;background:#B45309;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Customer-Approve .btn.no{background:#fff;color:#B91C1C;border-color:#B91C1C}
+#Customer-Approve .lang{display:flex;gap:6px}
+#Customer-Approve .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
+#Customer-Approve .lang span.on{background:#111827;color:#fff;border-color:#111827}
+#Customer-Confirm{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
+#Customer-Confirm a{color:#92400E}
+#Customer-Confirm a:hover{color:#78350F}
+#Customer-Confirm .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Customer-Confirm .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Customer-Confirm .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Customer-Confirm .card{border:1px solid #FDE68A;background:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+#Customer-Confirm .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Customer-Confirm .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+#Customer-Confirm .item{display:flex;justify-content:space-between;align-items:center;height:48px;padding:0 14px;border:1px solid #D1D5DB;border-radius:10px;font-size:15px;background:#fff}
+#Customer-Confirm .btn{display:flex;align-items:center;justify-content:center;height:56px;border-radius:10px;font-size:17px;font-weight:600;border:1px solid #B45309;background:#B45309;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Customer-Confirm .btn.no{background:#fff;color:#B91C1C;border-color:#B91C1C}
+#Customer-Confirm .lang{display:flex;gap:6px}
+#Customer-Confirm .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
+#Customer-Confirm .lang span.on{background:#111827;color:#fff;border-color:#111827}
+</style></head><body>
+<div class="app"><nav class="side"><h1>Customer's phone</h1><p>What the Muthoot customer sees on their own phone after scanning the box. Three screens, no app, English or Hindi. Runs alongside the collector's screens S05 and S08.</p><a href="#Customer-Verify" data-s="Customer-Verify">K1 Customer phone · verify it&#x27;s you</a>
+<a href="#Customer-Approve" data-s="Customer-Approve">K2 Customer phone · approve the unlock</a>
+<a href="#Customer-Confirm" data-s="Customer-Confirm">K3 Customer phone · confirm pouches before seal</a><p style="margin-top:16px"><a href="collector.html" style="color:#1D4ED8">→ Collector app</a><br><a href="portal.html" style="color:#1D4ED8">→ Branch &amp; HO portal</a><br><a href="index.html" style="color:#1D4ED8">→ Start page</a></p></nav>
+<main class="stage"><div class="row-nav"><button id="prev">← Previous</button><button id="next">Next →</button></div><div class="phone"><section id="Customer-Verify" class="scr" data-title="K1 Customer phone · verify it&#x27;s you"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 18px">
+  <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
+  <div class="lbl">Customer's phone · screen 1 of 3</div>
+  <h1 class="h1">Verify it's you</h1>
+  <p class="p">You scanned Box 123. Muthoot has sent a 6-digit code to the mobile number on your pickup, ending in <strong>204</strong>.</p>
+  <div style="display: flex; gap: 10px; justify-content: space-between" aria-label="Six digit code">
+    <input class="digit" inputmode="numeric" maxlength="1" aria-label="Digit 1">
+    <input class="digit" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+    <input class="digit" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+    <input class="digit" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+    <input class="digit" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+    <input class="digit" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+  </div>
+  <a href="#Customer-Approve" class="btn">Continue</a>
+  <p class="p" style="font-size: 13px">Code valid 5 minutes. Only the number on your pickup can approve; the collector cannot do this for you.</p>
+  <div style="flex-grow: 1"></div>
+  <div class="card">
+    <div class="lbl">Why am I doing this?</div>
+    <p class="p" style="font-size: 14px">The box opens only when both you and the Muthoot collector agree. You will also confirm what goes into the box before it is sealed.</p>
+  </div>
+  <p class="p" style="font-size: 12px; text-align: center">No phone or no signal? Tell the collector; the Muthoot branch will approve instead, and your record will say so.</p>
+</div></section>
+<section id="Customer-Approve" class="scr" data-title="K2 Customer phone · approve the unlock"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px">
+  <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
+  <div class="lbl">Customer's phone · screen 2 of 3</div>
+  <h1 class="h1">Is this the person in front of you?</h1>
+  <div class="card" style="align-items: center; text-align: center">
+    <span style="width: 96px; height: 96px; border-radius: 48px; background: #D1D5DB"></span>
+    <strong style="font-size: 18px">Ramesh K</strong>
+    <span class="p" style="font-size: 14px">Muthoot collector · ID MF-DL-00871</span>
+    <span class="p" style="font-size: 14px">Carrying <strong>Box 123</strong> · Pitampura branch</span>
+  </div>
+  <div class="card">
+    <div class="row"><span>Your pickup</span><strong>MT-2026-10-19-0041</strong></div>
+    <div class="row"><span>Your name</span><strong>Sunita Devi</strong></div>
+    <div class="row"><span>Time now</span><strong>14:50</strong></div>
+  </div>
+  <p class="p">Tap Approve only if the photo, ID and box number match. The box opens the moment you approve. If the lid is closed and needs opening again, you will be asked again.</p>
+  <div style="flex-grow: 1"></div>
+  <a href="#Customer-Confirm" class="btn">Approve · open the box</a>
+  <a href="#stop" class="btn no" style="height: 48px; font-size: 15px">Not this person · stop</a>
+  <p class="p" style="font-size: 12px; text-align: center">"Stop" alerts the Muthoot branch at once. Nothing opens.</p>
+</div></section>
+<section id="Customer-Confirm" class="scr" data-title="K3 Customer phone · confirm pouches before seal"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 14px">
+  <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
+  <div class="lbl">Customer's phone · screen 3 of 3</div>
+  <h1 class="h1">Confirm your pouches before the box is sealed</h1>
+  <p class="p">The collector has sealed your ornaments in these pouches and scanned each label. Check the pouches in your hand match this list.</p>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div class="item"><span>Pouch 1 · PP-MT-00419</span><span style="color: #065F46; font-weight: 600">Scanned 14:57</span></div>
+    <div class="item"><span>Pouch 2 · PP-MT-00420</span><span style="color: #065F46; font-weight: 600">Scanned 14:58</span></div>
+    <div class="item"><span>Pouch 3 · PP-MT-00421</span><span style="color: #065F46; font-weight: 600">Scanned 14:58</span></div>
+  </div>
+  <div class="card">
+    <div class="row"><span>Total pouches</span><strong>3</strong></div>
+    <div class="row"><span>Going to</span><strong>Muthoot Pitampura branch, Box 123</strong></div>
+    <p class="p" style="font-size: 13px">Once the lid is shut the box opens only at the branch. You will get an SMS now. When the branch receives your pouches, this page closes on its own and you get a separate link to your own record.</p>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <a href="collector.html#Seal-Confirm" class="btn">Yes, these 3 pouches are mine · seal the box</a>
+  <a href="#wrong" class="btn no" style="height: 48px; font-size: 15px">Something is wrong</a>
+  <p class="p" style="font-size: 12px; text-align: center">"Something is wrong" pauses the pickup and alerts the branch; the collector can add or remove a pouch and ask you again.</p>
+</div></section></div><div class="cap" id="cap"></div></main></div>
+<script>(function(){var order=["Customer-Verify", "Customer-Approve", "Customer-Confirm"];
+function cur(){var id=(location.hash||"#"+order[0]).slice(1);return order.indexOf(id)<0?order[0]:id;}
+function show(){var id=cur();document.querySelectorAll(".scr").forEach(function(s){s.classList.toggle("on",s.id===id);});document.querySelectorAll(".side a").forEach(function(a){a.classList.toggle("on",a.dataset.s===id);});document.getElementById("cap").textContent=document.getElementById(id).dataset.title;window.scrollTo(0,0);}
+function step(d){var i=order.indexOf(cur());i=Math.min(order.length-1,Math.max(0,i+d));location.hash="#"+order[i];}
+document.getElementById("prev").onclick=function(){step(-1);};document.getElementById("next").onclick=function(){step(1);};
+window.addEventListener("hashchange",show);if(!location.hash)location.hash="#"+order[0];show();})();</script></body></html>
