@@ -1,0 +1,500 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Muthoot · Branch approver</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>/* Track0tic Design System — generated from tokens.json */
+:root, [data-theme="light"] {
+  --surface: #ffffff;
+  --surface-sunken: #f3f5f9;
+  --surface-raised: #ffffff;
+  --ink: #0f172a;
+  --ink-muted: #4b5565;
+  --border: #7a8696;
+  --line: #e2e6ed;
+  --brand: #1d4ed8;
+  --on-brand: #ffffff;
+  --brand-ink: #1a43b8;
+  --brand-soft: #e8eefc;
+  --focus: var(--brand);
+  --success: #047857;
+  --on-success: #ffffff;
+  --success-ink: #047857;
+  --success-soft: #e6f6ef;
+  --warning: #b45309;
+  --on-warning: #ffffff;
+  --warning-ink: #92400e;
+  --warning-soft: #fef3e2;
+  --danger: #b91c1c;
+  --on-danger: #ffffff;
+  --danger-ink: #a61b1b;
+  --danger-soft: #fdecec;
+  --sealed: #1e293b;
+  --on-sealed: #ffffff;
+  --neutral-soft: #eef1f6;
+  --scan-bg: #0b1220;
+  --scan-fg: #ffffff;
+  --overlay: #0f172a99;
+  --shadow-bar: 0 -2px 12px #0f172a14;
+  --shadow-sheet: 0 8px 32px -4px #0f172a33;
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px #1d4ed8;
+}
+[data-theme="dark"] {
+  --surface: #0f172a;
+  --surface-sunken: #0b1220;
+  --surface-raised: #172036;
+  --ink: #eef2f8;
+  --ink-muted: #a3adbf;
+  --border: #6b7a90;
+  --line: #273149;
+  --brand: #3b6cf0;
+  --on-brand: #0b1220;
+  --brand-ink: #8fb0ff;
+  --brand-soft: #182650;
+  --focus: var(--brand);
+  --success: #10b981;
+  --on-success: #06281c;
+  --success-ink: #34d399;
+  --success-soft: #0c2b22;
+  --warning: #f59e0b;
+  --on-warning: #2a1600;
+  --warning-ink: #fbbf24;
+  --warning-soft: #2d1d08;
+  --danger: #ef4444;
+  --on-danger: #2a0808;
+  --danger-ink: #f87171;
+  --danger-soft: #2e1111;
+  --sealed: #cbd5e1;
+  --on-sealed: #0f172a;
+  --neutral-soft: #1c2742;
+  --scan-bg: #000000;
+  --scan-fg: #ffffff;
+  --overlay: #00000099;
+  --shadow-bar: 0 -2px 12px #00000099;
+  --shadow-sheet: 0 8px 32px -4px #000000cc;
+  --focus-ring: 0 0 0 2px #0f172a, 0 0 0 4px #3b6cf0;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --control: 56px;
+  --control-sm: 44px;
+  --target-min: 44px;
+  --disc: 56px;
+  --step: 28px;
+  --phone: 390px;
+  --portal-sidebar: 240px;
+  --font-sans: "Noto Sans", "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+.display { font-family: var(--font-sans); font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; }
+.title { font-family: var(--font-sans); font-size: 22px; line-height: 28px; font-weight: 600; }
+.heading { font-family: var(--font-sans); font-size: 18px; line-height: 24px; font-weight: 600; }
+.body-lg { font-family: var(--font-sans); font-size: 17px; line-height: 26px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
+.caption { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 500; letter-spacing: 0.02em; }
+.number-xl { font-family: var(--font-mono); font-size: 40px; line-height: 48px; font-weight: 600; letter-spacing: 0.08em; }
+.number { font-family: var(--font-mono); font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: 0.02em; }
+.code { font-family: var(--font-mono); font-size: 15px; line-height: 22px; font-weight: 500; }
+
+html,body{margin:0;background:#e9edf3;font-family:var(--font-sans);color:var(--ink)}
+.rb{position:sticky;top:0;z-index:50;height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;background:#0f172a;color:#e5e7eb;font:500 13px/18px var(--font-sans)}
+.rb a{color:#93c5fd;text-decoration:none}.rb select{height:32px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#e5e7eb;font:500 13px/18px var(--font-sans);max-width:60vw}
+.rb .r{margin-left:auto;display:flex;gap:6px}.rb button{height:32px;padding:0 12px;border-radius:999px;border:1px solid #475569;background:none;color:#e5e7eb;font:500 13px/18px var(--font-sans);cursor:pointer}.rb button.on{background:#e5e7eb;color:#0f172a}
+.stage{display:flex;justify-content:center;padding:24px 12px 48px}.sc{display:none}.sc.on{display:block}.root{width:390px;height:844px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(15,23,42,.18);background:#fff}
+.L{display:contents} body[data-lang=hi] .L.en{display:none} body[data-lang=en] .L.hi{display:none}
+section.sc{scroll-margin-top:72px} body[data-lang=en] .tog .lb.en,body[data-lang=hi] .tog .lb.hi{background:var(--ink)!important;color:var(--surface)!important}
+/* Track0tic phone UI — shared classes built on ds/track0tic/tokens.css */
+body{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+a{color:var(--brand-ink)}a:hover{color:var(--brand-ink)}
+.screen{width:390px;height:844px;box-sizing:border-box;padding:24px 20px 20px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;overflow-x:hidden;background:var(--surface);scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.appbar{display:flex;justify-content:space-between;align-items:center;height:48px;border-bottom:1px solid var(--line);flex-shrink:0}
+.tenant{font:500 14px/20px var(--font-sans);color:var(--ink-muted)}
+.back{font:500 16px/24px var(--font-sans);color:var(--brand-ink);text-decoration:none}
+.boxno{display:flex;align-items:baseline;gap:8px}
+.boxno .n{font:600 24px/32px var(--font-mono);white-space:nowrap}
+.appbar .tog{flex-shrink:0}
+.tog{display:inline-flex;border:1px solid var(--border);border-radius:var(--radius-full);overflow:hidden;font:500 14px/20px var(--font-sans)}
+.tog button{appearance:none;border:0;background:none;color:var(--ink);padding:7px 12px;font:inherit;cursor:pointer;min-width:44px}
+.tog button.on{background:var(--ink);color:var(--surface)}
+.d{margin:0;font:600 28px/36px var(--font-sans);letter-spacing:-0.01em}
+.t{margin:0;font:600 22px/28px var(--font-sans)}
+.h{margin:0;font:600 18px/24px var(--font-sans)}
+.p{margin:0;font:400 17px/26px var(--font-sans);color:var(--ink-muted)}
+.p.ink{color:var(--ink)}
+.s{margin:0;font:400 14px/20px var(--font-sans);color:var(--ink-muted)}
+.lbl{font:500 13px/18px var(--font-sans);letter-spacing:.02em;text-transform:uppercase;color:var(--ink-muted)}
+.code{font:500 15px/22px var(--font-mono)}
+.card{border:1px solid var(--line);background:var(--surface-raised);border-radius:var(--radius-md);padding:16px;display:flex;flex-direction:column;gap:8px}
+.card.sunken{background:var(--surface-sunken);border-color:var(--surface-sunken)}
+.row{display:flex;justify-content:space-between;gap:12px;font:400 16px/24px var(--font-sans)}
+.row strong{font-weight:600;text-align:right}
+.state{border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.state.ok{background:var(--success-soft)}.state.bad{background:var(--danger-soft)}.state.warn{background:var(--warning-soft)}.state.info{background:var(--brand-soft)}.state.sealed{background:var(--neutral-soft)}
+.disc{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font:600 30px/1 var(--font-sans)}
+.disc.ok{background:var(--success);color:var(--on-success)}.disc.bad{background:var(--danger);color:var(--on-danger)}.disc.warn{background:var(--warning);color:var(--on-warning)}.disc.brand{background:var(--brand);color:var(--on-brand)}.disc.sealed{background:var(--sealed);color:var(--on-sealed)}
+.notice{border-radius:var(--radius-md);padding:16px;display:flex;flex-direction:column;gap:6px}
+.notice.info{background:var(--brand-soft)}.notice.info .lbl{color:var(--brand-ink)}
+.notice.warn{background:var(--warning-soft)}.notice.warn .lbl{color:var(--warning-ink)}
+.notice.bad{background:var(--danger-soft)}.notice.bad .lbl{color:var(--danger-ink)}
+.notice.ok{background:var(--success-soft)}.notice.ok .lbl{color:var(--success-ink)}
+.notice p{margin:0;font:400 16px/24px var(--font-sans);color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:var(--radius-full);font:500 14px/20px var(--font-sans);white-space:nowrap}
+.pill.neutral{background:var(--neutral-soft);color:var(--ink-muted)}
+.pill.pending{background:var(--brand-soft);color:var(--brand-ink)}
+.pill.open{background:var(--warning);color:var(--on-warning)}
+.pill.sealed{background:var(--sealed);color:var(--on-sealed)}
+.pill.done{background:var(--success);color:var(--on-success)}
+.pill.bad{background:var(--danger);color:var(--on-danger)}
+.pill.declined{background:var(--danger-soft);color:var(--danger-ink)}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start;font:400 17px/26px var(--font-sans)}
+.step.next{color:var(--ink-muted)}
+.step .num{width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font:600 14px/1 var(--font-sans);background:var(--neutral-soft);color:var(--ink-muted)}
+.step.done .num{background:var(--success);color:var(--on-success)}
+.step.cur .num{background:var(--brand);color:var(--on-brand);box-shadow:0 0 0 4px var(--brand-soft)}
+.step .time{color:var(--ink-muted)}
+.otp{width:50px;height:56px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--ink);text-align:center;font:600 28px/1 var(--font-mono);box-sizing:border-box}
+.otp.cur{border:2px solid var(--brand);box-shadow:var(--focus-ring)}
+.otps{display:flex;gap:8px;justify-content:space-between}
+.sr{position:absolute;left:-9999px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:var(--control);border-radius:var(--radius-md);font:600 17px/26px var(--font-sans);border:1px solid var(--brand);background:var(--brand);color:var(--on-brand);text-decoration:none;cursor:pointer}
+.btn.sec{background:var(--surface);border-color:var(--border);color:var(--brand-ink)}
+.btn.sm{height:var(--control-sm);font-size:15px}
+.btn.danger{background:var(--danger);border-color:var(--danger);color:var(--on-danger)}
+.btn.textdanger{background:var(--surface);border-color:var(--border);color:var(--danger-ink)}
+.btn.dis{background:var(--neutral-soft);border-color:var(--neutral-soft);color:var(--ink-muted);pointer-events:none}
+.grow{flex-grow:1}
+.bar{position:sticky;bottom:-20px;margin:0 -20px -20px;padding:12px 20px 20px;background:var(--surface-raised);box-shadow:var(--shadow-bar);display:flex;flex-direction:column;gap:8px;flex-shrink:0;z-index:2}
+.appbar{position:sticky;top:-24px;margin-top:-24px;padding-top:24px;background:var(--surface);z-index:2;height:72px;box-sizing:border-box}
+.d{font-size:26px;line-height:34px}
+.p{font-size:16px;line-height:24px}
+.card{padding:14px 16px}
+.pouch{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid var(--line);font:400 16px/24px var(--font-sans)}
+.pouch:first-of-type{border-top:0}
+.chk{width:28px;height:28px;border-radius:999px;background:var(--success);color:var(--on-success);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sticker{border:2px solid var(--ink);border-radius:var(--radius-sm);padding:12px;display:flex;gap:12px;align-items:center;background:var(--surface-sunken)}
+.qr{width:64px;height:64px;background:repeating-linear-gradient(90deg,var(--ink) 0 6px,var(--surface) 6px 12px),repeating-linear-gradient(var(--ink) 0 6px,var(--surface) 6px 12px);background-blend-mode:multiply;border-radius:4px;flex-shrink:0}
+
+</style></head><body data-lang="en">
+<div class="rb"><a href="index.html">‹ All surfaces</a><strong style="color:#fff">Muthoot · Branch approver</strong><select id="pick" onchange="go(this.value)" aria-label="Screen"><option value="Main">A0 Approver login (URL from SMS / home-screen icon)</option><option value="Home">A1 Today at Pitampura · pending requests first</option><option value="Watch">A2 Watching: customer approved an unlock at the door</option><option value="Request-Door">A3 Fallback request · customer cannot use phone · approve at the door</option><option value="Request-Branch">A4 Unlock at Branch request · box arrived sealed</option><option value="Confirm">A5 Confirm step (every approval, no exceptions)</option><option value="Approved">A6 Approved · unlock sent · 3-minute window</option><option value="Decline">A7 Decline with a reason the collector reads</option><option value="Alert">A8 Alert · customer stopped / tamper / lid open 20 min</option></select><span id="pos"></span><div class="r"><button class="lb en on" onclick="setLang('en')">English</button><button class="lb hi" onclick="setLang('hi')">हिन्दी</button></div></div>
+<div class="stage">
+<style>#Main .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Main a{color:var(--brand-ink)}
+#Main a:hover{color:var(--brand-ink)}
+#Main .field{display:flex;flex-direction:column;gap:6px}
+#Main .field label{font:500 14px/20px var(--font-sans);color:var(--ink)}
+#Main .field input{height:56px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 14px;font:500 18px/24px var(--font-mono);color:var(--ink);background:var(--surface);box-sizing:border-box}
+#Main .field input:focus{outline:none;border:2px solid var(--brand);box-shadow:var(--focus-ring)}</style>
+<section class="sc" id="Main" data-title="A0 Approver login (URL from SMS / home-screen icon)"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <span class="tenant">Muthoot · Gold pickup</span>
+    <span class="pill pending">Branch approver</span>
+  </div>
+  <div style="height: 24px"></div>
+  <h1 class="d">Pitampura branch approvals</h1>
+  <p class="p">Sign in with the mobile number Muthoot registered for you. You will approve unlocks and read requests from collectors here.</p>
+  <div class="field">
+    <label for="mob">Registered mobile</label>
+    <input id="mob" type="tel" inputmode="numeric" value="+91 98100 22417">
+  </div>
+  <div class="otps" role="group" aria-label="6-digit login code">
+    <label style="display: contents"><span class="sr">Digit 1</span><input class="otp" inputmode="numeric" maxlength="1" value="3"></label>
+    <label style="display: contents"><span class="sr">Digit 2</span><input class="otp" inputmode="numeric" maxlength="1" value="1"></label>
+    <label style="display: contents"><span class="sr">Digit 3</span><input class="otp cur" inputmode="numeric" maxlength="1"></label>
+    <label style="display: contents"><span class="sr">Digit 4</span><input class="otp" inputmode="numeric" maxlength="1"></label>
+    <label style="display: contents"><span class="sr">Digit 5</span><input class="otp" inputmode="numeric" maxlength="1"></label>
+    <label style="display: contents"><span class="sr">Digit 6</span><input class="otp" inputmode="numeric" maxlength="1"></label>
+  </div>
+  <p class="s">Code sent · resend in 0:38. Login lasts 12 hours on this phone; every approval still asks you to confirm.</p>
+  <div class="notice info"><div class="lbl">You are the second key at the branch</div><p>A box opens at Pitampura only when the collector is inside the branch and you approve. At a customer's door the customer approves; you step in only if they cannot.</p></div>
+  <div class="grow"></div>
+  <div class="bar"><a class="btn" href="#Home" onclick="go('Home');return false;">Sign in</a></div>
+</div>
+</div></section>
+<style>#Home .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Home a{color:var(--brand-ink)}
+#Home a:hover{color:var(--brand-ink)}
+#Home .item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+#Home .item:first-of-type{border-top:0}
+#Home .item .l{display:flex;flex-direction:column;gap:2px}
+#Home .item .l strong{font:600 16px/24px var(--font-sans)}
+#Home .item .l span{font:400 14px/20px var(--font-sans);color:var(--ink-muted)}
+#Home .req{border:2px solid var(--brand);background:var(--brand-soft);border-radius:var(--radius-md);padding:16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink)}</style>
+<section class="sc" id="Home" data-title="A1 Today at Pitampura · pending requests first"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <span class="tenant">Muthoot Pitampura</span>
+    <span class="pill neutral">Meena S</span>
+  </div>
+  <div class="lbl">Tuesday 20 Oct · 15:04</div>
+  <h1 class="d">1 request waiting for you</h1>
+  <a class="req" href="#Request-Branch" onclick="go('Request-Branch');return false;">
+    <div style="display: flex; justify-content: space-between; align-items: center"><span class="pill pending">Unlock at Branch</span><span class="s" style="color: var(--brand-ink); font-weight: 600">2 min ago</span></div>
+    <strong style="font: 600 18px/24px var(--font-sans)">Box 123 · Ramesh K is inside the branch</strong>
+    <span class="s">Sealed at 15:01 at S. Verma, Rohini · 3 pouches · seal intact</span>
+    <span style="font: 600 16px/24px var(--font-sans); color: var(--brand-ink)">Review and approve →</span>
+  </a>
+  <div class="card">
+    <div class="lbl">On the way to Pitampura</div>
+    <a class="item" href="#Watch" onclick="go('Watch');return false;"><span class="l"><strong>Box 127 · Anil P</strong><span>Open at customer R. Gupta, Shalimar Bagh · 2 pouches so far</span></span><span class="pill open">Open</span></a>
+    <a class="item" href="#Request-Branch" onclick="go('Request-Branch');return false;"><span class="l"><strong>Box 123 · Ramesh K</strong><span>Sealed 15:01 · arrived 15:02</span></span><span class="pill sealed">Sealed</span></a>
+  </div>
+  <div class="card">
+    <div class="lbl">Today</div>
+    <div class="row"><span>Pickups planned</span><strong>6</strong></div>
+    <div class="row"><span>Delivered to vault</span><strong>3</strong></div>
+    <div class="row"><span>No pickup today</span><strong>1</strong></div>
+    <div class="row"><span>Your approvals</span><strong>4 · 0 declined</strong></div>
+  </div>
+  <p class="s">Backup approver today: Vikram R. Requests go to him if you do not answer in 10 minutes.</p>
+  <div class="grow"></div>
+</div>
+</div></section>
+<style>#Watch .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Watch a{color:var(--brand-ink)}
+#Watch a:hover{color:var(--brand-ink)}</style>
+<section class="sc" id="Watch" data-title="A2 Watching: customer approved an unlock at the door"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Home" onclick="go('Home');return false;">← Today</a>
+    <span class="boxno"><span class="n">Box 127</span><span class="pill open">Open</span></span>
+  </div>
+  <div class="lbl">Unlock at Customer · you are watching</div>
+  <h1 class="d">Customer approved. Box 127 is open at the door.</h1>
+  <p class="p">R. Gupta approved on their own phone at 15:00. Anil P is adding pouches. Nothing is needed from you unless something looks wrong.</p>
+  <div class="card">
+    <div class="steps">
+      <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Collector at the address · 40 m <span class="time">· 14:57</span></span></div>
+      <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Customer verified mobile ••412 <span class="time">· 14:59</span></span></div>
+      <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Customer approved the unlock <span class="time">· 15:00</span></span></div>
+      <div class="step cur"><span class="num">4</span><span><strong>Lid open · 2 pouches added</strong> · open for 4 min</span></div>
+      <div class="step next"><span class="num">5</span><span>Customer confirms pouches · lid shut · sealed</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="lbl">Pickup</div>
+    <div class="row"><span>Customer</span><strong>R. Gupta · Shalimar Bagh</strong></div>
+    <div class="row"><span>Collector</span><strong>Anil P <span class="code" style="font-weight: 500; color: var(--ink-muted)">MF-DL-00902</span></strong></div>
+    <div class="row"><span>Work order</span><strong class="code">MT-2026-10-20-0042</strong></div>
+    <div class="row"><span>Requests this trip</span><strong>1 of 3</strong></div>
+  </div>
+  <p class="s">You will be alerted if the lid stays open past 20 minutes, the customer taps Stop, or the box reports tamper.</p>
+  <div class="grow"></div>
+  <div class="bar">
+    <a class="btn sec sm" href="tel:+919810000902">Call Anil P</a>
+    <a class="btn textdanger" href="#Alert" onclick="go('Alert');return false;">Stop this pickup</a>
+  </div>
+</div>
+</div></section>
+<style>#Request-Door .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Request-Door a{color:var(--brand-ink)}
+#Request-Door a:hover{color:var(--brand-ink)}
+#Request-Door .map{height:120px;border-radius:var(--radius-md);background:var(--surface-sunken);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:12px;color:var(--ink-muted);font:500 14px/20px var(--font-sans)}
+#Request-Door .dot{width:12px;height:12px;border-radius:999px;background:var(--brand)}
+#Request-Door .dot.c{background:var(--ink)}</style>
+<section class="sc" id="Request-Door" data-title="A3 Fallback request · customer cannot use phone · approve at the door"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Home" onclick="go('Home');return false;">← Today</a>
+    <span class="boxno"><span class="n">Box 118</span><span class="pill neutral">Locked</span></span>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center"><span class="pill pending">Unlock at Customer · fallback</span><span class="s" style="font-weight: 600; color: var(--brand-ink)">Expires in 8:40</span></div>
+  <h1 class="d">Customer cannot use their phone. Approve in their place?</h1>
+  <p class="p">Sunita D waited 5 minutes for M. Khan's code and asked you to step in. You become the second key for this opening only.</p>
+  <div class="map" role="img" aria-label="Map: collector 30 m from the customer's address"><span class="dot c"></span>Address<span style="width: 40px; border-top: 2px dashed var(--border)"></span><span class="dot"></span>Collector · 30 m</div>
+  <div class="card">
+    <div class="row"><span>Collector</span><strong>Sunita D <span class="code" style="font-weight: 500; color: var(--ink-muted)">MF-DL-00877</span></strong></div>
+    <div class="row"><span>Customer</span><strong>M. Khan · Pitampura</strong></div>
+    <div class="row"><span>Reason given</span><strong>Phone has no signal</strong></div>
+    <div class="row"><span>Pickup window</span><strong>14:00–15:00 · on time</strong></div>
+    <div class="row"><span>Requests this trip</span><strong>1 of 3</strong></div>
+    <div class="row"><span>Box</span><strong>Locked · online · 2 min ago</strong></div>
+  </div>
+  <div class="notice warn"><div class="lbl">Before you approve</div><p>Call the customer on the work-order number. If they do not pick up, decline — the collector can wait or record No Pickup Today.</p></div>
+  <div class="grow"></div>
+  <div class="bar">
+    <div style="display: flex; gap: 8px"><a class="btn sec sm" href="tel:+919810000877" style="flex: 1">Call collector</a><a class="btn sec sm" href="tel:+919800000412" style="flex: 1">Call customer</a></div>
+    <div style="display: flex; gap: 8px"><a class="btn textdanger" href="#Decline" onclick="go('Decline');return false;" style="flex: 1">Decline</a><a class="btn" href="#Confirm" onclick="go('Confirm');return false;" style="flex: 2">Approve unlock</a></div>
+  </div>
+</div>
+</div></section>
+<style>#Request-Branch .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Request-Branch a{color:var(--brand-ink)}
+#Request-Branch a:hover{color:var(--brand-ink)}</style>
+<section class="sc" id="Request-Branch" data-title="A4 Unlock at Branch request · box arrived sealed"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Home" onclick="go('Home');return false;">← Today</a>
+    <span class="boxno"><span class="n">Box 123</span><span class="pill sealed"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Sealed</span></span>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center"><span class="pill pending">Unlock at Branch</span><span class="s" style="font-weight: 600; color: var(--brand-ink)">Expires in 9:10</span></div>
+  <h1 class="d">Ramesh K asks to open Box 123 at Pitampura</h1>
+  <p class="p">Everything checked. Approve and the box unlocks for 3 minutes while the collector stands with you at the counter.</p>
+  <div class="card">
+    <div class="lbl">Checked by the system</div>
+    <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Collector's phone is inside the branch (18 m)</span></div>
+    <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Seal intact since 15:01 · no lid event on the way</span></div>
+    <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Box online · battery 71% · 1 min ago</span></div>
+    <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>3 pouches confirmed by the customer at 15:00</span></div>
+  </div>
+  <div class="card">
+    <div class="row"><span>Pickup</span><strong class="code">MT-2026-10-19-0041</strong></div>
+    <div class="row"><span>Customer</span><strong>S. Verma · Rohini</strong></div>
+    <div class="row"><span>Pouches</span><strong class="code">00419 · 00420 · 00421</strong></div>
+    <div class="row"><span>Trip</span><strong>11.4 km · 1 h 01 min</strong></div>
+  </div>
+  <div class="grow"></div>
+  <div class="bar">
+    <div style="display: flex; gap: 8px"><a class="btn textdanger" href="#Decline" onclick="go('Decline');return false;" style="flex: 1">Decline</a><a class="btn" href="#Confirm" onclick="go('Confirm');return false;" style="flex: 2">Approve unlock</a></div>
+  </div>
+</div>
+</div></section>
+<style>#Confirm .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Confirm a{color:var(--brand-ink)}
+#Confirm a:hover{color:var(--brand-ink)}
+#Confirm .chkbox{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius-md);font:400 16px/24px var(--font-sans);color:var(--ink);cursor:pointer}
+#Confirm .chkbox input{width:24px;height:24px;margin:0;flex-shrink:0;accent-color:var(--brand)}</style>
+<section class="sc" id="Confirm" data-title="A5 Confirm step (every approval, no exceptions)"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Request-Branch" onclick="go('Request-Branch');return false;">← Back</a>
+    <span class="boxno"><span class="n">Box 123</span><span class="pill sealed">Sealed</span></span>
+  </div>
+  <div class="lbl">Confirm · Unlock at Branch</div>
+  <h1 class="d">You are about to unlock Box 123</h1>
+  <p class="p">This is recorded as your approval, with the time, your name and this phone. The box unlocks for 3 minutes; if the lid is not opened in time, the collector must ask again.</p>
+  <label class="chkbox"><input type="checkbox" checked><span>Ramesh K is standing at the counter with Box 123 and I can see the seal is intact.</span></label>
+  <div class="card">
+    <div class="row"><span>Pickup</span><strong class="code">MT-2026-10-19-0041</strong></div>
+    <div class="row"><span>Pouches expected</span><strong>3</strong></div>
+    <div class="row"><span>Approver</span><strong>Meena S · Pitampura</strong></div>
+    <div class="row"><span>Time</span><strong>15:06</strong></div>
+  </div>
+  <p class="s">Pressing Confirm sends a one-time signed unlock command to the box. It cannot be reused.</p>
+  <div class="grow"></div>
+  <div class="bar">
+    <a class="btn sec sm" href="#Request-Branch" onclick="go('Request-Branch');return false;">Go back</a>
+    <a class="btn" href="#Approved" onclick="go('Approved');return false;">Confirm · unlock Box 123</a>
+  </div>
+</div>
+</div></section>
+<style>#Approved .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Approved a{color:var(--brand-ink)}
+#Approved a:hover{color:var(--brand-ink)}
+#Approved .wait{background:var(--neutral-soft);border-color:var(--neutral-soft);color:var(--ink-muted)}</style>
+<section class="sc" id="Approved" data-title="A6 Approved · unlock sent · 3-minute window"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Home" onclick="go('Home');return false;">← Today</a>
+    <span class="boxno"><span class="n">Box 123</span><span class="pill open">Unlocked</span></span>
+  </div>
+  <div class="state ok">
+    <span class="disc ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+    <h1 class="d">Approved at 15:06</h1>
+    <p class="p ink">Box 123 is unlocked for 3 minutes. Ramesh K opens the lid and hands the 3 pouches to the custodian.</p>
+  </div>
+  <div class="card">
+    <div class="steps">
+      <div class="step done"><span class="num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Unlock command received by the box <span class="time">· 15:06:04</span></span></div>
+      <div class="step cur"><span class="num">2</span><span><strong>Waiting for the lid to open</strong> · 2:41 left</span></div>
+      <div class="step next"><span class="num">3</span><span>Collector scans each pouch out · custodian receives into vault</span></div>
+      <div class="step next"><span class="num">4</span><span>Trip closes · pouch record ready</span></div>
+    </div>
+  </div>
+  <div class="notice info"><div class="lbl">If the lid does not open in time</div><p>The window closes and the box re-locks on its own. The collector asks again from his phone; you approve again. Every opening needs a fresh approval.</p></div>
+  <div class="grow"></div>
+  <div class="bar"><a class="btn wait" href="#Home" onclick="go('Home');return false;">Lid not opened yet · back to Today</a></div>
+</div>
+</div></section>
+<style>#Decline .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Decline a{color:var(--brand-ink)}
+#Decline a:hover{color:var(--brand-ink)}
+#Decline .chip{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--border);border-radius:var(--radius-full);font:500 15px/20px var(--font-sans);color:var(--ink);background:var(--surface);cursor:pointer}
+#Decline .chip.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+#Decline textarea{min-height:120px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font:400 16px/24px var(--font-sans);color:var(--ink);background:var(--surface);resize:none;box-sizing:border-box;width:100%}
+#Decline textarea:focus{outline:none;border:2px solid var(--brand);box-shadow:var(--focus-ring)}</style>
+<section class="sc" id="Decline" data-title="A7 Decline with a reason the collector reads"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Request-Door" onclick="go('Request-Door');return false;">← Back</a>
+    <span class="boxno"><span class="n">Box 118</span><span class="pill neutral">Locked</span></span>
+  </div>
+  <div class="lbl">Decline · Unlock at Customer</div>
+  <h1 class="d">Why are you declining?</h1>
+  <p class="p">Sunita D reads this on her phone, word for word. Say what she should do next. The box stays locked.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px">
+    <button class="chip on">Customer did not answer my call</button>
+    <button class="chip">Collector too far from address</button>
+    <button class="chip">Pickup window has passed</button>
+    <button class="chip">Wait and let the customer approve</button>
+  </div>
+  <label for="why" class="lbl">Message to the collector</label>
+  <textarea id="why">I called M. Khan twice on the work-order number, no answer. Wait 10 minutes and ask the customer to retry on their phone. If still no signal, record No Pickup Today and call me.</textarea>
+  <p class="s">Declines are counted: this trip has 1 of 3 requests used. A third decline closes the pickup for today.</p>
+  <div class="grow"></div>
+  <div class="bar">
+    <a class="btn sec sm" href="#Request-Door" onclick="go('Request-Door');return false;">Go back</a>
+    <a class="btn danger" href="#Home" onclick="go('Home');return false;">Decline and send message</a>
+  </div>
+</div>
+</div></section>
+<style>#Alert .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
+#Alert a{color:var(--brand-ink)}
+#Alert a:hover{color:var(--brand-ink)}</style>
+<section class="sc" id="Alert" data-title="A8 Alert · customer stopped / tamper / lid open 20 min"><div class="root">
+
+<div class="screen">
+  <div class="appbar">
+    <a class="back" href="#Home" onclick="go('Home');return false;">← Today</a>
+    <span class="boxno"><span class="n">Box 127</span><span class="pill bad">Stopped</span></span>
+  </div>
+  <div class="state bad">
+    <span class="disc bad">!</span>
+    <h1 class="d">Customer stopped the pickup</h1>
+    <p class="p ink">R. Gupta tapped Stop at 15:08 — reason: "The collector is not Anil P". Box 127 is locked and stays locked.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">Do now</div>
+    <div class="steps">
+      <div class="step cur"><span class="num">1</span><span><strong>Call the customer</strong> on the work-order number — they expect your call within 10 minutes</span></div>
+      <div class="step next"><span class="num">2</span><span>Call the collector; do not reopen the box from here</span></div>
+      <div class="step next"><span class="num">3</span><span>Record the outcome in the portal — Ops decides the next step</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="row"><span>Collector</span><strong>Anil P <span class="code" style="font-weight: 500; color: var(--ink-muted)">MF-DL-00902</span></strong></div>
+    <div class="row"><span>Collector's phone</span><strong>35 m from address · 15:08</strong></div>
+    <div class="row"><span>Pouches in box</span><strong>2 · lid shut 15:07</strong></div>
+    <div class="row"><span>Work order</span><strong class="code">MT-2026-10-20-0042</strong></div>
+  </div>
+  <div class="notice warn"><div class="lbl">Other alerts look like this</div><p>Tamper or lid open past 20 minutes arrive the same way: a red or amber card, what to do first, and the two calls. An alert never has an Approve button.</p></div>
+  <div class="grow"></div>
+  <div class="bar">
+    <div style="display: flex; gap: 8px"><a class="btn sec" href="tel:+919800000777" style="flex: 1">Call customer</a><a class="btn sec" href="tel:+919810000902" style="flex: 1">Call Anil P</a></div>
+  </div>
+</div>
+</div></section>
+</div>
+<script>
+const ids=[...document.querySelectorAll('section.sc')].map(s=>s.id);
+function go(id){if(!ids.includes(id))return;document.querySelectorAll('section.sc').forEach(s=>s.classList.toggle('on',s.id===id));document.getElementById('pick').value=id;document.getElementById('pos').textContent=(ids.indexOf(id)+1)+' / '+ids.length;history.replaceState(null,'','#'+id);window.scrollTo(0,0);}
+function setLang(l){document.body.dataset.lang=l;document.querySelectorAll('.rb .lb').forEach(b=>b.classList.toggle('on',b.classList.contains(l)));}
+go(location.hash.slice(1)||ids[0]);
+</script></body></html>

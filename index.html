@@ -1,14 +1,43 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Muthoot Gold Pickup — Wireframes for review</title>
-<style>body{margin:0;font-family:system-ui,sans-serif;background:#F3F4F6;color:#111827;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
-.c{background:#fff;border:1px solid #D1D5DB;border-radius:16px;padding:32px;max-width:520px;width:100%;display:flex;flex-direction:column;gap:14px}
-h1{font-size:22px;margin:0}p{margin:0;color:#4B5563;font-size:14px;line-height:1.5}
-a.b{display:block;padding:14px 16px;border-radius:10px;background:#1D4ED8;color:#fff;text-decoration:none;font-weight:600}
-a.b small{display:block;font-weight:400;opacity:.85;font-size:12px;margin-top:2px}
-.n{font-size:12px;color:#92400E;background:#FFFBEB;border:1px solid #FDE68A;padding:10px 12px;border-radius:8px}
-.v{font-size:11px;color:#6B7280}</style></head>
-<body><div class="c"><h1>Muthoot Gold Pickup — wireframes</h1><p>Track0tic · for review only, not the live product. Click the blue buttons inside each screen to walk the flow; use the list on the left to jump.</p>
-<a class="b" href="collector.html">Collector mobile app<small>29 screens incl. QR scan, manual code and customer row · scan, customer approves unlock, pouches, customer confirms, seal, branch, exceptions</small></a>
-<a class="b" href="customer.html" style="background:#B45309">Customer's phone<small>13 screens · appointment, scan, verify, approve the unlock, confirm pouches before seal · English / Hindi</small></a>
-<a class="b" href="portal.html">Branch &amp; HO portal<small>20 screens · dashboard, pickups, approvals, vault receipt, onboarding, setup, records</small></a>
-<div class="n">Feedback: note the screen code (S05, K2, B1 …) and what should change, and send it to the Track0tic team.</div>
-<span class="v">Version 20 Oct 2026 · customer-as-second-key model</span></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Muthoot Gold Pickup · Final UI review</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{--ink:#0f172a;--muted:#4b5565;--line:#e2e6ed;--brand:#1d4ed8;--soft:#e8eefc;--bg:#f3f5f9}
+body{margin:0;font-family:"Noto Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+.wrap{max-width:960px;margin:0 auto;padding:40px 20px 64px}
+h1{margin:0 0 6px;font:600 28px/36px "Noto Sans",sans-serif}
+.sub{margin:0 0 28px;font:400 15px/24px "Noto Sans",sans-serif;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+a.card{display:flex;flex-direction:column;gap:8px;padding:20px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:inherit}
+a.card:hover{border-color:var(--brand)}
+.k{font:500 12px/16px "Noto Sans",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+a.card strong{font:600 18px/24px "Noto Sans",sans-serif}
+a.card p{margin:0;font:400 14px/22px "Noto Sans",sans-serif;color:var(--muted)}
+.go{font:600 14px/20px "Noto Sans",sans-serif;color:var(--brand)}
+.box{margin-top:28px;padding:18px 20px;border-radius:12px;background:var(--soft);font:400 14px/22px "Noto Sans",sans-serif}
+.box b{display:block;font:600 14px/20px "Noto Sans",sans-serif;color:var(--brand);margin-bottom:4px}
+.small{margin-top:28px;font:400 13px/20px "Noto Sans",sans-serif;color:var(--muted)}
+.small a{color:var(--brand)}
+code{font:500 13px/20px "IBM Plex Mono",monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Muthoot Gold Pickup · Final UI</h1>
+  <p class="sub">Four surfaces of one product, built on the Track0tic design system. Open a surface, pick a screen from the top bar or press the buttons to walk the flow. On the three phone surfaces, tap <strong>English / हिन्दी</strong> to switch every screen in place. No login needed.</p>
+  <div class="grid">
+    <a class="card" href="customer.html"><span class="k">Customer's phone · 15 screens</span><strong>Customer</strong><p>Confirms the appointment the day before; at the door scans the box, verifies with an OTP on their own phone, approves the opening, confirms the pouch list before the seal, gets a receipt and a 30-day record link.</p><span class="go">Open →</span></a>
+    <a class="card" href="collector.html"><span class="k">Collector's phone · 25 screens</span><strong>Collector</strong><p>Logs in, scans the box, goes to the customer, waits for the customer's approval, adds pouches, seals, drives to the branch, waits for the approver, hands pouches to the custodian. Plus No Pickup Today and every exception.</p><span class="go">Open →</span></a>
+    <a class="card" href="approver.html"><span class="k">Branch approver's phone · 9 screens</span><strong>Branch approver</strong><p>The second key at the branch and the fallback at the door. Sees today's requests, watches customer-approved unlocks, approves with a confirm step, declines with a reason, gets alerts.</p><span class="go">Open →</span></a>
+    <a class="card" href="portal.html"><span class="k">Web portal · 20 pages</span><strong>Portal</strong><p>Live dashboard, pending requests, alerts, pickups and work orders, boxes, vault receipt, pouch records, people, users &amp; roles, onboarding, reports, audit log, override, settings.</p><span class="go">Open →</span></a>
+  </div>
+  <div class="box"><b>How to review</b>Walk each flow as the person would. Where you would say something differently, want a field added, or a rule changed, note the screen code shown in the top bar (for example <code>K2</code>, <code>S08</code>, <code>P6</code>) and the language. Hindi copy is a first draft for Muthoot to correct.</div>
+  <p class="small">Earlier wireframes, for reference only: <a href="wireframes/customer.html">customer</a> · <a href="wireframes/collector.html">collector</a> · <a href="wireframes/portal.html">portal</a>. The final UI above supersedes them.</p>
+</div>
+</body>
+</html>
