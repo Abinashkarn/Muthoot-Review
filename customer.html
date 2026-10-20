@@ -262,7 +262,8 @@ a{color:var(--brand-ink)}a:hover{color:var(--brand-ink)}
 </div></section>
 <style>#Confirmed .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
 #Confirmed a{color:var(--brand-ink)}
-#Confirmed a:hover{color:var(--brand-ink)}</style>
+#Confirmed a:hover{color:var(--brand-ink)}
+#Confirmed .wait{background:var(--neutral-soft);border-color:var(--neutral-soft);color:var(--ink-muted)}</style>
 <section class="sc" id="Confirmed" data-title="K-1a Confirmed · what happens tomorrow"><div class="root">
 
 <div class="screen">
@@ -305,6 +306,10 @@ a{color:var(--brand-ink)}a:hover{color:var(--brand-ink)}
     <p class="s">योजना बदल गई? <a href="#Rescheduled" onclick="go('Rescheduled');return false;">दूसरा समय माँगें</a>।</p>
   </div>
   <div class="grow"></div>
+  <div class="bar">
+    <div class="L en"><a class="btn sec sm" href="#Rescheduled" onclick="go('Rescheduled');return false;">I need another time</a><a class="btn wait" href="#Main" onclick="go('Main');return false;">Tomorrow · the SMS link opens the scan page</a></div>
+    <div class="L hi"><a class="btn sec sm" href="#Rescheduled" onclick="go('Rescheduled');return false;">मुझे दूसरा समय चाहिए</a><a class="btn wait" href="#Main" onclick="go('Main');return false;">कल · SMS लिंक से स्कैन पेज खुलेगा</a></div>
+  </div>
 </div>
 </div></section>
 <style>#Rescheduled .root{margin:0;font-family:var(--font-sans);color:var(--ink);background:var(--surface)}
@@ -952,6 +957,10 @@ a{color:var(--brand-ink)}a:hover{color:var(--brand-ink)}
     <p class="s">SMS नहीं आया? मुथूट पीतमपुरा को <a href="tel:+911147000000">011-4700 0000</a> पर फ़ोन करें और पिकअप नंबर बताएँ।</p>
   </div>
   <div class="grow"></div>
+  <div class="bar">
+    <div class="L en"><a class="btn sec" href="#Record" onclick="go('Record');return false;">Open my record (from the SMS link)</a></div>
+    <div class="L hi"><a class="btn sec" href="#Record" onclick="go('Record');return false;">मेरा रिकॉर्ड खोलें (SMS लिंक से)</a></div>
+  </div>
 </div>
 </div></section>
 </div>
