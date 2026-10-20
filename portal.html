@@ -716,7 +716,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
       <div class="card"><span class="lbl">Delivered</span><span class="kpi" style="color: #065F46">6</span><span class="sub">avg 52 min door to vault</span></div>
       <div class="card"><span class="lbl">On the way</span><span class="kpi" style="color: #92400E">3</span><span class="sub">sealed, in transit</span></div>
       <div class="card"><span class="lbl">At customer</span><span class="kpi" style="color: #1E40AF">2</span><span class="sub">1 waiting for approval</span></div>
-      <div class="card"><span class="lbl">Not started</span><span class="kpi">2</span><span class="sub">1 no pickup today</span></div>
+      <div class="card"><span class="lbl">Tomorrow</span><span class="kpi">9</span><span class="sub"><span style="color: #065F46">6 confirmed</span> · 2 unconfirmed · 1 rescheduled</span></div>
       <div class="card" style="border-color: #FECACA"><span class="lbl">Flagged</span><span class="kpi" style="color: #991B1B">1</span><span class="sub">tamper · MT-0038</span></div>
     </div>
     <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
@@ -731,6 +731,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
           <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 8px"><span><strong>Approve unlock</strong> · Sunil V · MT-0043</span><span style="color: #92400E">4:40 left</span></div>
           <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #FECACA; background: #FEF2F2; border-radius: 8px"><span><strong>Tamper</strong> · Box 118 · MT-0038</span><a href="#Alerts">View</a></div>
           <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #E5E7EB; border-radius: 8px"><span><strong>Battery 18%</strong> · Box 121</span><span class="sub">on the way</span></div>
+          <div style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #E5E7EB; border-radius: 8px"><span><strong>Call: 2 unconfirmed</strong> for tomorrow</span><a href="#Pickups">List</a></div>
         </div>
       </div>
     </div>
@@ -794,16 +795,16 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
     </div>
     <div class="card" style="padding: 0; overflow-x: auto">
       <table class="tbl">
-        <tr><th>Pickup</th><th>Customer</th><th>Area</th><th>Collector</th><th>Box</th><th>State</th><th>Created by</th><th>Unlocked @ customer</th><th>Sealed</th><th>Unlocked @ branch</th><th>Pouches</th><th>Seal</th></tr>
-        <tr><td><a href="#Pickup-Detail">MT-0041</a></td><td>Sunita Devi</td><td>Rohini Sec 9</td><td>Ramesh K</td><td>123</td><td><span class="pill p-blue">At customer</span></td><td>Ops · Neha R</td><td>14:52</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-        <tr><td>MT-0043</td><td>Harish Gupta</td><td>Shalimar Bagh</td><td>Sunil V</td><td>119</td><td><span class="pill p-blue">Waiting approval</span></td><td>Ops · Neha R</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-        <tr><td>MT-0039</td><td>Kamla Rani</td><td>Prashant Vihar</td><td>Deepak M</td><td>121</td><td><span class="pill p-amber">On the way</span></td><td>Ops · Neha R</td><td>13:40</td><td>14:21</td><td>–</td><td>2</td><td>Intact</td></tr>
-        <tr><td>MT-0040</td><td>Rajesh Jain</td><td>Rani Bagh</td><td>Amit S</td><td>117</td><td><span class="pill p-amber">On the way</span></td><td>Ops · Vivek A</td><td>13:58</td><td>14:35</td><td>–</td><td>4</td><td>Intact</td></tr>
-        <tr><td>MT-0038</td><td>Pooja Mehta</td><td>Pitampura</td><td>Vikas T</td><td>118</td><td><span class="pill p-red">Flagged · tamper</span></td><td>Ops · Neha R</td><td>13:12</td><td>13:58</td><td>–</td><td>1</td><td style="color: #991B1B">Breached</td></tr>
-        <tr><td>MT-0037</td><td>Anil Kumar</td><td>Saraswati Vihar</td><td>Ramesh K</td><td>120</td><td><span class="pill p-green">Delivered</span></td><td>Ops · Neha R</td><td>11:05</td><td>11:31</td><td>12:14</td><td>3</td><td>Intact</td></tr>
-        <tr><td>MT-0036</td><td>Meera Sharma</td><td>Rohini Sec 7</td><td>Deepak M</td><td>121</td><td><span class="pill p-green">Delivered</span></td><td>Ops · Vivek A</td><td>10:20</td><td>10:48</td><td>11:30</td><td>2</td><td>Intact</td></tr>
-        <tr><td>MT-0035</td><td>Suresh Yadav</td><td>Kohat Enclave</td><td>Amit S</td><td>117</td><td><span class="pill p-gray">No pickup</span></td><td>Ops · Neha R</td><td>09:48</td><td>–</td><td>–</td><td>0</td><td>–</td></tr>
-        <tr><td>MT-0044</td><td>Geeta Verma</td><td>Rohini Sec 11</td><td>Vikas T</td><td>–</td><td><span class="pill p-gray">Not started</span></td><td>Ops · Neha R</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><th>Pickup</th><th>Customer</th><th>Area</th><th>Collector</th><th>Box</th><th>State</th><th>Customer confirmed</th><th>Created by</th><th>Unlocked @ customer</th><th>Sealed</th><th>Unlocked @ branch</th><th>Pouches</th><th>Seal</th></tr>
+        <tr><td><a href="#Pickup-Detail">MT-0041</a></td><td>Sunita Devi</td><td>Rohini Sec 9</td><td>Ramesh K</td><td>123</td><td><span class="pill p-blue">At customer</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Neha R</td><td>14:52</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td>MT-0043</td><td>Harish Gupta</td><td>Shalimar Bagh</td><td>Sunil V</td><td>119</td><td><span class="pill p-blue">Waiting approval</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Neha R</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td>MT-0039</td><td>Kamla Rani</td><td>Prashant Vihar</td><td>Deepak M</td><td>121</td><td><span class="pill p-amber">On the way</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Neha R</td><td>13:40</td><td>14:21</td><td>–</td><td>2</td><td>Intact</td></tr>
+        <tr><td>MT-0040</td><td>Rajesh Jain</td><td>Rani Bagh</td><td>Amit S</td><td>117</td><td><span class="pill p-amber">On the way</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Vivek A</td><td>13:58</td><td>14:35</td><td>–</td><td>4</td><td>Intact</td></tr>
+        <tr><td>MT-0038</td><td>Pooja Mehta</td><td>Pitampura</td><td>Vikas T</td><td>118</td><td><span class="pill p-red">Flagged · tamper</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Neha R</td><td>13:12</td><td>13:58</td><td>–</td><td>1</td><td style="color: #991B1B">Breached</td></tr>
+        <tr><td>MT-0037</td><td>Anil Kumar</td><td>Saraswati Vihar</td><td>Ramesh K</td><td>120</td><td><span class="pill p-green">Delivered</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Neha R</td><td>11:05</td><td>11:31</td><td>12:14</td><td>3</td><td>Intact</td></tr>
+        <tr><td>MT-0036</td><td>Meera Sharma</td><td>Rohini Sec 7</td><td>Deepak M</td><td>121</td><td><span class="pill p-green">Delivered</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Vivek A</td><td>10:20</td><td>10:48</td><td>11:30</td><td>2</td><td>Intact</td></tr>
+        <tr><td>MT-0035</td><td>Suresh Yadav</td><td>Kohat Enclave</td><td>Amit S</td><td>117</td><td><span class="pill p-gray">No pickup</span></td><td><span class="pill p-green">Yes</span></td><td>Ops · Neha R</td><td>09:48</td><td>–</td><td>–</td><td>0</td><td>–</td></tr>
+        <tr><td>MT-0044</td><td>Geeta Verma</td><td>Rohini Sec 11</td><td>Vikas T</td><td>–</td><td><span class="pill p-gray">Not started</span></td><td><span class="pill p-amber">No answer · call</span></td><td>Ops · Neha R</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
       </table>
     </div>
     <span class="sub">Showing 9 of 14 · page 1 of 2. Rows change colour as the state changes; no refresh needed.</span>
@@ -869,7 +870,8 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
           <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.6; color: #374151">
             <li>Pickup MT-0045 is created as Not started</li>
             <li>If a box and collector are chosen, the box is reserved and the pickup becomes Ready to go</li>
-            <li>Customer SMS: box number, collector ID and photo link</li>
+            <li>Day before: customer SMS with the slot and a Confirm / Reschedule / Cancel link; the answer shows on the dashboard</li>
+            <li>On assignment: customer SMS with box number, collector ID and photo link</li>
             <li>Collector sees it on the box page at the next scan</li>
             <li>Customer address and mobile are stored encrypted; Track0tic cannot read them</li>
           </ul>

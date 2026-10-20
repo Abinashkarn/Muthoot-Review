@@ -345,6 +345,49 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
 #Declined .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
 #Declined .btn{display:flex;align-items:center;justify-content:center;height:52px;border-radius:10px;font-size:16px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
 #Declined .btn.sec{background:#fff;color:#1D4ED8}
+#Scan-Manual{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#fff}
+#Scan-Manual a{color:#1D4ED8}
+#Scan-Manual a:hover{color:#1E40AF}
+#Scan-Manual .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Scan-Manual .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Scan-Manual .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Scan-Manual .card{border:1px solid #D1D5DB;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+#Scan-Manual .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Scan-Manual .btn{display:flex;align-items:center;justify-content:center;height:52px;border-radius:10px;font-size:16px;font-weight:600;border:1px solid #1D4ED8;background:#1D4ED8;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Scan-Manual .btn.sec{background:#fff;color:#1D4ED8}
+#Scan-Manual .ch{width:46px;height:56px;border:1px solid #9CA3AF;border-radius:10px;font-size:24px;text-align:center;font-family:'IBM Plex Mono',monospace;color:#111827;text-transform:uppercase}
+#Scan-Manual .sticker{border:2px solid #111827;border-radius:10px;padding:12px;display:flex;gap:12px;align-items:center;background:#F9FAFB}
+#Scan-Manual .qr{width:64px;height:64px;background:repeating-linear-gradient(90deg,#111827 0 6px,#fff 6px 12px),repeating-linear-gradient(#111827 0 6px,#fff 6px 12px);background-blend-mode:multiply;border-radius:4px}
+#Customer-Stop{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
+#Customer-Stop a{color:#92400E}
+#Customer-Stop a:hover{color:#78350F}
+#Customer-Stop .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Customer-Stop .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Customer-Stop .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Customer-Stop .card{border:1px solid #FDE68A;background:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+#Customer-Stop .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Customer-Stop .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+#Customer-Stop .btn{display:flex;align-items:center;justify-content:center;height:56px;border-radius:10px;font-size:17px;font-weight:600;border:1px solid #B45309;background:#B45309;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Customer-Stop .btn.sec{background:#fff;color:#B45309}
+#Customer-Stop .lang{display:flex;gap:6px}
+#Customer-Stop .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
+#Customer-Stop .lang span.on{background:#111827;color:#fff;border-color:#111827}
+#Customer-Stop .big{width:56px;height:56px;border-radius:28px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600}
+#Customer-Wrong{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#111827;background:#FFFBEB}
+#Customer-Wrong a{color:#92400E}
+#Customer-Wrong a:hover{color:#78350F}
+#Customer-Wrong .bar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#4B5563}
+#Customer-Wrong .h1{font-size:24px;font-weight:600;margin:0;line-height:1.25}
+#Customer-Wrong .p{font-size:15px;line-height:1.45;color:#4B5563;margin:0}
+#Customer-Wrong .card{border:1px solid #FDE68A;background:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+#Customer-Wrong .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#4B5563}
+#Customer-Wrong .row{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+#Customer-Wrong .btn{display:flex;align-items:center;justify-content:center;height:56px;border-radius:10px;font-size:17px;font-weight:600;border:1px solid #B45309;background:#B45309;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit}
+#Customer-Wrong .btn.sec{background:#fff;color:#B45309}
+#Customer-Wrong .lang{display:flex;gap:6px}
+#Customer-Wrong .lang span{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid #D1D5DB;background:#fff}
+#Customer-Wrong .lang span.on{background:#111827;color:#fff;border-color:#111827}
+#Customer-Wrong .big{width:56px;height:56px;border-radius:28px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600}
 </style></head><body>
 <div class="app">
   <nav class="side"><h1>Muthoot Collector Web App</h1><p>Clickable wireframe · 19 Oct 2026. Use the links inside the screen to walk the flow, or jump here.</p><a href="#Main" data-s="Main">S01 Scan → Login</a>
@@ -372,7 +415,10 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
 <a href="#Error-Box-Offline" data-s="Error-Box-Offline">E2 Box offline</a>
 <a href="#Error-Outside-Geofence" data-s="Error-Outside-Geofence">E3 Outside branch geofence</a>
 <a href="#Code-Fallback" data-s="Code-Fallback">E4 Code fallback (approver has no portal)</a>
-<a href="#Declined" data-s="Declined">E5 Request declined / expired</a></nav>
+<a href="#Declined" data-s="Declined">E5 Request declined / expired</a>
+<a href="#Scan-Manual" data-s="Scan-Manual">E6 Camera failed · type the sticker code</a>
+<a href="#Customer-Stop" data-s="Customer-Stop">KE1 Customer stopped the unlock</a>
+<a href="#Customer-Wrong" data-s="Customer-Wrong">KE2 Customer: something is wrong</a></nav>
   <main class="stage">
     <div class="row-nav"><button id="prev">← Previous</button><button id="next">Next →</button></div>
     <div class="phone"><section id="Main" class="scr" data-title="S01 Scan → Login"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 20px">
@@ -446,7 +492,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
   <p class="p" style="font-size: 13px">The QR holds only a code, not the box number. If you scan a box that is not assigned to you, the page says so and the scan is logged.</p>
   <div style="flex-grow: 1"></div>
   <a href="#Box-Assigned" class="btn">Simulate scan → Box 123</a>
-  <a href="#manual" class="btn sec" style="height: 44px; font-weight: 500">Camera not working · type the 6-character code on the sticker</a>
+  <a href="#Scan-Manual" class="btn sec" style="height: 44px; font-weight: 500">Camera not working · type the 6-character code on the sticker</a>
 </div></section>
 <section id="Box-Assigned" class="scr" data-title="S03 Box page · Ready to go"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px">
   <div class="bar"><a href="#Collector-Home" style="text-decoration: none">← My pickup</a><span>Ramesh K · <a href="#Main">Log out</a></span></div>
@@ -612,7 +658,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
     <p class="p" style="font-size: 13px">Shown in red above 1 km. Approve only if the collector is where the trip says.</p>
   </div>
   <div style="flex-grow: 1"></div>
-  <a href="#decline" class="btn sec">Decline (reason required)</a>
+  <a href="#Declined" class="btn sec">Decline (reason required)</a>
   <a href="#Open-Customer-OTP" class="btn">Approve unlock</a>
   <p class="p" style="font-size: 12px; text-align: center">Your approval is logged with your login, time and this screen's data.</p>
 </div></section>
@@ -673,7 +719,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
   <p class="p">Tap Approve only if the photo, ID and box number match. The box opens the moment you approve. If the lid is closed and needs opening again, you will be asked again.</p>
   <div style="flex-grow: 1"></div>
   <a href="#Customer-Confirm" class="btn">Approve · open the box</a>
-  <a href="#stop" class="btn no" style="height: 48px; font-size: 15px">Not this person · stop</a>
+  <a href="#Customer-Stop" class="btn no" style="height: 48px; font-size: 15px">Not this person · stop</a>
   <p class="p" style="font-size: 12px; text-align: center">"Stop" alerts the Muthoot branch at once. Nothing opens.</p>
 </div></section>
 <section id="Customer-Confirm" class="scr" data-title="K3 Customer phone · confirm pouches before seal"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 14px">
@@ -693,7 +739,7 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
   </div>
   <div style="flex-grow: 1"></div>
   <a href="#Seal-Confirm" class="btn">Yes, these 3 pouches are mine · seal the box</a>
-  <a href="#wrong" class="btn no" style="height: 48px; font-size: 15px">Something is wrong</a>
+  <a href="#Customer-Wrong" class="btn no" style="height: 48px; font-size: 15px">Something is wrong</a>
   <p class="p" style="font-size: 12px; text-align: center">"Something is wrong" pauses the pickup and alerts the branch; the collector can add or remove a pouch and ask you again.</p>
 </div></section>
 <section id="Bind-Passport" class="scr" data-title="S08 Add pouches"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 14px">
@@ -943,13 +989,72 @@ html,body{margin:0;height:100%;font-family:'IBM Plex Sans',system-ui,sans-serif;
   <div style="flex-grow: 1"></div>
   <a href="#call" class="btn sec">Call branch (Meena S)</a>
   <a href="#Open-Customer-Details" class="btn">Re-request unlock</a>
+</div></section>
+<section id="Scan-Manual" class="scr" data-title="E6 Camera failed · type the sticker code"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px">
+  <div class="bar"><a href="#Scan-Box" style="text-decoration: none">← Back to camera</a><span>Ramesh K</span></div>
+  <h1 class="h1">Type the code printed under the QR</h1>
+  <p class="p">Every Track0tic sticker has a 6-character code under the square. Letters and numbers, no O or I to avoid confusion.</p>
+  <div class="sticker" aria-label="Example of the sticker on the box lid">
+    <div class="qr" aria-hidden="true"></div>
+    <div style="display: flex; flex-direction: column; gap: 2px"><strong style="font-size: 13px">Track0tic</strong><span style="font-size: 12px; color: #4B5563">Scan or type the code</span><strong style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; letter-spacing: .12em">7KQ9XA</strong></div>
+  </div>
+  <div style="display: flex; gap: 8px; justify-content: space-between" aria-label="Six character box code">
+    <input class="ch" maxlength="1" aria-label="Character 1" value="7">
+    <input class="ch" maxlength="1" aria-label="Character 2" value="K">
+    <input class="ch" maxlength="1" aria-label="Character 3" value="Q">
+    <input class="ch" maxlength="1" aria-label="Character 4">
+    <input class="ch" maxlength="1" aria-label="Character 5">
+    <input class="ch" maxlength="1" aria-label="Character 6">
+  </div>
+  <p class="p" style="font-size: 13px">The code is the same token as the QR: it opens the box page only if the box is assigned to you. Three wrong codes lock this for 15 minutes.</p>
+  <div class="card" style="background: #F9FAFB; border-color: #E5E7EB">
+    <div class="lbl">Still cannot read it?</div>
+    <p class="p" style="font-size: 13px">Tell the branch. The sticker may be damaged; the box should be swapped at the branch, never used without a readable code.</p>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <a href="#Box-Assigned" class="btn">Open box page</a>
+</div></section>
+<section id="Customer-Stop" class="scr" data-title="KE1 Customer stopped the unlock"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px">
+  <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
+  <div style="flex-grow: 1"></div>
+  <div class="card" style="align-items: center; text-align: center; padding: 28px 20px; background: #FEF2F2; border-color: #FECACA">
+    <span class="big" style="background: #B91C1C">!</span>
+    <h1 class="h1">You stopped the unlock</h1>
+    <p class="p">The box stays locked. Muthoot Pitampura branch has been alerted at 14:51 and will call you on your registered number.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">Why you might stop</div>
+    <p class="p" style="font-size: 14px">The photo or ID did not match the person at your door, the box number was different, or you simply did not expect a visit. You did the right thing.</p>
+  </div>
+  <p class="p" style="font-size: 13px; text-align: center">Do not hand over any ornaments. If you feel unsafe, call 112.</p>
+  <div style="flex-grow: 1"></div>
+  <a href="#call" class="btn">Call Muthoot Pitampura</a>
+  <a href="#Customer-Approve" class="btn sec" style="height: 44px; font-size: 14px">I stopped by mistake · go back</a>
+</div></section>
+<section id="Customer-Wrong" class="scr" data-title="KE2 Customer: something is wrong"><div style="width: 390px; min-height: 844px; box-sizing: border-box; padding: 24px 20px; display: flex; flex-direction: column; gap: 16px">
+  <div class="bar"><span>Muthoot · Gold pickup</span><span class="lang"><span class="on">English</span><span>हिन्दी</span></span></div>
+  <div class="card" style="align-items: center; text-align: center; padding: 24px 20px; background: #FFFBEB; border-color: #FDE68A">
+    <span class="big" style="background: #B45309">!</span>
+    <h1 class="h1">Pickup paused</h1>
+    <p class="p">Nothing is sealed yet. Tell the collector what is wrong; the branch has been told you paused at 15:00.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">What is wrong?</div>
+    <label class="row" style="height: 44px; align-items: center"><span>A pouch is missing from the list</span><input type="radio" name="w" style="width: 20px; height: 20px"></label>
+    <label class="row" style="height: 44px; align-items: center"><span>There is an extra pouch I did not give</span><input type="radio" name="w" style="width: 20px; height: 20px"></label>
+    <label class="row" style="height: 44px; align-items: center"><span>A pouch seal is not closed properly</span><input type="radio" name="w" style="width: 20px; height: 20px"></label>
+    <label class="row" style="height: 44px; align-items: center"><span>I want to add or take back an item</span><input type="radio" name="w" style="width: 20px; height: 20px"></label>
+  </div>
+  <p class="p" style="font-size: 13px">The collector can add or remove a pouch and will ask you to confirm the list again. Your reason is recorded.</p>
+  <div style="flex-grow: 1"></div>
+  <a href="#Customer-Confirm" class="btn">Send to collector · check the list again</a>
 </div></section></div>
     <div class="cap" id="cap"></div>
   </main>
 </div>
 <script>
 (function(){
-  var order = ["Main", "Login-OTP", "Collector-Home", "Scan-Box", "Box-Assigned", "Open-Customer-Details", "Open-Customer-OTP", "Box-Open", "Cancel-Pickup", "Open-Customer-Fallback", "Approver-Request", "Customer-Scan", "Customer-Verify", "Customer-Approve", "Customer-Confirm", "Bind-Passport", "Seal-Confirm", "Box-Sealed", "Open-Bank-OTP", "Delivered", "Compliance-View", "Error-Not-Assigned", "Error-Box-Offline", "Error-Outside-Geofence", "Code-Fallback", "Declined"];
+  var order = ["Main", "Login-OTP", "Collector-Home", "Scan-Box", "Box-Assigned", "Open-Customer-Details", "Open-Customer-OTP", "Box-Open", "Cancel-Pickup", "Open-Customer-Fallback", "Approver-Request", "Customer-Scan", "Customer-Verify", "Customer-Approve", "Customer-Confirm", "Bind-Passport", "Seal-Confirm", "Box-Sealed", "Open-Bank-OTP", "Delivered", "Compliance-View", "Error-Not-Assigned", "Error-Box-Offline", "Error-Outside-Geofence", "Code-Fallback", "Declined", "Scan-Manual", "Customer-Stop", "Customer-Wrong"];
   function cur(){ var id=(location.hash||"#"+order[0]).slice(1); return order.indexOf(id)<0?order[0]:id; }
   function show(){
     var id = cur();
